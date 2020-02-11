@@ -50,7 +50,7 @@ class Jdspider(object):
             key = 'CG'+str(count)
             print(key)
             self.r.lpush(key,title,price,shop,comment)
-            self.r.save()
+        self.r.save()
 
     def run(self):
         self.get_html()
