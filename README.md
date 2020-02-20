@@ -4,5 +4,6 @@
 ### baidu_img,py : 爬取百度图片的脚本 输入要爬取的内容即可爬取  
 ### img_mkdifile_name : 修改大量文件名使用（有一天需要修三千多个图片的后缀，写的
 )  
-### redis_get_cg : 从redis中获取爬取的成果衣服信息  
+### redis_get_cg : 从redis中获取爬取的成果衣服信息
+### danei_video : 达内教学视频爬取。上传于2020-02-20
 
