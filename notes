@@ -9,6 +9,65 @@ python -c 'import crypt; print(crypt.encrypt("hello"))'
 
 
 
+python的ipaddress模块的用法
+
+
+import ipaddress
+
+一、基础概念：
+
+    ipaddress.ip_address()----------传入任意进制的数，自动创建返回一个ipv4或者ipv6地址，此函数会自动判断地址类别；
+
+    ipaddress.ip_network()---------创建网络——使用格式为：ipaddress.ip_network('网络地址/掩码位数')相当于ipaddress.ip_network('网络网关/掩码位数')
+    
+    ps:
+       网络地址指该ip段的第一个ip地址，网关，是该网段内的ip地址；因为strict参数的加入，
+       可以直接使用网关通过strict将网关置为网络地址；就可以判断，ip是否在该平面内了
+    
+
+二、通过一个平面网关掩码，跟另一平面ip地址，判断此ip地址是否属于前者的平面内；
+		ip_gateway = '25.1.0.1'
+		ip_mask = '255.255.0.0'
+        wangt_check_ip = '25.1.0.25'
+        
+        ip_and_mask
+	    for check_ip in check_ip_list:
+        	result = ipaddress.ip_address(check_ip) in ipaddress.ip_network(ip_and_mask, strict=False)
+            if result:
+            	print('在同一平面内')
+            else:
+            	print('不在同一平面内')
+
+    eg：
+        使用注意点：
+
+            ipaddress.ip_network()--默认情况下，如果入参中设置了主机位，如‘192.168.1.1/24’，则会弹出错误提示——设置了主机位：
+                主机位 : {192.168.1.0是没有设置主机位。从0开始的 ；  而192.168.1.1是从第一个 主机开始的  ip地址的最后一个数算是主机位}
+            会报如下错误：
+                        raise ValueError('%s has host bits set' % self)
+                    ValueError: 192.168.1.1/24 has host bits set
+            通过设置strict=False实现附加位强制为0；可以解决报错问题
+                ipaddress.ip_network('192.168.1.1/24',strict=False)
+
+
+    使用网关跟子网掩码，跟另一个平面的ip地址，可以判断两者是否在同一平面内，ip_address() in ip_network()
+
+
+三、常用查询操作：
+net=ipaddress.ip_network('192.168.1.0/24')
+	(1)查看网络中独立地址个数
+		print(net.num_ipaddress)
+	(2)打印主机地址
+    	for host in net.hosts():
+        	print(host)
+            
+    (3)获取网络掩码：
+    	net.netmask
+
+
+
+
+
 sehll.md
 变量自增：
 
