@@ -10,4 +10,5 @@ xls.py              读取数据库中数据表生成xls表格；--2020-07-11
 notes.py :          增加新的学习笔记----2020-07-30
 pycrypt.py:         python的内置模块hashlib、hamc，以及外部pycrypto模块；单向加密，编码，对称秘钥；----2020-08-07
 notes.py:           增加笔记内容----2020-08-14
+python_log_module.py:         python的内置logging模块；----2020-08-14
 ```
