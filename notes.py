@@ -337,3 +337,64 @@ python的进制转换函数：
        十进制：int()
        十六进制：hex(int('',''))
        
+       
+ 
+       
+ # 再次添加 ： 
+       # shell中的diff 比较两个文件内容是否相同
+	#/bin/sbin
+	file1=/test.txt
+	file2=/tmp/nihao.txt
+	diff $file1 $file2 > /dev/null
+	echo $?
+	if [ $? == 0 ]; then
+	    echo "相同"
+	else
+	    echo "两者不相同"
+	fi
+       
+# Linux 
+       	$ linux查看那些用户正在远程连接主机，并杀死不用的ssh连接:
+	w / who都可以， 查看情况如下
+        USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
+        hcp      pts/0     15:07    9.00s  0.00s  0.00s -bash
+        root     pts/1     14:56    7.00s  0.09s  0.00s w
+	    杀死 hcp 命令：
+		pkill -9 -t pts/0
+	    查看那个是我正在使用的远程连接
+		who am i
+
+	$ linux查询正在使用的进程 ： 
+		查询系统中全部进程:
+			ps -ef 
+	    列出此次登录的进程有关的进程：
+		ps -l
+	    杀死进程 ： 
+	    kill -9 pid
+
+	按文件名寻找文件：
+		find path -name file_name
+	    find path -
+
+	用户登录设置文件：
+		设置认证几次，设置修改密码时可以使用以前登录过的密码
+		vi /etc/pam.d/system-auth
+
+
+	linux、win中  添加路由:
+		win ： 
+		route add 192.168.120.12 mask 255.255.0.0 -p 192.168.0.1
+	    linux:
+			route add default gw 192.168.1.1 ------ 添加默认路由
+
+	lsattr 命令用于显示文件属性：
+		用chattr执行改变文件或者目录的属性，可执行lsattr指令 查询其属性。
+
+	    chattr +i /etc/resolve.conf  # 用chattr命令防止系统中某个关键文件被修改
+		# 然后用mv /etc/resolv.conf等命令操作于该文件，都是得到Operation not permitted 的结果。vim编辑该文件时会提示W10: Warning: Changing a readonly file错误。要想修改此文件就要把i属性去掉：
+
+	    lsattr /etc/resolve.conf  # 使用 lsattr 命令来显示文件属性
+
+
+       	
+       
