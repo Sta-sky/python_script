@@ -394,7 +394,23 @@ python的进制转换函数：
 		# 然后用mv /etc/resolv.conf等命令操作于该文件，都是得到Operation not permitted 的结果。vim编辑该文件时会提示W10: Warning: Changing a readonly file错误。要想修改此文件就要把i属性去掉：
 
 	    lsattr /etc/resolve.conf  # 使用 lsattr 命令来显示文件属性
+       
 
+shell
+       查看/tmp 的磁盘使用情况
+       	    [root@eBackup etc]#   df -h | sed -n '/\/tmp/p' | awk -F' ' '{print $5}' | sed 's/ //g'
+		51%
+	 解析 ： df -h--------------------------- 查看使用率， 
+       		sed -n '/\/tmp/p'--------------- 过滤出包含/tmp的行 ‘\’转义/tmp中的跟路径
+       		awk -F' ' '{print $5}' --------- 用空格分割，过滤出使用率的参数，
+       		sed 's/ //g' ------------------- 去除输出内容的所有空格
+       
+       将输出的eBakcup系统 信息，中第一个字母 e 替换成 T
+       		showsys | sed -n '5p' | awk -F '|' '{print $1}' | sed 's/e/T/'
+       将输出的eBakcup系统 信息，中所有的字母 e 替换成 T
+       		showsys | sed -n '5p' | awk -F '|' '{print $1}' | sed 's/e/T/g'
+       
+       
 
        	
        
