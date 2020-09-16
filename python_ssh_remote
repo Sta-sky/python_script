@@ -1,0 +1,45 @@
+import paramiko
+import time
+ 
+__author__ = 'weiran'
+ 
+ 
+def test_paramiko_interact():
+    trans = paramiko.Transport(('10.46.169.111', 22))    # 坑1 如果你使用 paramiko.SSHClient() cd后会回到连接的初始状态
+    trans.start_client()
+    # 用户名密码方式
+    trans.auth_password(username='user', password='pwd')
+    # 打开一个通道
+    channel = trans.open_session()
+    channel.settimeout(7200)
+    # 获取一个终端
+    channel.get_pty()
+    # 激活器
+    channel.invoke_shell()
+    cmd = 'cd /home/shell_study\r'
+    # 发送要执行的命令
+    channel.send(cmd)
+    cmd = 'bash ./study_shell.sh\r' # 坑2 如果使用 sh ./study_shell.sh\r 可能会出现 [: 11: y: unexpected operator 错误
+    channel.send(cmd)
+    # 回显很长的命令可能执行较久，通过循环分批次取回回显
+    while True:
+        time.sleep(0.2)
+        rst = channel.recv(1024)
+        rst = rst.decode('utf-8')
+        print(rst)
+        # 通过命令执行提示符来判断命令是否执行完成
+        if 'yes/no' in rst:
+            channel.send('yes\r') # 坑3 如果使用绝对路径，则会在home路径建立文件夹导致与预期不符
+            time.sleep(0.5)
+            ret = channel.recv(1024)
+            ret = ret.decode('utf-8')
+            print(ret)
+            break
+ 
+    channel.close()
+    trans.close()
+    # channel.invoke_shell()
+ 
+ 
+if __name__ == '__main__':
+    test_paramiko_interact()
