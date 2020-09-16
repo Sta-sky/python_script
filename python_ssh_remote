@@ -1,45 +1,57 @@
-import paramiko
-import time
- 
-__author__ = 'weiran'
- 
- 
-def test_paramiko_interact():
-    trans = paramiko.Transport(('10.46.169.111', 22))    # 坑1 如果你使用 paramiko.SSHClient() cd后会回到连接的初始状态
-    trans.start_client()
-    # 用户名密码方式
-    trans.auth_password(username='user', password='pwd')
-    # 打开一个通道
-    channel = trans.open_session()
-    channel.settimeout(7200)
-    # 获取一个终端
-    channel.get_pty()
-    # 激活器
-    channel.invoke_shell()
-    cmd = 'cd /home/shell_study\r'
-    # 发送要执行的命令
-    channel.send(cmd)
-    cmd = 'bash ./study_shell.sh\r' # 坑2 如果使用 sh ./study_shell.sh\r 可能会出现 [: 11: y: unexpected operator 错误
-    channel.send(cmd)
-    # 回显很长的命令可能执行较久，通过循环分批次取回回显
-    while True:
-        time.sleep(0.2)
-        rst = channel.recv(1024)
-        rst = rst.decode('utf-8')
-        print(rst)
-        # 通过命令执行提示符来判断命令是否执行完成
-        if 'yes/no' in rst:
-            channel.send('yes\r') # 坑3 如果使用绝对路径，则会在home路径建立文件夹导致与预期不符
-            time.sleep(0.5)
-            ret = channel.recv(1024)
-            ret = ret.decode('utf-8')
-            print(ret)
-            break
- 
-    channel.close()
-    trans.close()
-    # channel.invoke_shell()
- 
- 
-if __name__ == '__main__':
-    test_paramiko_interact()
+
+class Ssh(object):
+    @classmethod
+    def ssh_create_client(cls, ip_num, username, passwd,
+                          port=22, timeout=5, pub_key=None, status=True,
+                          width=300):
+        '''创建一个SSH的客户端,可以保持连接,支持密匙登录，需要密匙登录时，传入需要的pub_key即可'''
+        if (not ip_num) or (not can_vm_pinged_to(ip_num, False)):
+            err_msg = SSH_ERR_CODE_PRE + '1001,' + 'create ssh client failed, ' \
+                                                   'ip is none or ip cannot be pinged:%s' % ip_num
+            logger.error(err_msg)
+            raise Exception(err_msg)
+        trans = None
+        try:
+            ssh_client = dict()
+            trans = paramiko.Transport((ip_num, port))
+            if not pub_key:
+                trans.connect(username=username, password=passwd)
+            else:
+                with open_file(pub_key) as _fp:
+                    key = tostr(paramiko.RSAKey.from_private_key(_fp))
+                    trans.connect(username=username, password=passwd, pkey=key)
+            trans.set_keepalive(30)
+            channel = trans.open_session()
+            channel.settimeout(timeout)
+            channel.get_pty(width=width)
+            channel.invoke_shell()
+            stdout = channel.makefile('r', -1)
+            ssh_client['ip'] = ip_num
+            ssh_client['port'] = port
+            ssh_client['username'] = username
+            ssh_client['timeout'] = timeout
+            ssh_client['width'] = width
+            ssh_client['client'] = trans
+            ssh_client['channel'] = channel
+            ssh_client['stdout'] = stdout
+            time.sleep(2)
+            if status:
+                cls.get_prompt(ssh_client)
+            return ssh_client
+
+        except Exception as execpts:
+            try:
+                if trans:
+                    trans.close()
+            except Exception as ex:
+                logger.error("failed to close connection after creating SSH client failed: {}."
+                             .format(ex))
+            err_msg = SSH_ERR_CODE_PRE + '5001,' + 'create ssh client failed. ' \
+                                                   'ip:%s, username:%s, port:%s, pub_key:%s' % (
+                          ip_num, username, port, pub_key)
+            if not passwd:
+                err_msg += ', and passwd is none'
+            if str(execpts):
+                err_msg += '. the error is:%s' % str(execpts)
+            logger.error(err_msg)
+            raise Exception(err_msg)
