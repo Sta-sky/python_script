@@ -1,57 +1,146 @@
+"""
+paramiko包含两个核心组件：SSHClient和SFTPClient。
+SSHClient的作用类似于Linux的ssh命令，是对SSH会话的封装，该类封装了传输(Transport)，通道(Channel)及SFTPClient建立的方法(open_sftp)，通常用于执行远程命令。
+SFTPClient的作用类似与Linux的sftp命令，是对SFTP客户端的封装，用以实现远程文件操作，如文件上传、下载、修改文件权限等操作。
+"""
+import datetime
+import re
+import sys
+import time
+
+import paramiko
+
+from 工具脚本.byte_change_str import tostr
+
 
 class Ssh(object):
-    @classmethod
-    def ssh_create_client(cls, ip_num, username, passwd,
-                          port=22, timeout=5, pub_key=None, status=True,
-                          width=300):
-        '''创建一个SSH的客户端,可以保持连接,支持密匙登录，需要密匙登录时，传入需要的pub_key即可'''
-        if (not ip_num) or (not can_vm_pinged_to(ip_num, False)):
-            err_msg = SSH_ERR_CODE_PRE + '1001,' + 'create ssh client failed, ' \
-                                                   'ip is none or ip cannot be pinged:%s' % ip_num
-            logger.error(err_msg)
-            raise Exception(err_msg)
-        trans = None
-        try:
-            ssh_client = dict()
-            trans = paramiko.Transport((ip_num, port))
-            if not pub_key:
-                trans.connect(username=username, password=passwd)
-            else:
-                with open_file(pub_key) as _fp:
-                    key = tostr(paramiko.RSAKey.from_private_key(_fp))
-                    trans.connect(username=username, password=passwd, pkey=key)
-            trans.set_keepalive(30)
-            channel = trans.open_session()
-            channel.settimeout(timeout)
-            channel.get_pty(width=width)
-            channel.invoke_shell()
-            stdout = channel.makefile('r', -1)
-            ssh_client['ip'] = ip_num
-            ssh_client['port'] = port
-            ssh_client['username'] = username
-            ssh_client['timeout'] = timeout
-            ssh_client['width'] = width
-            ssh_client['client'] = trans
-            ssh_client['channel'] = channel
-            ssh_client['stdout'] = stdout
-            time.sleep(2)
-            if status:
-                cls.get_prompt(ssh_client)
-            return ssh_client
+    def __init__(self):
+        self.transport = None
+        self.channel = None
 
-        except Exception as execpts:
-            try:
-                if trans:
-                    trans.close()
-            except Exception as ex:
-                logger.error("failed to close connection after creating SSH client failed: {}."
-                             .format(ex))
-            err_msg = SSH_ERR_CODE_PRE + '5001,' + 'create ssh client failed. ' \
-                                                   'ip:%s, username:%s, port:%s, pub_key:%s' % (
-                          ip_num, username, port, pub_key)
-            if not passwd:
-                err_msg += ', and passwd is none'
-            if str(execpts):
-                err_msg += '. the error is:%s' % str(execpts)
-            logger.error(err_msg)
-            raise Exception(err_msg)
+    def return_clent(self, server_ip, username, passwd, port=22, ):
+        """
+        创建返回一个ssh安全连接对象
+        :return:
+        """
+        ssh_client = {}
+        try:
+            # 创建一个加密通道
+            self.transport = paramiko.Transport((server_ip, port))
+            self.transport.start_client()
+
+            # 密码认证方式
+            self.transport.auth_password(username=username, password=passwd)
+
+            # 打开一个通道
+            self.channel = self.transport.open_session()
+            self.channel.settimeout(5)
+
+            # 获取一个终端
+            self.channel.get_pty()
+            # 激活器
+            self.channel.invoke_shell()
+            ssh_client['transport'] = self.transport
+            ssh_client['channel'] = self.channel
+            return ssh_client
+        except Exception as e:
+            print(f"创建ssh客户端失败， 失败ip为{server_ip}， 失败原因为{e}")
+
+    # @staticmethod
+    # def disconnecte_ssh_client(ssh_client):
+    #     print((type(ssh_client)))
+    #     print(ssh_client)
+    #     print(ssh_client['transport'])
+    #     if ssh_client:
+    #         ssh_client('channel').close()
+    #     if ssh_client():
+    #         ssh_client('transport').close()
+
+    def send_cmd(self, cmd, ssh_client, timeout = None, retry_times=0):
+        result = ''
+        # 发送要执行的命令
+        try:
+            channel = ssh_client['channel']
+            transport = ssh_client['transport']
+            channel.send(cmd)
+            # 回显很长的命令可能执行较久，通过循环分批次取回回显
+            ret_str = ''
+            # 通过命令执行提示符来判断命令是否执行完成
+            now_time = datetime.datetime.now()
+            for retry_time in range(retry_times):
+                while not re.search("last cmd result: \d+", ret_str):
+                    time.sleep(0.1)
+
+                    # 如果客户端通道关闭了
+                    if ssh_client['channel'].closed:
+                        print('客户端是关闭状态')
+                        raise Exception('客户端是关闭的')
+
+                    if datetime.datetime.now() > now_time + datetime.timedelta(
+                            minutes=int(timeout)):
+                        raise Exception('已超过最大超时时间')
+                    if not ssh_client['channel'].recv_ready():
+                        continue
+                    print(ret_str)
+                    try:
+                        ret_str = ret_str + ssh_client['channel'].recv(
+                            65535).decode('utf-8')
+                        print(ret_str)
+                        print(ret_str)
+                    except Exception as e:
+                        ret_str = ret_str.replace(' \r', '\r')
+                        ret_str + ret_str.replace('\r', '')
+                        ret_str + ret_str.replace(';echo last cmd result: '
+                                                  '$?', '')
+                        print(f'在主机上执行命令发生错误{e}')
+                        continue
+                    ret_str = ret_str.replace(' \r', '\r')
+                    ret_str = ret_str.replace('\r', '')
+                    ret_str = ret_str.replace(";echo last cmd result: $?", "")
+                ret_str = ret_str.replace(ssh_client.get('prompt', ''), '')
+                ret_str = ret_str.replace('\n\n', '\n')
+                ret_str = ret_str.replace('\n', '\n\r')
+                listout = ret_str.split('\r')
+                if not listout:
+                    return listout
+
+                if 0 != len(listout[0]):
+                    listout = listout[1:]
+                if listout and 0 != len(listout[-1]):
+                    listout = listout[:-1]
+                if listout and 0 != len(listout[-1]):
+                    listout = listout[:-1]
+                print("execute ssh_exec_command_return success.")
+                return listout
+        except Exception as e:
+            print(e)
+
+
+
+
+    @staticmethod
+    def exc_cmd(trans, cmds):
+        try:
+            ssh_client = paramiko.SSHClient()
+            ssh_client._transport = trans
+            stdio, stdout, stderr = ssh_client.exec_command(cmds)
+            print(bytes(stdout.read()).decode())
+        except Exception as e:
+            print(f"执行失败，失败原因{e}")
+
+
+server_ip = '8.96.142.240'
+username = 'hcp'
+passwd = 'PXU9@ctuNov17!'
+cmds = 'll; echo last cmd result: $?\n'
+timeout = 30
+
+ssh = Ssh()
+ssh_client = ssh.return_clent(server_ip, username, passwd)
+
+try:
+    if ssh_client:
+        res = ssh.send_cmd(cmds, ssh_client, timeout=timeout)
+except Exception as e:
+    print(e)
+
