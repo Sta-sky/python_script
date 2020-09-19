@@ -12,4 +12,5 @@ pycrypt.py:             python的内置模块hashlib、hamc，以及外部pycryp
 notes.py:               增加笔记内容----2020-08-14
 python_log_module.py:   python的内置logging模块；----2020-08-14
 python_ssh_remote:      python的paramiko模块，远程操作linux主机，文件上载及下载， -- 2020-09-14
+Ssh_connect_remote.py:  python远程上传，下载，执行命令 的工具， ----- 2020- 09-19
 ```
