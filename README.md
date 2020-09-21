@@ -14,4 +14,5 @@ python_log_module.py:   python的内置logging模块；----2020-08-14
 python_ssh_remote:      python的paramiko模块，远程操作linux主机，文件上载及下载， -- 2020-09-14
 Ssh_connect_remote.py:  python远程上传，下载，执行命令 的工具， ----- 2020- 09-19
 log_util.py          :  python的log模块，作为日常代码调测的日志打印工具；----- 2020- 09-21
+change_str.py        :  python的字典、字符串、列表中的字节串转换为字符串并返回  ----- 2020- 09-21
 ```
