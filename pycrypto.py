@@ -26,21 +26,26 @@ from Crypto.Cipher import AES
 from Crypto.PublicKey import RSA
 from Crypto import Random
 from Crypto.Cipher import PKCS1_v1_5
-print('========================================================================================================================================')
+from log_test import Log
+logger = Log('secrete').print_info()
+logger.info(__name__)
+
+logger.info(
+    '========================================================================================================================================')
 """
 base64 编码
 """
 # base64穿入的参数只能是字节串  要用encode()参数进行转换
 # base64的编码
-st = 'hello world!'.encode()  # 默认以utf8编码
-res = base64.b64encode(st)
-print(res)
-print(res.decode())  # 默认以utf8解码
+# st = 'hello world!'.encode()  # 默认以utf8编码
+res = base64.b64encode('hello world!'.encode())
+logger.info(res)
+logger.info(res.decode())  # 默认以utf8解码
 # base64的解密
 _str = base64.b64decode(res)
-print(_str.decode())
+logger.info(_str.decode())
 
-print(
+logger.error(
     '========================================================================================================================================')
 """
 hashlib / hmac 的单向加密
@@ -48,20 +53,20 @@ hashlib / hmac 的单向加密
 # hashlib的md5
 s = 'fdsa'
 passwd = hashlib.md5(s.encode()).hexdigest()
-print(passwd)
+logger.info(passwd)
 
 # hashlib的sha256
 pss = hashlib.sha256(s.encode()).hexdigest()
-print(pss)
+logger.info(pss)
 
 # hamc的加密  key 跟msg都需要字节串
 dex = 'dyy'
 strs = '1234'
 passwd = hmac.new(key=strs.encode('utf-8'), msg=dex.encode('utf-8'),
                   digestmod='md5')
-print(passwd.hexdigest())
+logger.info(passwd.hexdigest())
 
-print(
+logger.info(
     '========================================================================================================================================')
 """
 secrets  产生随机秘钥模块 产生安全链接：token_urlsafe
@@ -71,13 +76,14 @@ secrets  产生随机秘钥模块 产生安全链接：token_urlsafe
 """
 sinum = string.ascii_letters + string.digits
 passwd = ''.join(secrets.choice(sinum) for i in range(10))
+# print(passwd)
 
 url_ = 'https://www.dyy.com?res={}'.format(secrets.token_urlsafe())
-print(secrets.token_hex())
-print(secrets.token_bytes())
-print(url_)
+logger.info(secrets.token_hex())
+logger.info(secrets.token_bytes())
+logger.info(url_)
 
-print(
+logger.info(
     '========================================================================================================================================')
 """
 pycrypt 模块介绍，加密，解密一段数据
@@ -91,7 +97,7 @@ pycrypt 模块介绍，加密，解密一段数据
 hash = SHA256.new()
 hash.update('defd'.encode())
 digest = hash.hexdigest()
-print(digest)
+logger.info(digest)
 
 # 实例2： 使用AES算法加密，解密一段数据
 # 定义需要加密的秘钥 长度必须是16的倍数
@@ -104,57 +110,71 @@ iv_params = '2345234523452345'
 # 数据加密
 aesl_init = AES.new(secrete_key.encode(), AES.MODE_CBC, iv_params.encode())
 data = aesl_init.encrypt(secrete_data.encode())
-print('加密后的数据 ： %s' % data)
+logger.info('加密后的数据 ： %s' % data)
 
 # 解密数据
 aesl_init_2 = AES.new(secrete_key.encode(), AES.MODE_CBC, iv_params.encode())
 data_2 = aesl_init_2.decrypt(data)
-print("解密后的数据%s" % data_2)
+logger.info("解密后的数据%s" % data_2)
+
 
 # 实例3：使用RSA算法生成密钥对儿
+def generate_pub_rsa_key():
+    # 获取一个伪随机数生成器
+    random_generate = Random.new().read
+    logger.info(random_generate)
+    # 获取一个rsa算法对应的秘钥对生成器实例
+    rsa = RSA.generate(1024, random_generate)
+    logger.info(rsa)
+    # 生成私钥并保存
+    private_pem = rsa.exportKey()
+    with open('rsa.key', 'w') as f:
+        f.write(private_pem.decode())
 
-# 获取一个伪随机数生成器
-random_generate = Random.new().read
-print(random_generate)
-# 获取一个rsa算法对应的秘钥对生成器实例
-rsa = RSA.generate(1024, random_generate)
-print(rsa)
-# 生成私钥并保存
-# private_pem = rsa.exportKey()
-# with open('rsa.key', 'w') as f:
-#     f.write(private_pem.decode())
-
-# 生成公钥并保存
-# public_pem = rsa.publickey().exportKey()
-# with open('rsa.pub.key', 'w') as f:
-#     f.write(public_pem.decode())
+    # 生成公钥并保存
+    public_pem = rsa.publickey().exportKey()
+    with open('rsa.pub.key', 'w') as f:
+        f.write(public_pem.decode())
 
 
 # 公钥加密，私钥解密
 """
 用法  随机生成一个数字，用用户本地的私钥，将用户上传的公钥，
 传入私钥解密所需要的参数中，查看与生成的随机数是否相等；
-
 """
-message = 'dyy107933'
-with open('rsa.pub.key', 'r') as f:
-    public_key = f.read()
-    rsa_key_obj = RSA.importKey(public_key)
-    passwd_obj = PKCS1_v1_5.new(rsa_key_obj)
-    passwd_text = base64.b64encode(passwd_obj.encrypt(message.encode()))
-    print('生成的私钥对：%s ' % passwd_text.decode())
+def user_pub_add_salt():
+    user_secrete = 'dyy107933'
+    with open('rsa.pub.key', 'r') as f:
+        public_key = f.read()
+        rsa_key_obj = RSA.importKey(public_key)
+        passwd_obj = PKCS1_v1_5.new(rsa_key_obj)
+        passwd_text = base64.b64encode(passwd_obj.encrypt(user_secrete.encode()))
+        logger.info('生成的私钥对：%s ' % passwd_text.decode())
+        return passwd_text
 
-#
-with open('rsa.key', 'r') as f:
-    rsa_key_data = f.read()
-    # 创建私钥对象
-    rsa_key_obj = RSA.importKey(rsa_key_data)
-    passwd_rsa_data = PKCS1_v1_5.new(rsa_key_obj)
-    random_generate = Random.new().read
-    print(random_generate)
-    passwd_rsa_text = passwd_rsa_data.decrypt(base64.b64decode(
-        passwd_text), random_generate)
-    print("解密后的秘钥 ： %s" % passwd_rsa_text.decode())
+
+# Key_Pair 生成的秘钥对
+def decrypt_rsa(Key_Pair):
+    with open('rsa.key', 'r') as f:
+        rsa_key_data = f.read()
+        # 创建私钥对象
+        rsa_key_obj = RSA.importKey(rsa_key_data)
+        passwd_rsa_data = PKCS1_v1_5.new(rsa_key_obj)
+        random_generate = Random.new().read
+        logger.info(random_generate)
+        passwd_rsa_text = passwd_rsa_data.decrypt(base64.b64decode(Key_Pair),
+                                                  random_generate)
+        logger.info("解密后的秘钥 ： %s" % passwd_rsa_text.decode())
+        return passwd_rsa_text
+
+# 生成公私钥文件
+generate_pub_rsa_key()
+
+# 用户添加自定义的盐 跟公钥中的文件，使用加密算法生成一个秘钥对
+key_pair = user_pub_add_salt()
+
+# 服务器通过私钥与秘钥对，解密出用户自定义的盐值，来判断是否是同一个用户
+decrypt_key = decrypt_rsa(key_pair)
 
 
 
@@ -171,3 +191,4 @@ pycryto模块不是Python的内置模块，它的官方网站地址是这里。p
 和hmac虽然是Python的内置模块，但是它们只提供了单向加密相关算法的实现，如果要使用对称加密算法（如, DES，AES等）
 或者公钥加密算法我们通常都是使用pycryto这个第三方模块来实现。
 """
+
