@@ -26,7 +26,7 @@ class Log:
             os.makedirs(BASE_PATH + '/' + self.name)
 
         log_path = logging.FileHandler(BASE_PATH + '/' + self.name + '/' +
-                                       self.name + '.log')
+                                       self.name + '.log', encoding='utf-8')
         # 设置终端打印的日志, 用于打印到控制台
         console = logging.StreamHandler()
         # 设置终端打印的级别
