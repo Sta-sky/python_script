@@ -21,7 +21,6 @@ import hmac
 import secrets
 import string
 
-from Crypto.Hash import SHA256
 from Crypto.Cipher import AES
 from Crypto.PublicKey import RSA
 from Crypto import Random
@@ -30,98 +29,143 @@ from tool_script.log_test import Log
 
 logger = Log('secrete').print_info()
 
-def crypt_test():
+876562995
+def generate_base64(keywords):
     """
     base64 编码
-    """
-    # base64穿入的参数只能是字节串  要用encode()参数进行转换
+        # base64穿入的参数只能是字节串  要用encode()参数进行转换
     # base64的编码
-    # st = 'hello world!'.encode()  # 默认以utf8编码
-    res = base64.b64encode('hello world!'.encode())
-    logger.info(res)
-    logger.info(res.decode())  # 默认以utf8解码
-    # base64的解密
-    _str = base64.b64decode(res)
-    logger.info(_str.decode())
+    """
+    try:
+        res = base64.b64encode(keywords.encode()).decode()
+        return res
+    except Exception as e:
+        logger.error(f'base64生成失败，失败原因为{e}')
 
-    logger.error(
-        '========================================================================================================================================')
+
+def decrypt_base64(keywords):
+    """
+    :param keywords: 编码后的关键字，str类型
+    :return: 
+    """
+    try:
+        resutl = base64.b64decode(keywords).decode()
+        return resutl
+    except Exception as e:
+        logger.error(f'base64解码失败，失败原因为{e}')
+
+
+def generate_hamc(keywords, secrete_type='md5', salt=None):
     """
     hashlib / hmac 的单向加密
+    type:  md5, sha256,
     """
-    # hashlib的md5
-    s = 'fdsa'
-    passwd = hashlib.md5(s.encode()).hexdigest()
-    logger.info(passwd)
+    if not salt:
+        if keywords and secrete_type == 'md5':
+            # MD5
+            try:
+                passwd_md5 = hashlib.md5(keywords.encode()).hexdigest()
+                return passwd_md5
+            except Exception as e:
+                logger.error(f'hamc的md5密码生成失败。关键字为{keywords},失败原因为{e}')
+        # sha256
+        if keywords and secrete_type == 'sha256':
+            try:
+                passwd_sha256 = hashlib.sha256(keywords.encode()).hexdigest()
+                return passwd_sha256
+            except Exception as e:
+                logger.error(f'hamc的sha256密码生成失败。关键字为{keywords},失败原因为{e}')
+    else:
+        # hamc的加盐方式加密  key 跟msg都需要字节串
+        if keywords:
+            try:
+                passwd_sha256 = hmac.new(
+                    key=keywords.encode('utf-8'),
+                    msg=salt.encode('utf-8'), digestmod=secrete_type).hexdigest()
+                return passwd_sha256
+            except Exception as e:
+                logger.error(f'hamc的sha256密码生成失败。关键字为{keywords},失败原因为{e}')
 
+
+def generate_hashlib(keywords, secrete_type):
     # hashlib的sha256
-    pss = hashlib.sha256(s.encode()).hexdigest()
-    logger.info(pss)
+    if keywords and secrete_type == 'sha256':
+        try:
+            passwd_sha256 = hashlib.sha256(keywords.encode()).hexdigest()
+            return passwd_sha256
+        except Exception as e:
+            logger.error(f'hashlib的sha256密码生成失败。关键字为{keywords},失败原因为{e}')
 
-    # hamc的加密  key 跟msg都需要字节串
-    dex = 'dyy'
-    strs = '1234'
-    passwd = hmac.new(key=strs.encode('utf-8'), msg=dex.encode('utf-8'),
-                      digestmod='md5')
-    logger.info(passwd.hexdigest())
 
-    logger.info(
-        '========================================================================================================================================')
+def generate_safe_link(url, params):
     """
     secrets  产生随机秘钥模块 产生安全链接：token_urlsafe
         secrets.choise ： 随机选取一个值
         string.ascii_letters ： 26个英文字母的大写加小写  共52个，
         string.digits ： 阿拉伯数字 0-9
+        logger.info(secrets.token_hex())# 返回一个包含n个bytes的16进制随机文本字符串，每个字节转换成两个16进制数字，一般用来生成随即密码
+        logger.info(secrets.token_bytes()) # 返回一个包含n个bytes的随机字符串
     """
-    sinum = string.ascii_letters + string.digits
-    passwd = ''.join(secrets.choice(sinum) for i in range(10))
-    # print(passwd)
+    if params == 'get_random_secrete':
+        try:
+            sinum = string.ascii_letters + string.digits
+            passwd = ''.join(secrets.choice(sinum) for i in range(10))
+            return passwd
+        except Exception as e:
+            logger.error(f'获取随机秘钥失败，原因为{e}')
+    if params == 'get_safe_url' and url:
+        url_ = secrets.token_urlsafe()
+        logger.info(url_)
+        return url.format(url_)
 
-    url_ = 'https://www.dyy.com?res={}'.format(secrets.token_urlsafe())
-    logger.info(secrets.token_hex())
-    logger.info(secrets.token_bytes())
-    logger.info(url_)
 
-    logger.info(
-        '========================================================================================================================================')
+"""
+pycrypt 模块介绍，加密，解密一段数据
+需要注意的是，pycrypto模块最外层的包（package）不是pycrypto，而是Crypto。
+它根据加密方式类别的不同把各种加密方法的实现分别放到了不同的子包（sub packages）中，
+且每个加密算法都是以单独的Python模块（一个.py文件）存在的
+"""
+
+
+def generate_pycrypt_aes(salt_key, secrete_data, iv_params):
     """
-    pycrypt 模块介绍，加密，解密一段数据
-    
-    需要注意的是，pycrypto模块最外层的包（package）不是pycrypto，而是Crypto。
-    它根据加密方式类别的不同把各种加密方法的实现分别放到了不同的子包（sub packages）中，
-    且每个加密算法都是以单独的Python模块（一个.py文件）存在的
+        pycrypt模块的AES加密
+        使用AES算法加密，
+    :param secrete_key: 自定义的salt值  长度必须是16的倍数
+    :param secrete_data: 要加密的数据，长度必须是16的倍数
+    :param iv_params: IV参数， 长度必须是16的倍数
+    :return:
     """
-    # pycrypto使用实例
-    # 实例1： 使用SHA256算法加密
-    hash = SHA256.new()
-    hash.update('defd'.encode())
-    digest = hash.hexdigest()
-    logger.info(digest)
-
-    # 实例2： 使用AES算法加密，解密一段数据
-    # 定义需要加密的秘钥 长度必须是16的倍数
-    secrete_key = 'dangyuanyangdang'
-    # 要加密的明文数据，长度必须是16的倍数
-    secrete_data = '1234123412341234'
-    # IV参数， 长度必须是16的倍数
-    iv_params = '2345234523452345'
-
     # 数据加密
-    aesl_init = AES.new(secrete_key.encode(), AES.MODE_CBC, iv_params.encode())
-    data = aesl_init.encrypt(secrete_data.encode())
-    logger.info('加密后的数据 ： %s' % data)
+    try:
+        aesl_init = AES.new(salt_key.encode(), AES.MODE_CBC, iv_params.encode())
+        aes_passwd = aesl_init.encrypt(secrete_data.encode())
+        logger.info('加密后的数据 ： %s' % aes_passwd)
+        return aes_passwd
+    except Exception as e:
+        logger.error(f'数据加密失败，失败的数据为{secrete_data}，失败原因为{e}')
 
+
+def decrypt_pycrypt_aes(salt_key, passwd_bytes, iv_params):
     # 解密数据
-    aesl_init_2 = AES.new(secrete_key.encode(), AES.MODE_CBC, iv_params.encode())
-    data_2 = aesl_init_2.decrypt(data)
-    logger.info("解密后的数据%s" % data_2)
+    decrypt_secrete = None
+    try:
+        aesl_init_2 = AES.new(salt_key.encode(), AES.MODE_CBC, iv_params.encode())
+        decrypt_secrete = aesl_init_2.decrypt(passwd_bytes)
+        return decrypt_secrete
+    except Exception as e:
+        logger.error(f'数据解密失败，失败的数据为{decrypt_secrete}，失败原因为{e}')
 
 
-# 实例3：使用RSA算法生成密钥对儿
+
 def generate_pub_rsa_key():
+    """
+        使用RSA算法生成密钥对儿
+    :return:
+    """
     # 获取一个伪随机数生成器
     random_generate = Random.new().read
-    logger.info(    random_generate)
+    logger.info(random_generate)
     # 获取一个rsa算法对应的秘钥对生成器实例
     rsa = RSA.generate(1024, random_generate)
     logger.info(rsa)
@@ -135,7 +179,7 @@ def generate_pub_rsa_key():
     with open('rsa.pub.key', 'w') as f:
         f.write(public_pem.decode())
 
-# 公钥加密，私钥解密
+
 """
 用法  随机生成一个数字，用用户本地的私钥，将用户上传的公钥，
 传入私钥解密所需要的参数中，查看与生成的随机数是否相等；
@@ -143,35 +187,44 @@ def generate_pub_rsa_key():
 
 
 def user_pub_add_salt(txet, user_secrete):
-    public_key = txet.read()
-    rsa_key_obj = RSA.importKey(public_key)
-    passwd_obj = PKCS1_v1_5.new(rsa_key_obj)
-    passwd_text = base64.b64encode(
-        passwd_obj.encrypt(user_secrete.encode()))
-    return passwd_text
+    """
+        公钥加密
+    :param txet: 公钥文件的read()后的io对象
+    :param user_secrete: 自定义的salt
+    :return: 公钥跟salt加密后的秘钥对
+    """
+    try:
+        public_key = txet.read()
+        rsa_key_obj = RSA.importKey(public_key)
+        passwd_obj = PKCS1_v1_5.new(rsa_key_obj)
+        passwd_text = base64.b64encode(
+            passwd_obj.encrypt(user_secrete.encode()))
+        return passwd_text
+    except Exception as e:
+        logger.error(f'公钥生成秘钥对失败，失败原因为{e}')
 
 
-# Key_Pair 生成的秘钥对
 def decrypt_rsa(txet, Key_Pair):
-    rsa_key_data = txet.read()
-    # 创建私钥对象
-    rsa_key_obj = RSA.importKey(rsa_key_data)
-    passwd_rsa_data = PKCS1_v1_5.new(rsa_key_obj)
-    random_generate = Random.new().read
-    logger.info(random_generate)
-    passwd_rsa_text = passwd_rsa_data.decrypt(base64.b64decode(Key_Pair),
-                                              random_generate)
-    return passwd_rsa_text
+    """
+    私钥解密
+    :param txet: 私钥文件read()后的io对象
+    :param Key_Pair:  生成的秘钥对
+    :return: 使用私钥解密后的salt
+    """
+    try:
+        rsa_key_data = txet.read()
+        # 创建私钥对象
+        rsa_key_obj = RSA.importKey(rsa_key_data)
+        passwd_rsa_data = PKCS1_v1_5.new(rsa_key_obj)
+        random_generate = Random.new().read
+        logger.info(random_generate)
+        passwd_rsa_text = passwd_rsa_data.decrypt(base64.b64decode(Key_Pair),
+                                                  random_generate)
+        return passwd_rsa_text
+    except Exception as e:
+        logger.error(f'私钥解密失败，失败原因为{e}')
 
 
-# 生成公私钥文件
-# generate_pub_rsa_key()
-
-# 用户添加自定义的盐 跟公钥中的文件，使用加密算法生成一个秘钥对
-# key_pair = user_pub_add_salt()
-
-# 服务器通过私钥与秘钥对，解密出用户自定义的盐值，来判断是否是同一个用户
-# decrypt_key = decrypt_rsa(key_pair)
 
 """
 hashlib	Y	主要提供了一些常见的单向加密算法（如MD5，SHA等），每种算法都提供了与其同名的函数实现。
