@@ -13,12 +13,12 @@ Formante = ("%(asctime)s - %(filename)s - line:%(lineno)d - %(funcName)s - %("
 class Log:
     def __init__(self, name):
         self.name = name
+        if self.name != 'tmp' and self.name is None:
+            self.name = 'tmp'
         if self.name not in LOG_NAME:
-            raise Exception('日志name 为 None')
+            LOG_NAME.append(self.name)
         # 获取logger实例
         self.logger = logging.getLogger(self.name)
-        # 设置日志集
-
         self.logger.setLevel(logging.DEBUG)
 
         # 设置存储目录, 用于写入日志文件
@@ -30,7 +30,7 @@ class Log:
         # 设置终端打印的日志, 用于打印到控制台
         console = logging.StreamHandler()
         # 设置终端打印的级别
-        console.setLevel(logging.DEBUG)
+        console.setLevel(logging.INFO)
 
         # 设置打印的格式
         formatter = logging.Formatter(Formante)
@@ -43,9 +43,8 @@ class Log:
         self.logger.addHandler(console)
         self.logger.addHandler(log_path)
 
-    def print_log(self):
+    def print_info(self):
         # 设置文件中存储的日志级别
         return self.logger
-
 
 
