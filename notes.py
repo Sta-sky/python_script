@@ -411,6 +411,6 @@ shell
        		showsys | sed -n '5p' | awk -F '|' '{print $1}' | sed 's/e/T/g'
        
        
-
+cd
        	
        
