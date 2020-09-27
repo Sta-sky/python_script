@@ -65,7 +65,7 @@ class Daneispider(object):
         link_lists = parse_html.xpath('//li[@class="sp"]/a/@href')
         print(link_lists)
 
-        #匹配出 视频名称列表
+        # 匹配出 视频名称列表
         word_list = parse_html.xpath('//li[@class="opened"]/p')
         print(word_list)
         self.load_video(link_lists[self.cut:],word_list[self.cut:])
