@@ -1,4 +1,4 @@
-from log_test import Log
+from log_util import Log
 CODING_LIST = ['UTF-8', 'GBK', 'ISO-8859-1']
 
 logger = Log('str').print_info()

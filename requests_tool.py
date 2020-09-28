@@ -1,9 +1,9 @@
 import os
 
 import requests
-from tool_script.python加密 import decrypt_rsa
-from tool_script.byte_change_str import change_str
-from tool_script.log_test import Log
+from python_secrete import decrypt_rsa
+from bytes_to_str import change_str
+from log_util import Log
 
 logger = Log('request').print_info()
 
@@ -28,7 +28,8 @@ def get_rsa_secrete():
 
 
 def send_key_check_login(secrete_key, token):
-    rsa_filename = os.path.realpath('../flask_test/rsa.key')
+    # rsa_filename = os.path.realpath('../flask_test/rsa.key')
+    rsa_filename = 'C:\\Users\\Administrator\\Desktop\\Python\\flask\\flask_test\\rsa.pub.key'
     with open(rsa_filename, 'r') as fp:
         decrypt_key = change_str(decrypt_rsa(fp, secrete_key))
     print(decrypt_key)
