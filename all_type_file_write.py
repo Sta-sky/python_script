@@ -1,4 +1,5 @@
 import os
+import time
 from threading import Thread, Lock
 
 lock = Lock()
@@ -36,10 +37,12 @@ class FileeCopy(Thread):
             for root_path, sub_dir, file_name_list in file_:
                 thread_pool = []
                 for file_name in file_name_list:
-                    read_file_path = file_path + file_name
+                    read_file_path = root_path + '\\' + file_name
+                    print(root_path)
+                    print(read_file_path, '40')
                     result = FileeCopy.file_split(read_file_path, split_number)
 
-                    storage_path = target_path + file_name
+                    storage_path = target_path + '\\' + file_name
                     write_test = Thread(target=FileeCopy.thread_file_write,
                                         args=(result, storage_path))
                     thread_pool.append(write_test)
@@ -54,7 +57,6 @@ class FileeCopy(Thread):
             thread_pool.append(write_test)
             for start_thread in thread_pool:
                 start_thread.start()
-
 
     @staticmethod
     def file_split(file_path, split_number):
@@ -77,17 +79,27 @@ class FileeCopy(Thread):
                 file_list = []
                 # 读取文件
                 with open(file_path, 'rb') as f:
-                    for i in range(split_number):
-                        if i > split_number:
-                            break
-                        if i == split_number - 1:
+                    for num in range(split_number):
+                        # 最后一次读取 全部读完
+                        if num == split_number - 1:
                             data = f.read()
                             file_list.append(data)
                         else:
                             data = f.read(every_size)
                             file_list.append(data)
-                print(file_list, '----------')
                 lock.release()
                 return file_list
             except Exception as e:
                 print(e)
+
+
+if __name__ == '__main__':
+    start = times = time.time()
+    file_path = 'C:\\Users\\dwx917920\\Desktop\\操作指南'
+    split_number = 10
+    target_name = 'C:\\Users\\dwx917920\\Desktop\\巡检\\upgrade_manifest_check\\test'
+
+    FileeCopy().thread_copy_picture(file_path, split_number, target_name)
+    stop_time = time.time()
+    tall_time = stop_time - start
+    print('总时间为%s ' % tall_time)
