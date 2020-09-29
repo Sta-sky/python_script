@@ -1,5 +1,3 @@
-import os
-
 import requests
 from python_secrete import decrypt_rsa
 from bytes_to_str import change_str
@@ -7,11 +5,20 @@ from log_util import Log
 
 logger = Log('request').print_info()
 
+# 私钥地址
+rsa_filename = 'C:\\Users\\Administrator\\Desktop\\Python\\flask\\flask_test\\rsa.key'
+# 登录请求，获取密钥对的地址
+url = 'http://127.0.0.1:5001/user/login'
+# 通过私钥跟密钥对，解除的盐值返回服务器，检查登录的地址；
+url_1 = 'http://127.0.0.1:5001/user/checklogin'
+
 
 def get_rsa_secrete():
+    """
+    发送登录请求，获取服务器用公钥产生的密钥对；
+    """
     token = None
     secrete_key = None
-    url = 'http://127.0.0.1:5001/user/login'
     method = 'GET'
     status_code, data = send_a_request(url, method=method)
     logger.info((status_code, data))
@@ -23,42 +30,56 @@ def get_rsa_secrete():
                 token = val
     else:
         logger.error(f'get rsa secrete failed, status_code{status_code}')
-
     return secrete_key, token
 
 
 def send_key_check_login(secrete_key, token):
-    # rsa_filename = os.path.realpath('../flask_test/rsa.key')
-    rsa_filename = 'C:\\Users\\Administrator\\Desktop\\Python\\flask\\flask_test\\rsa.pub.key'
-    with open(rsa_filename, 'r') as fp:
-        decrypt_key = change_str(decrypt_rsa(fp, secrete_key))
-    print(decrypt_key)
-    data_info = {'decrypt_key': decrypt_key}
+    """
+    再次发送请求， 携带用私钥以及密钥对解开的盐值，验证登录
+    """
+    data_info = None
+    try:
+        with open(rsa_filename, 'r') as fp:
+            decrypt_key = change_str(decrypt_rsa(fp, secrete_key))
+        data_info = {'decrypt_key': decrypt_key}
+    except Exception as e:
+        print(f'使用私钥解密失败，原因为{e}，请查看原因')
 
     header = {
         'Accept': 'application/json;version=2.2;charset=UTF-8',
         'iBaseToken': token,
         'Accept-Language': 'en',
     }
-    urls = 'http://127.0.0.1:5001/user/checklogin'
     method = 'GET'
-    status_code, get_rsp = send_a_request(urls=urls, method=method,
+    status_code, get_rsp = send_a_request(urls=url_1, method=method,
                                           headers=header, data=data_info)
-    logger.info(get_rsp['msg'])
-    logger.info(status_code)
+
+    if get_rsp['msg'] == '登录成功' and status_code == 200:
+        print('进来了')
+
+        logger.info('登陆信息为 %s,登录返回状态码为：%d' % (get_rsp['msg'], status_code))
+    else:
+        print('错误进来了')
+        logger.error(f'登录失败。失败状态码为{status_code}, ')
+
 
 
 def send_a_request(urls, method, headers=None, data=None):
-    if urls and method:
-        if method == 'GET':
-            rsp = requests.get(urls, headers=headers, data=data)
-            if rsp.status_code == 200:
-                return_code = rsp.status_code
+    """
+    负责发送请求，返回请求响应的数据，以及状态码
+    """
+    try:
+        if urls and method:
+            if method == 'GET':
+                rsp = requests.get(urls, headers=headers, data=data)
                 data = rsp.json()
-                return return_code, data
-            else:
-                return rsp.status_code, data.json()
-
+                if rsp.status_code == 200:
+                    return_code = rsp.status_code
+                    return return_code, data
+                else:
+                    return rsp.status_code, data
+    except Exception as e:
+        print(f'地址请求发送失败，原因为{e}，失败地址为{urls},请查看原因')
 
 if __name__ == '__main__':
     secrete_key, token = get_rsa_secrete()

@@ -29,7 +29,7 @@ from log_util import Log
 
 logger = Log('secrete').print_info()
 
-876562995
+
 def generate_base64(keywords):
     """
     base64 编码
