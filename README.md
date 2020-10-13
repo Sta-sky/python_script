@@ -22,5 +22,6 @@ spider_kele_video.py     : 通过selenium，结合requests，AES解密m3u8，爬
 spider_homegrown_video.py : 通过selenium，结合requests，AES解密m3u8，爬取视频网站的所有视频，  ----- 2020- 10-10
 spider_homegrown_update.py : spider_homegrown_video中的视频网站各种加固，无法使用selenium，无法使用f12直接查看源代码，修改代码，直接使用requests，爬取；
 对util.py工具文件更新，添加xls表格文件生成工具， ----- 2020- 10-10
+get_proxy_ip_pool.py     : 爬虫代理ip网站的代理ip，通过test_ip()方法测试出可用ip + port，并保存本地xls文件中, 构建ip代理池
 
 ```
