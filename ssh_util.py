@@ -27,8 +27,8 @@ ssh_detaile = \
     ---------------------   SSH    --------------------------------"""
 
 import paramiko
-from tool_script.util import is_ipv4_address
-from tool_script.log_util import Log
+from util import is_ipv4_address
+from log_util import Log
 
 log_sing = 'ssh'
 logger = Log(log_sing).print_info()

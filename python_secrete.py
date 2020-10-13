@@ -1,20 +1,3 @@
-"""
-python的内置库hashlib，hmac + 外部库PyCrypto实现各种加密解密算法
-
-Python2.5之前的版本所提供的加密模块有：md5、sha和hmac
-Python2.5开始把对md5和sha算法的实现整合到一个新的模块：hashlib；
-Python3.x开始去掉了md5和sha模块，仅剩下hashlib和hmac模块；
-Python3.6增加了一个新的可以产生用于密钥管理的安全随机数的模块：secrets。
-
-HASH： 一般翻译为“散列”（也有直接音译为“哈希”）
-MD5： 全称为 Message Digest algorithm 5，即信息摘要算法。
-    该算法可以生成定长的数据指纹，被广泛应用于加密和解密技术
-SHA： 全称为 Secure Hash Algorithm，即安全散列算法/安全哈希算法。
-    该算法是数字签名等密码学应用中的重要工具
-HMAC： 全称为 Hash Message Authentication Code，
-    即散列消息鉴别码。HMAC是基于密钥的哈希算法认证协议，主要是利用哈希算法
-
-"""
 import base64
 import hashlib
 import hmac
@@ -238,4 +221,19 @@ pycryto模块不是Python的内置模块，它的官方网站地址是这里。p
 提供了各种加密方式对应的多种加密算法的实现，包括 单向加密、对称加密以及公钥加密和随机数操作。而上面介绍的hashlib
 和hmac虽然是Python的内置模块，但是它们只提供了单向加密相关算法的实现，如果要使用对称加密算法（如, DES，AES等）
 或者公钥加密算法我们通常都是使用pycryto这个第三方模块来实现。
+
+python的内置库hashlib，hmac + 外部库PyCrypto实现各种加密解密算法
+
+Python2.5之前的版本所提供的加密模块有：md5、sha和hmac
+Python2.5开始把对md5和sha算法的实现整合到一个新的模块：hashlib；
+Python3.x开始去掉了md5和sha模块，仅剩下hashlib和hmac模块；
+Python3.6增加了一个新的可以产生用于密钥管理的安全随机数的模块：secrets。
+
+HASH： 一般翻译为“散列”（也有直接音译为“哈希”）
+MD5： 全称为 Message Digest algorithm 5，即信息摘要算法。
+    该算法可以生成定长的数据指纹，被广泛应用于加密和解密技术
+SHA： 全称为 Secure Hash Algorithm，即安全散列算法/安全哈希算法。
+    该算法是数字签名等密码学应用中的重要工具
+HMAC： 全称为 Hash Message Authentication Code，
+    即散列消息鉴别码。HMAC是基于密钥的哈希算法认证协议，主要是利用哈希算法
 """

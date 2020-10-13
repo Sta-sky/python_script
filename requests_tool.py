@@ -8,9 +8,9 @@ logger = Log('request').print_info()
 # 私钥地址
 rsa_filename = 'C:\\Users\\Administrator\\Desktop\\Python\\flask\\flask_test\\rsa.key'
 # 登录请求，获取密钥对的地址
-url = 'http://127.0.0.1:5001/user/login'
+url = 'http://49.234.158.144:8001/user/login'
 # 通过私钥跟密钥对，解除的盐值返回服务器，检查登录的地址；
-url_1 = 'http://127.0.0.1:5001/user/checklogin'
+url_1 = 'http://49.234.158.144:8001/user/checklogin'
 
 
 def get_rsa_secrete():
@@ -55,11 +55,9 @@ def send_key_check_login(secrete_key, token):
                                           headers=header, data=data_info)
 
     if get_rsp['msg'] == '登录成功' and status_code == 200:
-        print('进来了')
 
         logger.info('登陆信息为 %s,登录返回状态码为：%d' % (get_rsp['msg'], status_code))
     else:
-        print('错误进来了')
         logger.error(f'登录失败。失败状态码为{status_code}, ')
 
 

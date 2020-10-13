@@ -16,7 +16,7 @@ class WriteXlwtFile(object):
     进行下载；
     """
     def __init__(self):
-        base_file = "C:\\Users\\13617\\Desktop\\Python\\xml_download\\{" \
+        base_file = "C:\\Users\\Administrator\\Desktop\\Python\\xml_download\\{" \
                          "}\\"
         retry_times = 0
         while retry_times < 5:
@@ -95,8 +95,6 @@ class WriteXlwtFile(object):
             print('已写入%.2f' % ((count / num) * 100) + '%')
             for col in range(len(fields)):
                 data = data_result[row - 1][col]
-                print(type(data))
-                print(data)
                 if isinstance(data, datetime.datetime):
 
                     styles = self.set_style('Times New Roman',self.weight,

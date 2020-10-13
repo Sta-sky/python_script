@@ -1,10 +1,9 @@
 import ipaddress
-from tool_script.log_test import Log
+from log_util import Log
 
 """
 网络号的计算方法，将ip地址与子网掩码，转换成二进制的数，之后做按位与运算，得出的结果
         在转换成十进制，得到的ip就是网络号
-
 主机号的计算方法：将子网掩码取反再与ip地址按位与运算
                 （取反：’255.255.255.0’-----‘0.255.255.255’          
 按位与 ： & 遇1得1，
