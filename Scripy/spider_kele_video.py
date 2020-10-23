@@ -126,18 +126,22 @@ class Spider_Video():
                   f'：{new_save_path}')
             tow_url = self.tow_url.format(id)
             print('当前所在的页面', tow_url)
-            page_data = self.return_requests_data(tow_url)
-            data = page_data.text
-            request_m3u8 = self.get_m3u8_key_ts_url(data)
-            if not request_m3u8:
+            request_res = self.return_requests_data(tow_url).text
+            if not request_res:
+                print('子页面请求失败，要去请求下一个')
                 return False
             else:
-                key_val, ts_list_url = requests
-                ts_length = len(ts_list_url)
-                if ts_length > self.ts_list_size:
-                    print(f'文件ts数量为{ts_length}个，大于1500个ts，跳过，等待下载下一个')
+                page_data = request_res
+                request_m3u8 = self.get_m3u8_key_ts_url(page_data)
+                if not request_m3u8:
                     return False
-                return key_val, ts_list_url, new_save_path, video_name, th_name
+                else:
+                    key_val, ts_list_url = requests
+                    ts_length = len(ts_list_url)
+                    if ts_length > self.ts_list_size:
+                        print(f'文件ts数量为{ts_length}个，大于1500个ts，跳过，等待下载下一个')
+                        return False
+                    return key_val, ts_list_url, new_save_path, video_name, th_name
         except Exception as e:
             print(f'获取数据失败，失败原因为{e}')
             return False
@@ -152,7 +156,7 @@ class Spider_Video():
         src_path = re.findall(m3u8_re, page_data)
         print('文件中匹配出的没有过滤的m3u8地址列表', src_path)
         m3u8_file_res_url = src_path[0].split('=')[1].replace('"', '').strip()
-        
+
         judge_http = m3u8_file_res_url.split('/')
         print(judge_http)
         if 'https:' not in judge_http:
@@ -167,7 +171,10 @@ class Spider_Video():
         # 用页面中的m3u8地址 获取文件，看是否有两个m3u8 url
         false_m3u_url = m3u8_file_res_url + '.m3u8'
         request_res = self.return_requests_data(false_m3u_url).text
-        if request_res:
+        if not request_res:
+            print('请求m3u8地址失败，开始下载下一个')
+            return False
+        else:
             false_m3u8_file = request_res
             m3u8_re = '(.*)\.m3u8'
             true_link = re.findall(m3u8_re, false_m3u8_file)
@@ -177,12 +184,14 @@ class Spider_Video():
             if true_link:
                 true_m3u8_url = domain_base_url + true_link[0] + '.m3u8'
                 print('真实的m3u8链接：', true_m3u8_url)
-                ts_key_base_url, ts_url_data = None, None
                 request_res = self.return_requests_data(true_m3u8_url).text
-                if request_res:
+                if not request_res:
+                    print('请求二级m3u8失败')
+                    return False
+                else:
                     ts_url_data = request_res
                     ts_key_base_url = domain_base_url
-                    
+
             # 如果不是，则说明只有一个m3u8 url，继续使用上面的false_m3u_url获取的数据匹配ts文件
             else:
                 ts_url_data = false_m3u8_file
@@ -202,9 +211,6 @@ class Spider_Video():
             key_val, ts_list_url, = self.request_ts_key_url_list(
                 ts_list, ts_key_base_url, key_val)
             return key_val, ts_list_url
-        else:
-            print('请求m3u8地址失败，开始下载下一个')
-            return False
 
     def request_ts_key_url_list(self, ts_lists, key_ts_base_url, key_value):
         """ 函数功能，返回解密key，ts地址"""
@@ -225,7 +231,7 @@ class Spider_Video():
             print('不需要解密')
         return key_banerys, ts_url_list
 
-    def decrypt_save_ts(self, key, ts_urls, new_save_path, file_name, 
+    def decrypt_save_ts(self, key, ts_urls, new_save_path, file_name,
                         down_th_name):
         """功能函数2:解密,保存"""
 
@@ -252,14 +258,17 @@ class Spider_Video():
             print(f"正在由={down_th_name}=下载：{file_name} 影片的ts" + ts_name)
             time.sleep(0.5)
             request_res = self.return_requests_data(ts_url).content
-            if request_res:
+            if not request_res:
+                print(f'当前ts下载请求失败,开始请求下一个ts：{ts_url}')
+                continue
+            else:
                 ts_data = request_res
                 # 密文长度不为16的倍数，则添加b"0"直到长度为16的倍数
                 # ts_data = response_ts.content
                 # response_ts.close()
                 while len(ts_data) % 16 != 0:
                     ts_data += b"0"
-    
+
                 # 此种情况下，没有使用key加密，可以直接写入文件，
                 # 判断是否加密，可直接下载一个ts文件，如果正常播放，表示没有加密
                 if key is None or key == '':
@@ -270,9 +279,6 @@ class Spider_Video():
                     with open(new_save_path, "ab") as file:
                         file.write(sprytor.decrypt(ts_data))
                         print(f'{ts_name}已下载写入')
-            else:
-                print(f'当前ts下载请求失败,开始请求下一个ts：{ts_url}')
-                continue
 
     def return_requests_data(self, param_url):
         self.headers['User-Agent'] = self.agent
@@ -318,23 +324,27 @@ class MyKeleSpider(Thread, Spider_Video):
             currnet_down_count += 1
             print(f'===============总共{video_totle}个影片，正在下载第{currnet_down_count}个====================')
             if not self.url_quueu.empty():
+                print('所有视频下载完成，队列为空')
+                break
+            else:
                 name_id = self.url_quueu.get()
                 id = name_id[1]
                 name = name_id[0]
                 res_key_ts = \
                     self.get_m3u8_save_video(id, name, self.name, self.status)
-                if res_key_ts:
+                if not res_key_ts:
+                    print('开始下载下一个')
+                    continue
+                else:
                     key, ts_url, video_save_path, video_name, down_th_name = \
                         res_key_ts
                     self.decrypt_save_ts(
                         key, ts_url, video_save_path, video_name, down_th_name)
-                else:
-                    print('开始下载下一个')
-                    continue
-            else:
-                print('所有视频下载完成，队列为空')
-                break
             self.lock.release()
 
+
 if __name__ == '__main__':
-    video = Spider_Video()
+    for th in range(5):
+        th_name = '党的_线程_' + str(th)
+        th_thread = MyKeleSpider(th_name)
+        th_thread.start()
