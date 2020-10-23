@@ -33,16 +33,16 @@ class SpiderVideo(object):
             for page in range(self.start_page, self.end_page):
                 request_res = self.return_requests_data(
                     self.url.format(page)).text
-                if request_res:
+                if not request_res:
+                    print('==主页面==地址，请求失败了， 开始请求下个页面')
+                    continue
+                else:
                     html_data = request_res
                     element = etree.HTML(html_data)
                     href_data = element.xpath('//a/@href')
                     re_href_list, href_count = self.get_href_lilst(
                         href_data, href_count, re_href_list)
-                    time.sleep(1)
-                else:
-                    print('==主页面==地址，请求失败了， 开始请求下个页面')
-                    continue
+                time.sleep(1)
             return re_href_list
         except Exception as e:
             print(f'id列表获取失败，失败原因为{e}')
@@ -63,7 +63,10 @@ class SpiderVideo(object):
     def get_m3u8_save_video(self, link, th_name, th_status):
         print(f'当前视频的链接地址为{link}')
         request_res = self.return_requests_data(link).text
-        if request_res:
+        if not request_res:
+            print('==子页面==地址，请求失败了， 开始请求下个页面')
+            return False
+        else:
             page_data = request_res
             m3u8_re = '(.*)\.m3u8'
             src_path = re.findall(m3u8_re, page_data)
@@ -99,9 +102,6 @@ class SpiderVideo(object):
                 return key_val, ts_list_url, file_name,
             else:
                 return False
-        else:
-            print('==子页面==地址，请求失败了， 开始请求下个页面')
-            return False
 
     def handle_m3u8_ts_key(self, m3u8_file_res_url):
         # 从页面上匹配的m3u8地址没有https：前缀，这种情况是在有需要key解密的ts，
@@ -116,7 +116,10 @@ class SpiderVideo(object):
         # 用页面中的m3u8地址 获取文件，看是否有两个m3u8 url
         false_m3u_url = m3u8_file_res_url + '.m3u8'
         false_m3u8_file = self.return_requests_data(false_m3u_url).text
-        if false_m3u8_file:
+        if not false_m3u8_file:
+            print('m3u8地址，请求失败了， 开始下载下个视频')
+            return False
+        else:
             key_val = self.match_key(false_m3u8_file)
             if key_val:
                 key_base_url = domain_base_url + key_val
@@ -133,16 +136,16 @@ class SpiderVideo(object):
                 true_m3u8_url = domain_base_url + true_link[0] + '.m3u8'
                 print('真实的m3u8链接：', true_m3u8_url)
                 request_res = self.return_requests_data(true_m3u8_url).text
-                if request_res:
+                if not request_res:
+                    print('m3u8地址，请求失败了， 开始下载下个视频')
+                    return False
+                else:
                     ts_url_data = request_res
                     true_key_val = self.match_key(ts_url_data)
                     if true_key_val:
                         key_base_url = domain_base_url + true_key_val
                         print(f'加密了，第二次请求m3u8匹配的key，拼接的key_url{key_base_url}')
                     ts_base_url = domain_base_url
-                else:
-                    print('m3u8地址，请求失败了， 开始下载下个视频')
-                    return False
             # 如果为两个m3u8跳转地址， 根据请求返回的m3u8地址，找规律，拼接出能返回ts文件的m3u8地址
             else:
                 ts_url_data = false_m3u8_file
@@ -151,9 +154,6 @@ class SpiderVideo(object):
             ts_re = '(.*)\.ts'
             ts_list = re.findall(ts_re, ts_url_data)
             return ts_list, ts_base_url, key_base_url
-        else:
-            print('m3u8地址，请求失败了， 开始下载下个视频')
-            return False
 
     def match_key(self, request_data_file):
         key_re = '(.*)\.key'
@@ -208,7 +208,10 @@ class SpiderVideo(object):
             print(f"正在由={down_th_name}=下载：{file_name} 影片的ts" + ts_name)
             time.sleep(0.5)
             request_res = self.return_requests_data(ts_url).content
-            if request_res:
+            if not request_res:
+                print(f'当前ts:{ts_url}解析失败，开始解析下个ts')
+                continue
+            else:
                 ts_data = request_res
                 # 密文长度不为16的倍数，则添加b"0"直到长度为16的倍数
                 while len(ts_data) % 16 != 0:
@@ -223,9 +226,6 @@ class SpiderVideo(object):
                     with open(new_save_path, "ab") as file:
                         file.write(sprytor.decrypt(ts_data))
                         print(f'{ts_name}已下载写入')
-            else:
-                print(f'当前ts:{ts_url}解析失败，开始解析下个ts')
-                continue
 
     def return_requests_data(self, param_url):
         retry_times = 20
@@ -261,9 +261,11 @@ class MySpiderThread(Thread, SpiderVideo):
         self.alive_staatus = self.is_alive()
 
     def run(self):
+        self.product_queue()
         down_count_video = 0
         while True:
-            if self.url_queue.empty():
+            self.lock.acquire()
+            if not self.url_queue.empty():
                 down_count_video += 1
                 link = self.url_queue.get()
                 print(f'由=={self.name}==开始下载第{down_count_video}个视频')
@@ -276,10 +278,10 @@ class MySpiderThread(Thread, SpiderVideo):
                     self.decrypt_save_ts(key, ts_urls, new_save_path,
                                          file_name,
                                          self.name)
-                self.lock.acquire()
             else:
                 print('所有视频下载完成，队列为空')
                 break
+            self.lock.release()
 
 
 if __name__ == '__main__':
