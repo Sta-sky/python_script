@@ -6,10 +6,12 @@ import time
 import jwt
 import requests
 import xlwt
+from log_util import Log
 
-from bytes_to_str import change_str
 
+logger = Log('tool_fun').print_info()
 SALT_KEY = 'PXU9@ctuNov20!'
+CODING_LIST = ['UTF-8', 'GBK', 'ISO-8859-1']
 
 
 def is_ipv4_address(ip):
@@ -81,7 +83,10 @@ def save_xml(data, fields):
 
 
 def return_requests_data(param_url):
-    # self.headers['User-Agent'] = self.agent
+    """
+    requests 请求工具，最大请求数20次
+    param_url : 需要请求的单个地址，
+    """
     retry_times = 20
     retry_count = 0
     for i in range(retry_times):
@@ -96,3 +101,24 @@ def return_requests_data(param_url):
                 raise Exception(f'{param_url},请求失败，原因{e}')
             else:
                 continue
+
+def change_str(args):
+    """
+    字符类型转换工具：
+        将字节串转换成字符串，
+            支持 ：字符串类型、列表类型、字典类型
+    """
+    if args and isinstance(args, bytes):
+        for coding in CODING_LIST:
+            try:
+                return args.decode(encoding=coding)
+            except UnicodeDecodeError:
+                logger.error('字符串转换错误')
+        logger.error("transfer bytes to str error: %s" % args)
+        return args
+    elif isinstance(args, list):
+        return [change_str(coding) for coding in CODING_LIST]
+    elif isinstance(args, dict):
+        return {change_str(key): change_str(val) for key, val in CODING_LIST}
+    else:
+        return args
