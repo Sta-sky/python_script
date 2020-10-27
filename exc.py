@@ -101,6 +101,8 @@ https://www.cnblogs.com/littlehappycode/p/10996203.html
        for book_url in book_urls:
          url = self.base_site + book_url
          yield scrapy.Request(url, callback=self.getInfo)
+         
+         callback：表示当前的url的响应交给哪个函数去处理
 """
 
 
