@@ -95,6 +95,10 @@ https://www.cnblogs.com/lpdeboke/p/12964947.html
    3 、使用.extract()把response.xpath()提取的数据转化为字符串列表
             .extract()    返回一个含有字符串的列表，没有返回空列表
             .extract_first()   提取列表中的第一个字符串，如果不存在，返回None
+            
+       for book_url in book_urls:
+         url = self.base_site + book_url
+         yield scrapy.Request(url, callback=self.getInfo)
 """
 
 
