@@ -91,4 +91,12 @@ hash保存ts，使用保存路径作为key, name+ts数量 作为name，value为t
 
 
 
-
+"""
+爬虫项目工程结构
+scrapy.cfg: 项目配置文件。 
+settings.py: 该文件定义了一些设置，如用户代理，爬取延时等
+items.py: 该文件定义了待抓取域的模型，其实就是需求内容
+pipelines.py: 该文件定义了数据的存储，可以是文件，数据库
+middlewares.py: 爬虫中间件，该文件可定义随机切换ip或者用户代理的函数
+spiders: 该目录下是实际的爬虫代码
+"""
