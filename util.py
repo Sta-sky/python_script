@@ -8,7 +8,7 @@ import requests
 import xlwt
 from log_util import Log
 
-
+CODING_LIST = ['UTF-8', 'GBK', 'ISO-8859-1']
 logger = Log('tool_fun').print_info()
 SALT_KEY = 'PXU9@ctuNov20!'
 CODING_LIST = ['UTF-8', 'GBK', 'ISO-8859-1']
@@ -102,12 +102,8 @@ def return_requests_data(param_url):
             else:
                 continue
 
+
 def change_str(args):
-    """
-    字符类型转换工具：
-        将字节串转换成字符串，
-            支持 ：字符串类型、列表类型、字典类型
-    """
     if args and isinstance(args, bytes):
         for coding in CODING_LIST:
             try:
@@ -117,8 +113,9 @@ def change_str(args):
         logger.error("transfer bytes to str error: %s" % args)
         return args
     elif isinstance(args, list):
-        return [change_str(coding) for coding in CODING_LIST]
+        return [change_str(coding) for coding in args]
     elif isinstance(args, dict):
-        return {change_str(key): change_str(val) for key, val in CODING_LIST}
+        return {change_str(key): change_str(val) for key, val in args.items()}
     else:
         return args
+
