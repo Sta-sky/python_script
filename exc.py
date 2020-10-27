@@ -90,6 +90,11 @@ hash保存ts，使用保存路径作为key, name+ts数量 作为name，value为t
 
 # 典型案例地址
 https://www.cnblogs.com/lpdeboke/p/12964947.html
+
+
+   3 、使用.extract()把response.xpath()提取的数据转化为字符串列表
+            .extract()    返回一个含有字符串的列表，没有返回空列表
+            .extract_first()   提取列表中的第一个字符串，如果不存在，返回None
 """
 
 
