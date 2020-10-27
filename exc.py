@@ -87,6 +87,9 @@ redis可视化
 https://redisdesktop.com/download
 
 hash保存ts，使用保存路径作为key, name+ts数量 作为name，value为ts列表字符串
+
+# 典型案例地址
+https://www.cnblogs.com/lpdeboke/p/12964947.html
 """
 
 
