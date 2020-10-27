@@ -83,6 +83,9 @@ if __name__ == '__main__':
 """
 使用集合存储文件保存路径，作为hash的索引
 
+redis可视化
+https://redisdesktop.com/download
+
 hash保存ts，使用保存路径作为key, name+ts数量 作为name，value为ts列表字符串
 """
 
