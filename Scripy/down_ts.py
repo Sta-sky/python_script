@@ -1,4 +1,5 @@
 import os
+import time
 
 import redis
 import scrapy
@@ -6,32 +7,51 @@ from Crypto.Cipher import AES
 
 from spider_web.byte_change_str import change_str
 
+
 class DownTsSpider(scrapy.Spider):
 
     name = 'down_ts'
     allowed_domains = ['www.nihao.com']
     start_urls = []
     redis_clent = redis.Redis(host='127.0.0.1', db=2)
-    reds_data = redis_clent.srandmember('my-video-name')
-    print('集合中的数据', change_str(reds_data))
-    new_save_path = change_str(reds_data).split('_')[0]
-    file_name = new_save_path.split('\\')[-1]
-    key = change_str(reds_data).split('_')[1]
-    print('集合解析出来的数据', new_save_path, key)
-    # 获取下载ts
-    hash_data ={}
-    if redis_clent.exists(new_save_path):
-        hash_data = change_str(redis_clent.hgetall(new_save_path))
-        for path, ts in hash_data.items():
-            start_urls = [ts_url for ts_url in ts.split("|") if ts_url]
-            print('reques中的url', start_urls)
-            print(f'字典中的{path}')
-            print(f'字典中的{ts.split("|")}')
-            print(f'hashdata的结果{hash_data}')
-            print(f'当前文件的保存路径{new_save_path}')
-            print(f'当前文件的key为{key}')
-            print(f'文件中的ts数量为{len(hash_data)}')
-    ts_length = len(start_urls)
+    while True:
+        reds_data = redis_clent.spop('my-video-name')
+        print(f'当前集合中总共有{redis_clent.scard("my-video-name")}个文件待下载')
+        if not reds_data:
+            print('数据取完了，退出')
+            break
+        print('集合中的数据', change_str(reds_data))
+        new_save_path = change_str(reds_data).split('_')[0]
+        file_name = new_save_path.split('\\')[-1]
+        key = change_str(reds_data).split('_')[1]
+        print('集合解析出来的数据', new_save_path, key)
+        # 获取下载ts
+
+        hash_data ={}
+        if redis_clent.exists(new_save_path):
+            hash_data = change_str(redis_clent.hgetall(new_save_path))
+            for path, ts in hash_data.items():
+                start_urls = [ts_url for ts_url in ts.split("|") if ts_url]
+                print('reques中的url', start_urls)
+                print(f'字典中的{path}')
+                print(f'字典中的{ts.split("|")}')
+                print(f'hashdata的结果{hash_data}')
+                print(f'当前文件的保存路径{new_save_path}')
+                print(f'当前文件的key为{key}')
+                print(f'文件中的ts数量为{len(start_urls)}')
+                print('=====================================================')
+        else:
+            print('redis的hash中么有这个文件路径')
+        time.sleep(0)
+        ts_length = len(start_urls)
+
+    def __init__(self):
+        super(DownTsSpider, self).__init__()
+        self.num = len(self.start_urls)
+        self.path = self.new_save_path
+        print(f'start_url中的url数量为{self.path}')
+        print(f'当前self中文件的保存；路径为{self.num}')
+
 
     def parse(self, response):
         """功能函数2:解密,保存"""
@@ -66,3 +86,6 @@ class DownTsSpider(scrapy.Spider):
             print(f'保存ts文件失败，原因为{e}')
             return False
 
+
+if __name__ == '__main__':
+    fs = DownTsSpider()
