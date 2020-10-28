@@ -31,6 +31,7 @@ class WebSpider(scrapy.Spider):
         self.file_save_base_path = 'c\\nihao'
         self.new_save_path = 'c\\nihao'
         self.set_name = 'ts_str'
+        self.save_redis_npath_txt = ''
 
     def parse(self, response):
         pass
@@ -173,6 +174,8 @@ class WebSpider(scrapy.Spider):
             print(f'文件ts数量为{ts_length}个,大于{self.ts_list_size}个ts')
             return
         index_path_key = new_save_path + '_' + key_value
+        with open(self.save_redis_npath_txt, 'a+', encoding='utf8') as fp:
+            fp.write(new_save_path + '\n')
         self.redis_clent.sadd(file_name, index_path_key)
         self.redis_clent.hset(name=new_save_path, key=index_path_key,
                               value=ts_url_list)
