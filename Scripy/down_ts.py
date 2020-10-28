@@ -9,8 +9,9 @@ from spider_web.byte_change_str import change_str
 
 
 class DownTsSpider(scrapy.Spider):
-
+    base_path = 'c:\\data\\nihao\\{}'
     name = 'down_ts'
+    new_save_path = None
     allowed_domains = ['www.nihao.com']
     start_urls = []
     redis_clent = redis.Redis(host='127.0.0.1', db=2)
@@ -22,6 +23,11 @@ class DownTsSpider(scrapy.Spider):
             break
         print('集合中的数据', change_str(reds_data))
         new_save_path = change_str(reds_data).split('_')[0]
+        if os.path.exists(new_save_path):
+            print('文件已经存在，')
+            redis_clent.delete()
+            continue
+        print('ewn_path为：', new_save_path)
         file_name = new_save_path.split('\\')[-1]
         key = change_str(reds_data).split('_')[1]
         print('集合解析出来的数据', new_save_path, key)
@@ -42,15 +48,15 @@ class DownTsSpider(scrapy.Spider):
                 print('=====================================================')
         else:
             print('redis的hash中么有这个文件路径')
-        time.sleep(0)
+        time.sleep(2)
         ts_length = len(start_urls)
 
     def __init__(self):
         super(DownTsSpider, self).__init__()
         self.num = len(self.start_urls)
         self.path = self.new_save_path
-        print(f'start_url中的url数量为{self.path}')
-        print(f'当前self中文件的保存；路径为{self.num}')
+        print(f'start_url中的url数量为{self.num}')
+        print(f'当前self中文件的保存；路径为{self.path}')
 
 
     def parse(self, response):
