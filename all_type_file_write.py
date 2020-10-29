@@ -1,105 +1,69 @@
+# -*-coding : utff-8 -*-
 import os
+import queue
 import time
 from threading import Thread, Lock
 
-lock = Lock()
 
+class MytheadWrite(Thread):
+    def __init__(self, file_queue):
+        super(MytheadWrite, self).__init__()
+        self.name = self.getName()
+        self.save_file = 'D:\\资料\\{}'
+        self.lock = Lock()
+        self.queue = file_queue
 
-class FileeCopy(Thread):
-
-    @staticmethod
-    def thread_file_write(file_list, storage_path):
-        if not os.path.exists(storage_path):
-            with open(storage_path, 'wb') as fp:
-                fp.truncate()
-        try:
-            lock.acquire()
-            for data in file_list:
-                with open(storage_path, 'ab') as fp:
-                    fp.write(data)
-            lock.release()
-        except Exception as e:
-            pass
-
-    @staticmethod
-    def thread_copy_picture(file_path, split_number, target_path):
-        """
-        读取传入路径下所有文件，分割为指定数量的平均份数，
-        :param file_path:
-        :return:
-        """
-        file_suffix = os.path.splitext(file_path)
-        try:
-            file_suffix[1].split('.')[1]
-        except Exception as e:
-            file_ = os.walk(file_path)
-            print(file_)
-            for root_path, sub_dir, file_name_list in file_:
-                thread_pool = []
-                for file_name in file_name_list:
-                    read_file_path = root_path + '\\' + file_name
-                    print(root_path)
-                    print(read_file_path, '40')
-                    result = FileeCopy.file_split(read_file_path, split_number)
-
-                    storage_path = target_path + '\\' + file_name
-                    write_test = Thread(target=FileeCopy.thread_file_write,
-                                        args=(result, storage_path))
-                    thread_pool.append(write_test)
-                for start_thread in thread_pool:
-                    start_thread.start()
-        else:
-            thread_pool = []
-            result = FileeCopy.file_split(file_path, split_number)
-            storage_path = target_path + os.path.basename(file_path)
-            write_test = Thread(target=FileeCopy.thread_file_write,
-                                args=(result, storage_path))
-            thread_pool.append(write_test)
-            for start_thread in thread_pool:
-                start_thread.start()
-
-    @staticmethod
-    def file_split(file_path, split_number):
-        """
-        将文件拆分为splity_number个相同大小的个数，返回
-        :param split_number:
-        :param file_path:
-        :return: list，每份文件的内容
-        """
-        if file_path and split_number:
-            # 获取文件大小
+    def run(self):
+        while True:
+            if self.queue.empty():
+                print(f'队列已空，当前线程{self.name},退出')
+                break
+            video_file = self.queue.get()
+            print(f'当前线程{self.name}, 取出的文件为{video_file}')
+            size = os.path.getsize(video_file)
+            name = video_file.split('\\')[-1]
+            save_path = self.save_file.format(name)
+            print(size)
+            if os.path.exists(save_path):
+                print(f'文件{name}已经存在，线程{self.name},退出')
+                return
+            print(f'当前文件正在由线程{self.name}下载：name为：{name}，大小为：', size)
             try:
-                lock.acquire()
-                file_size = os.path.getsize(file_path)
-                print(file_size)
-
-                # 分配给每个文件应读取多少
-                every_size = file_size // split_number
-                print(every_size)
-                file_list = []
-                # 读取文件
-                with open(file_path, 'rb') as f:
-                    for num in range(split_number):
-                        # 最后一次读取 全部读完
-                        if num == split_number - 1:
-                            data = f.read()
-                            file_list.append(data)
-                        else:
-                            data = f.read(every_size)
-                            file_list.append(data)
-                lock.release()
-                return file_list
+                with open(video_file, 'rb') as fp:
+                    with open(save_path, 'ab+')as tp:
+                        while True:
+                            data = fp.read(8 * 1024 * 1024)
+                            if not data:
+                                print('文件读取完成，退出')
+                                break
+                            tp.write(data)
             except Exception as e:
-                print(e)
+                print(f'下载失败，原因为{e}')
+
+def save_queue():
+    queue_obj = queue.Queue()
+    file = 'D:\\资料\\录屏资料'
+    base_path = os.walk(file)
+    for i in base_path:
+        j, l, video_list = i
+        for video in video_list:
+            video_param = file + '\\' + video
+            print(video_list, '========')
+            queue_obj.put(video_param)
+    return queue_obj
 
 
 if __name__ == '__main__':
-    start = times = time.time()
-    file_path = 'C:\\Users\\dwx917920\\Desktop\\操作指南'
-    split_number = 10
-    target_name = 'C:\\Users\\dwx917920\\Desktop\\巡检\\upgrade_manifest_check\\test'
+    th_num = 10
+    obj_queue = save_queue()
+    th_list = []
+    for th_num in range(th_num):
+        th = MytheadWrite(obj_queue)
+        th.setName('__线程__' + str(th_num))
+        th_list.append(th)
+    for i in th_list:
+        i.start()
+    for j in th_list:
+        j.join()
+        print(f'线程----{j.name}回收成功')
 
-    FileeCopy().thread_copy_picture(file_path, split_number, target_name)
-    stop_time = time.time()
-    tall_time = stop_time - start
-    print('总时间为%s ' % tall_time)
