@@ -3,6 +3,17 @@ import os
 import queue
 import time
 from threading import Thread, Lock
+from tool_script.util import time_wappre
+
+
+def time_wappre(func):
+    def rewappre(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f'文件执行了{"%.2f" % (end_time - start_time)}秒')
+        return result
+    return rewappre
 
 
 class MytheadWrite(Thread):
@@ -13,6 +24,7 @@ class MytheadWrite(Thread):
         self.lock = Lock()
         self.queue = file_queue
 
+    @time_wappre
     def run(self):
         while True:
             curr_queue_num = self.queue.qsize()
