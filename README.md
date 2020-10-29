@@ -25,5 +25,5 @@ spider_homegrown_update.py :    spider_homegrown_video中的视频网站各种�
 get_file_info_write_xml.py :    爬虫爬取的视频， 通过此文件，获取信息，导出为xml表格文件  ----- 2020- 10-10
 get_proxy_ip_pool.py     :      爬虫代理ip网站的代理ip，通过test_ip()方法测试出可用ip + port，并保存本地xls文件中, 构建ip代理池
 spider_homegrown_update.py ：   更新为多线程爬虫去下载网站视频，爬取速率大大增加； ----- 2020- 10-23
-
+2020 - 10 - 29 ：               更新多线程读写文件，更新工具文件，增加函数执行时间装饰器
 ```
