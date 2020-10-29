@@ -1,7 +1,5 @@
 import os
-
 import IPy
-
 import time
 import jwt
 import requests
@@ -118,4 +116,16 @@ def change_str(args):
         return {change_str(key): change_str(val) for key, val in args.items()}
     else:
         return args
+
+def time_wappre(func):
+    """
+    函数执行时间装饰器
+    """
+    def rewappre(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f'文件执行了{"%.2f" % (end_time - start_time)}秒')
+        return result
+    return rewappre
 
