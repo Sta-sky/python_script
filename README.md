@@ -18,12 +18,12 @@ bytes_to_str.py:                python的字典、字符串、列表中的字节
 check_net_ip_segment.py:        python的ipaddress模块，根据ip以及另一个主机掩码跟网关判断是否在同一平面  ----- 2020- 09-23
 request_tool.py         ：      python的requests模块，请求flask后端API，完成私钥模拟登录验证过程  ----- 2020- 09-23
 thread_file_write.py  :         对传入的文件，使用多线程读写，执行读写文件,可指定线程数  ----- 2020- 09-27
-spider_kele_video.py     :      通过selenium，结合requests，AES解密m3u8，爬取可乐视频网站的所有视频，----- 2020- 10-05
-spider_homegrown_video.py :     通过selenium，结合requests，AES解密m3u8，爬取视频网站的所有视频，  ----- 2020- 10-10
+spider_kele_video.py     :      通过selenium，结合requests，AES解密m3u8，可增量，可指定爬取可乐视频网站的视频，----- 2020- 10-05
+spider_homegrown_video.py :     通过requests，AES解密m3u8，可增量、可指定、爬取视频网站的所有视频，  ----- 2020- 10-10
 spider_homegrown_update.py :    spider_homegrown_video中的视频网站各种加固，无法使用selenium，无法使用f12直接查看源代码，修改代码，直接使用requests，爬取；
                                 对util.py工具文件更新，添加xls表格文件生成工具、requests请求工具 ----- 2020- 10-10
 get_file_info_write_xml.py :    爬虫爬取的视频， 通过此文件，获取信息，导出为xml表格文件  ----- 2020- 10-10
 get_proxy_ip_pool.py     :      爬虫代理ip网站的代理ip，通过test_ip()方法测试出可用ip + port，并保存本地xls文件中, 构建ip代理池
-spider_homegrown_update.py ：   更新为多线程爬虫去下载网站视频； ----- 2020- 10-23
+spider_homegrown_update.py ：   更新为多线程爬虫去下载网站视频，爬取速率大大增加； ----- 2020- 10-23
 
 ```
