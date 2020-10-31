@@ -2,7 +2,7 @@ import os
 
 import xlwt
 
-file_path = 'G:\\MAT\\video\\kele'
+file_path = 'H:\\ITM\\new-video'
 
 def get_size_file(file_dir):
 	data_list = []
@@ -52,7 +52,7 @@ def save_xml(data, fields):
 			lists_res = data[row - 1][col]
 			print(lists_res)
 			sheet.write(row, col, lists_res)
-	file_name = 'video.xml'
+	file_name = 'video-new.xml'
 	file_path = file_save_path.format(file_name)
 	if os.path.exists(file_path):
 		os.remove(file_path)

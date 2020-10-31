@@ -11,7 +11,6 @@ from log_util import Log
 CODING_LIST = ['UTF-8', 'GBK', 'ISO-8859-1']
 logger = Log('tool_fun').print_info()
 SALT_KEY = 'PXU9@ctuNov20!'
-CODING_LIST = ['UTF-8', 'GBK', 'ISO-8859-1']
 
 
 def is_ipv4_address(ip):
