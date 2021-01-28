@@ -26,6 +26,7 @@ def generate_base64(keywords):
         logger.error(f'base64生成失败，失败原因为{e}')
 
 
+
 def decrypt_base64(keywords):
     """
     :param keywords: 编码后的关键字，str类型
@@ -162,6 +163,8 @@ def generate_pub_rsa_key():
     with open('rsa.pub.key', 'w') as f:
         f.write(public_pem.decode())
 
+# generate_pub_rsa_key()
+
 
 """
 用法  随机生成一个数字，用用户本地的私钥，将用户上传的公钥，
@@ -186,6 +189,10 @@ def user_pub_add_salt(txet, user_secrete):
     except Exception as e:
         logger.error(f'公钥生成秘钥对失败，失败原因为{e}')
 
+key_word = '123456'
+with open('./rsa.pub.key') as fp:
+    data = user_pub_add_salt(fp, key_word)
+
 
 def decrypt_rsa(txet, Key_Pair):
     """
@@ -208,6 +215,10 @@ def decrypt_rsa(txet, Key_Pair):
         logger.error(f'私钥解密失败，失败原因为{e}')
 
 
+with open('./rsa.key') as fp:
+    print(data.decode())
+    print(data)
+    print(decrypt_rsa(fp, data).decode())
 
 """
 hashlib	Y	主要提供了一些常见的单向加密算法（如MD5，SHA等），每种算法都提供了与其同名的函数实现。

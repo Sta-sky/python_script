@@ -116,6 +116,7 @@ def change_str(args):
     else:
         return args
 
+
 def time_wappre(func):
     """
     函数执行时间装饰器
