@@ -1,4 +1,6 @@
 import os
+import re
+
 import html2text
 import pdfkit
 from markdown import markdown
@@ -16,6 +18,9 @@ from pymdownx import superfences
     1、markdown转为html，
     2、再通过   html2text下的handle方法，转换为markdown格式
     3、将转换后返回的数据写入response中，返回前端
+    
+注 ： 
+    html生成pdf中的img标签中的src地址不能为服务器地址，会报错
 
 依赖包：    
     pip install python-markdown-math
@@ -88,8 +93,9 @@ class MarkdownPdf:
 
     def html_to_pdf(self, text, save_path):
         # HTML转PDF
+        config = pdfkit.configuration(wkhtmltopdf=r"D:\soft_ware\htmltopdf\wkhtmltopdf\bin\wkhtmltopdf.exe")
         html = self.html.format(text)
-        pdfkit.from_string(html, save_path, options={'encoding': 'utf-8'})
+        pdfkit.from_string(html, save_path, options={'encoding': 'utf-8'}, configuration=config)
 
     @classmethod
     def html_to_markdown(cls, html_text):
@@ -98,3 +104,12 @@ class MarkdownPdf:
         markdown_text = text_maker.handle(html_text)
         return markdown_text
 
+
+if __name__ == '__main__':
+    to_obj = MarkdownPdf()
+    with open('markdown笔记.md', 'r', encoding='utf-8') as fp:
+        text = fp.read()
+    print(text)
+    md_content = to_obj.md_to_html(text)
+    path_ = os.path.abspath('./') + '/test.pdf'
+    to_obj.html_to_pdf(md_content, path_)
