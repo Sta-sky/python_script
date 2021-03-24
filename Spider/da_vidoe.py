@@ -71,7 +71,6 @@ class Daneispider(object):
         self.load_video(link_lists[self.cut:],word_list[self.cut:])
 
 
-
     def load_video(self,link_lists,word_list):
         """
         匹配出  向每个视频地址发送请求，请求出视频加载页面

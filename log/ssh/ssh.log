@@ -1,0 +1,137 @@
+2021-03-24 10:50:20,407 - ssh_util.py - line:81 - create_ssh_client - ERROR - 创建客户端出现异常，异常为：[Errno None] Unable to connect to port 22 on 192.168.137.1, 192.168.9.102, fe80::914e:b1b8:d8eb:77c4 or fe80::dd2d:fa3:ed59:ad9b
+2021-03-24 10:50:20,407 - ssh_util.py - line:182 - <module> - INFO - None
+2021-03-24 10:50:49,168 - ssh_util.py - line:207 - <module> - INFO - 此程序可以执行一下操作
+
+    ---------------------   SSH    --------------------------------
+                1、输入关键字即可执行相应操作
+                    cmd: 对远程主机执行命令
+                    put: 上传文件到远程主机
+                    down: 下载文件到本地
+                    c: 结束退出程序
+    ---------------------   SSH    --------------------------------
+2021-03-24 10:50:49,169 - ssh_util.py - line:208 - <module> - INFO - 关键字输入有误，请重新输入!
+2021-03-24 10:50:54,736 - ssh_util.py - line:207 - <module> - INFO - 此程序可以执行一下操作
+
+    ---------------------   SSH    --------------------------------
+                1、输入关键字即可执行相应操作
+                    cmd: 对远程主机执行命令
+                    put: 上传文件到远程主机
+                    down: 下载文件到本地
+                    c: 结束退出程序
+    ---------------------   SSH    --------------------------------
+2021-03-24 10:50:54,736 - ssh_util.py - line:208 - <module> - INFO - 关键字输入有误，请重新输入!
+2021-03-24 10:50:59,520 - ssh_util.py - line:189 - <module> - INFO - 程序退出
+2021-03-24 10:52:13,614 - ssh_util.py - line:81 - create_ssh_client - ERROR - 创建客户端出现异常，异常为：[Errno None] Unable to connect to port 22 on 192.168.137.1, 192.168.9.102, fe80::914e:b1b8:d8eb:77c4 or fe80::dd2d:fa3:ed59:ad9b
+2021-03-24 10:52:13,614 - ssh_util.py - line:182 - <module> - INFO - None
+2021-03-24 10:54:26,624 - ssh_util.py - line:90 - exec_cmd - INFO - 开始执行ll，请等待....
+2021-03-24 10:54:26,624 - ssh_util.py - line:91 - exec_cmd - INFO - (None, 'll')
+2021-03-24 10:54:26,624 - ssh_util.py - line:210 - <module> - INFO - 执行命令为空ll或客户端为空
+2021-03-24 10:55:30,445 - ssh_util.py - line:82 - create_ssh_client - ERROR - 创建客户端出现异常，异常为：[Errno None] Unable to connect to port 22 on 192.168.137.1, 192.168.9.102, fe80::914e:b1b8:d8eb:77c4 or fe80::dd2d:fa3:ed59:ad9b
+2021-03-24 10:55:30,445 - ssh_util.py - line:183 - <module> - INFO - None
+2021-03-24 10:56:45,645 - ssh_util.py - line:84 - create_ssh_client - ERROR - 创建客户端出现异常，异常为：[Errno None] Unable to connect to port 22 on 192.168.137.1, 192.168.9.102, fe80::914e:b1b8:d8eb:77c4 or fe80::dd2d:fa3:ed59:ad9b
+2021-03-24 10:56:45,645 - ssh_util.py - line:185 - <module> - INFO - None
+2021-03-24 10:57:30,544 - ssh_util.py - line:86 - create_ssh_client - ERROR - 创建客户端出现异常，异常为：[Errno None] Unable to connect to port 22 on 192.168.137.1, 192.168.9.102, fe80::914e:b1b8:d8eb:77c4 or fe80::dd2d:fa3:ed59:ad9b
+2021-03-24 10:57:30,544 - ssh_util.py - line:187 - <module> - INFO - None
+2021-03-24 10:58:56,656 - ssh_util.py - line:82 - create_ssh_client - INFO - 客户端创建成功!
+2021-03-24 10:58:56,656 - ssh_util.py - line:83 - create_ssh_client - ERROR - {'ssh_client': <paramiko.client.SSHClient object at 0x03A2AE50>, 'trans': <paramiko.Transport at 0x3a2a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x03A62070>}
+2021-03-24 10:58:56,656 - ssh_util.py - line:188 - <module> - INFO - {'ssh_client': <paramiko.client.SSHClient object at 0x03A2AE50>, 'trans': <paramiko.Transport at 0x3a2a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x03A62070>}
+2021-03-24 10:59:17,360 - ssh_util.py - line:95 - exec_cmd - INFO - 开始执行ll，请等待....
+2021-03-24 10:59:17,360 - ssh_util.py - line:96 - exec_cmd - INFO - ({'ssh_client': <paramiko.client.SSHClient object at 0x03A2AE50>, 'trans': <paramiko.Transport at 0x3a2a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x03A62070>}, 'll')
+2021-03-24 10:59:17,369 - ssh_util.py - line:101 - exec_cmd - INFO - 
+2021-03-24 10:59:17,369 - ssh_util.py - line:109 - exec_cmd - ERROR - 终断命令执行失败，失败原因为执行命令为：ll状态码为：127
+2021-03-24 10:59:33,152 - ssh_util.py - line:213 - <module> - INFO - 此程序可以执行一下操作
+
+    ---------------------   SSH    --------------------------------
+                1、输入关键字即可执行相应操作
+                    cmd: 对远程主机执行命令
+                    put: 上传文件到远程主机
+                    down: 下载文件到本地
+                    c: 结束退出程序
+    ---------------------   SSH    --------------------------------
+2021-03-24 10:59:33,152 - ssh_util.py - line:214 - <module> - INFO - 关键字输入有误，请重新输入!
+2021-03-24 10:59:46,127 - ssh_util.py - line:208 - <module> - INFO - <class 'str'>
+2021-03-24 10:59:51,040 - ssh_util.py - line:141 - down_remote_file - INFO - 开始下载，请等待....
+2021-03-24 10:59:51,042 - ssh_util.py - line:148 - down_remote_file - ERROR - [Errno 2] No such file
+2021-03-24 10:59:58,735 - ssh_util.py - line:95 - exec_cmd - INFO - 开始执行ls，请等待....
+2021-03-24 10:59:58,735 - ssh_util.py - line:96 - exec_cmd - INFO - ({'ssh_client': <paramiko.client.SSHClient object at 0x03A2AE50>, 'trans': <paramiko.Transport at 0x3a2a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x03A62070>}, 'ls')
+2021-03-24 10:59:58,746 - ssh_util.py - line:101 - exec_cmd - INFO - 1.py
+2.py
+baidu.pdf
+dyy
+dyyChangeLogs.txt
+dyyjb51.net.txt
+mysql-apt-config_0.8.10-1_all.deb
+requirements.txt
+公共的
+模板
+视频
+图片
+文档
+下载
+音乐
+桌面
+
+2021-03-24 10:59:58,754 - ssh_util.py - line:106 - exec_cmd - INFO - 命令执行完成
+2021-03-24 11:00:27,889 - ssh_util.py - line:95 - exec_cmd - INFO - 开始执行ll，请等待....
+2021-03-24 11:00:27,889 - ssh_util.py - line:96 - exec_cmd - INFO - ({'ssh_client': <paramiko.client.SSHClient object at 0x03A2AE50>, 'trans': <paramiko.Transport at 0x3a2a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x03A62070>}, 'll')
+2021-03-24 11:00:27,896 - ssh_util.py - line:101 - exec_cmd - INFO - 
+2021-03-24 11:00:27,896 - ssh_util.py - line:109 - exec_cmd - ERROR - 终断命令执行失败，失败原因为执行命令为：ll状态码为：127
+2021-03-24 11:02:00,640 - ssh_util.py - line:195 - <module> - INFO - 程序退出
+2021-03-24 11:02:00,641 - ssh_util.py - line:169 - close_client - INFO - 客户端已关闭
+2021-03-24 11:02:50,231 - ssh_util.py - line:76 - create_ssh_client - INFO - 客户端创建成功!
+2021-03-24 11:02:50,231 - ssh_util.py - line:77 - create_ssh_client - ERROR - {'ssh_client': <paramiko.client.SSHClient object at 0x0424AE50>, 'trans': <paramiko.Transport at 0x424a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x04282070>}
+2021-03-24 11:02:50,231 - ssh_util.py - line:182 - <module> - INFO - {'ssh_client': <paramiko.client.SSHClient object at 0x0424AE50>, 'trans': <paramiko.Transport at 0x424a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x04282070>}
+2021-03-24 11:03:12,592 - ssh_util.py - line:189 - <module> - INFO - 程序退出
+2021-03-24 11:03:12,592 - ssh_util.py - line:163 - close_client - INFO - 客户端已关闭
+2021-03-24 11:03:58,776 - ssh_util.py - line:76 - create_ssh_client - INFO - 客户端创建成功!
+2021-03-24 11:03:58,776 - ssh_util.py - line:181 - <module> - INFO - {'ssh_client': <paramiko.client.SSHClient object at 0x0422AE50>, 'trans': <paramiko.Transport at 0x422a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x04262070>}
+2021-03-24 11:04:16,544 - ssh_util.py - line:88 - exec_cmd - INFO - 开始执行ll，请等待....
+2021-03-24 11:04:16,544 - ssh_util.py - line:89 - exec_cmd - INFO - ({'ssh_client': <paramiko.client.SSHClient object at 0x0422AE50>, 'trans': <paramiko.Transport at 0x422a538 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>, 'sftp': <paramiko.sftp_client.SFTPClient object at 0x04262070>}, 'll')
+2021-03-24 11:04:16,551 - ssh_util.py - line:94 - exec_cmd - INFO - 
+2021-03-24 11:04:16,551 - ssh_util.py - line:102 - exec_cmd - ERROR - 终断命令执行失败，失败原因为执行命令为：ll状态码为：127
+2021-03-24 11:05:50,530 - ssh_util.py - line:188 - <module> - INFO - 程序退出
+2021-03-24 11:05:50,530 - ssh_util.py - line:162 - close_client - INFO - 客户端已关闭
+2021-03-24 11:06:15,700 - ssh_util.py - line:76 - create_ssh_client - INFO - 客户端创建成功!
+2021-03-24 11:06:24,975 - ssh_util.py - line:88 - exec_cmd - INFO - 开始执行ls，请等待....
+2021-03-24 11:11:07,681 - ssh_util.py - line:204 - <module> - INFO - 此程序可以执行一下操作
+
+    ---------------------   SSH    --------------------------------
+                1、输入关键字即可执行相应操作
+                    cmd: 对远程主机执行命令
+                    put: 上传文件到远程主机
+                    down: 下载文件到本地
+                    c: 结束退出程序
+    ---------------------   SSH    --------------------------------
+2021-03-24 11:11:07,681 - ssh_util.py - line:205 - <module> - INFO - 关键字输入有误，请重新输入!
+2021-03-24 11:11:07,681 - ssh_util.py - line:204 - <module> - INFO - 此程序可以执行一下操作
+
+    ---------------------   SSH    --------------------------------
+                1、输入关键字即可执行相应操作
+                    cmd: 对远程主机执行命令
+                    put: 上传文件到远程主机
+                    down: 下载文件到本地
+                    c: 结束退出程序
+    ---------------------   SSH    --------------------------------
+2021-03-24 11:11:07,681 - ssh_util.py - line:205 - <module> - INFO - 关键字输入有误，请重新输入!
+2021-03-24 11:11:07,824 - ssh_util.py - line:204 - <module> - INFO - 此程序可以执行一下操作
+
+    ---------------------   SSH    --------------------------------
+                1、输入关键字即可执行相应操作
+                    cmd: 对远程主机执行命令
+                    put: 上传文件到远程主机
+                    down: 下载文件到本地
+                    c: 结束退出程序
+    ---------------------   SSH    --------------------------------
+2021-03-24 11:11:07,824 - ssh_util.py - line:205 - <module> - INFO - 关键字输入有误，请重新输入!
+2021-03-24 11:11:08,001 - ssh_util.py - line:204 - <module> - INFO - 此程序可以执行一下操作
+
+    ---------------------   SSH    --------------------------------
+                1、输入关键字即可执行相应操作
+                    cmd: 对远程主机执行命令
+                    put: 上传文件到远程主机
+                    down: 下载文件到本地
+                    c: 结束退出程序
+    ---------------------   SSH    --------------------------------
+2021-03-24 11:11:08,001 - ssh_util.py - line:205 - <module> - INFO - 关键字输入有误，请重新输入!
+2021-03-24 11:11:08,448 - ssh_util.py - line:186 - <module> - INFO - 程序退出
+2021-03-24 11:11:08,449 - ssh_util.py - line:161 - close_client - INFO - 客户端已关闭

@@ -11,6 +11,23 @@ logger = Log('tool_fun').print_info()
 SALT_KEY = 'PXU9@ctuNov20!'
 
 
+def change_str(args):
+    if args and isinstance(args, bytes):
+        for coding in CODING_LIST:
+            try:
+                return args.decode(encoding=coding)
+            except UnicodeDecodeError:
+                logger.error('字符串转换错误')
+        logger.error("transfer bytes to str error: %s" % args)
+        return args
+    elif isinstance(args, list):
+        return [change_str(coding) for coding in args]
+    elif isinstance(args, dict):
+        return {change_str(key): change_str(val) for key, val in args.items()}
+    else:
+        return args
+
+
 def is_ipv4_address(ip):
     if ip:
         try:
@@ -98,23 +115,6 @@ def return_requests_data(param_url):
                 raise Exception(f'{param_url},请求失败，原因{e}')
             else:
                 continue
-
-
-def change_str(args):
-    if args and isinstance(args, bytes):
-        for coding in CODING_LIST:
-            try:
-                return args.decode(encoding=coding)
-            except UnicodeDecodeError:
-                logger.error('字符串转换错误')
-        logger.error("transfer bytes to str error: %s" % args)
-        return args
-    elif isinstance(args, list):
-        return [change_str(coding) for coding in args]
-    elif isinstance(args, dict):
-        return {change_str(key): change_str(val) for key, val in args.items()}
-    else:
-        return args
 
 
 def time_wappre(func):

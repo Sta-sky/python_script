@@ -48,7 +48,7 @@ class Ssh(object):
             else:
                 flag = True
                 break
-        return flag, ip
+        return flag, server_ip
 
     def create_ssh_client(self, server_ip, username, passwd, port=22):
         """
@@ -57,10 +57,9 @@ class Ssh(object):
         """
         ssh_client = {}
         print('正在连接，请等待......')
-        # if not is_ipv4_address(server_ip):
-        #     raise Exception(f'{server_ip}不是一个ip地址，请重新输入')
-        # 创建ssh客户端
+
         try:
+            # 创建ssh客户端
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy)
             ssh.connect(username=username, hostname=server_ip, password=passwd,
@@ -74,11 +73,10 @@ class Ssh(object):
             ssh_client['ssh_client'] = ssh
             ssh_client['trans'] = trans
             ssh_client['sftp'] = sftp
-            logger.info('客户端创建成功!')
-            logger.error(ssh_client)
+            print('客户端创建成功!')
             return ssh_client
         except Exception as e:
-            logger.error(f'创建客户端出现异常，异常为：{e}')
+            print(f'创建客户端出现异常，异常为：{e}')
 
     def exec_cmd(self, ssh_client, cmd):
         """
@@ -87,21 +85,20 @@ class Ssh(object):
         :param cmd: 执行的命令
         :return:
         """
-        logger.info(f'开始执行{cmd}，请等待....')
-        logger.info(f'{ssh_client, cmd}')
+        print(f'开始执行{cmd}，请等待....')
         if cmd and ssh_client:
             try:
                 stdin, stdout, stderr = \
                     ssh_client['ssh_client'].exec_command(cmd)
-                logger.info(stdout.read().decode('utf-8'))
+                print(stdout.read().decode('utf-8'))
                 cmd_status = stdout.channel.recv_exit_status()
+                print(cmd_status)
                 if cmd_status != 0:
                     raise Exception(f'执行命令为：{cmd}状态码为：{cmd_status}')
-                logger.info('命令执行完的状态为：', cmd_status)
-                logger.info('命令执行完成')
+                print('命令执行完的状态为：', cmd_status)
                 return cmd_status
             except Exception as e:
-                logger.error(f'终断命令执行失败，失败原因为{e}')
+                print(f'终断命令执行失败，失败原因为{e}')
         else:
             raise Exception(
                 f'执行命令为空{cmd}或客户端为空')
@@ -117,10 +114,12 @@ class Ssh(object):
         print('开始上传，请等待....')
         if local_path and remote_path and ssh_client:
             try:
-                ssh_client['sftp'].put(local_path, remote_path)
-                logger.info(f'上传成功文件已上传到{remote_path}')
+                res = ssh_client['sftp'].put(local_path, remote_path)
+
+                print(res)
+                print(f'上传成功文件已上传到{remote_path}')
             except Exception as e:
-                logger.error(f'文件上传失败，失败原因：{e}')
+                print(f'文件上传失败，失败原因：{e}')
         else:
             raise Exception(
                 f'上传路径为空{local_path, remote_path}')
@@ -133,16 +132,16 @@ class Ssh(object):
         :param remote_path: 远程路径
         :return:
         """
-        logger.info('开始下载，请等待....')
+        print('开始下载，请等待....')
         if local_path and remote_path and ssh_client:
             try:
 
                 ssh_client['sftp'].get(remote_path, local_path)
-                logger.info(f'下载成功，文件已下载到{local_path}')
+                print(f'下载成功，文件已下载到{local_path}')
             except Exception as e:
-                logger.error(e)
+                print(e)
                 if str(e).find('Errno 13') != -1:
-                    logger.error('请定义需要下载的文件名，并添加到路径中')
+                    print('请定义需要下载的文件名，并添加到路径中')
                 if str(e).find('Errno 2') != -1:
                     print('请检查文件路径是否正确')
         else:
@@ -161,7 +160,7 @@ class Ssh(object):
             try:
                 ssh_client['ssh_client'].close()
                 ssh_client['trans'].close()
-                logger.info('客户端已关闭')
+                print('客户端已关闭')
                 flag = True
                 return flag
             except Exception as e:
@@ -174,19 +173,19 @@ if __name__ == '__main__':
     ssh = Ssh()
     print(ssh_detaile)
     flags, server_ip = ssh.check_ip()
+    print(flags, server_ip)
     if flags:
         username = input('输入连接用户：')
         passwd = input('输入连接密码：')
         ssh_client = ssh.create_ssh_client(server_ip, username=username,
                                            passwd=passwd, )
-        logger.info(ssh_client)
         try:
             while True:
                 print(detaile)
                 keyword = input('请输入要执行的操作：')
 
                 if keyword == 'c':
-                    logger.info('程序退出')
+                    print('程序退出')
                     break
                 elif keyword == 'cmd':
                     cmds = input('请输入要执行的linux命令：')
@@ -199,17 +198,17 @@ if __name__ == '__main__':
                 elif keyword == 'down':
                     # 下载文件
                     down_local_path = input('请输下载到本地的路径：')
-                    logger.info(type(down_local_path))
+                    print(type(down_local_path))
                     down_remote_path = input('请输入下载文件的路径：')
                     ret_get = ssh.down_remote_file(ssh_client, down_local_path,
                                                    down_remote_path)
                 else:
-                    logger.info(detaile)
-                    logger.info('关键字输入有误，请重新输入!')
+                    print(detaile)
+                    print('关键字输入有误，请重新输入!')
         except Exception as e:
-            logger.info(e)
+            print(e)
         finally:
 
             ssh.close_client(ssh_client)
     else:
-        logger.info('ip地址输入错误次数太多，程序退出')
+        print('ip地址输入错误次数太多，程序退出')
