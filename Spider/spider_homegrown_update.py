@@ -13,7 +13,10 @@ from threading import Thread, Lock
 logger = Log('lao_liu_1').print_info()
 
 
+lists = []
+
 class SpiderVideo(object):
+	global lists
 	def __init__(self):
 		super(SpiderVideo, self).__init__()
 		self.url = 'https://ggcc01.com/archives/category/jingpin/page/{}'

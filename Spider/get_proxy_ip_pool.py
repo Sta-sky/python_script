@@ -44,6 +44,7 @@ if not os.path.exists(avilabale_ip_file):
 	with open(avilabale_ip_file, 'w') as fp:
 		pass
 
+
 def test_ip():
 	print(file_path)
 	with open(file_path, 'r') as fp:

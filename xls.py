@@ -10,6 +10,7 @@ import pymysql, xlwt
 功能  mysql数据表导出；
 """
 
+
 class WriteXlwtFile(object):
     """
     输入数据库，输入数据表，
@@ -35,7 +36,7 @@ class WriteXlwtFile(object):
                                      '{}.xml'
                 break
             except Exception as e:
-                print('数据库名称输入有误,请重新输入!',e)
+                print('数据库名称输入有误,请重新输入!', e)
                 if retry_times >= 5:
                     raise ('输入次数过多，请重新启动程序')
 
@@ -45,7 +46,6 @@ class WriteXlwtFile(object):
         # self.color = random.randint(0, 200)
         self.color = 0x7FFF
         self.weight = 200
-
 
     def connect_database(self):
         # 执行语句

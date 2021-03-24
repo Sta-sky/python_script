@@ -87,14 +87,14 @@ class MarkdownPdf:
 
     def md_to_html(self, content):
         # MarkDown转HTML
-            html_text = markdown(
-                content, output_format='html', extensions=self.extensions, extension_configs=self.extension_configs)
-            return html_text
+        html_text = markdown(
+            content, output_format='html', extensions=self.extensions, extension_configs=self.extension_configs)
+        return html_text
 
-    def html_to_pdf(self, text, save_path):
+    def html_to_pdf(self, texts, save_path):
         # HTML转PDF
         config = pdfkit.configuration(wkhtmltopdf=r"D:\soft_ware\htmltopdf\wkhtmltopdf\bin\wkhtmltopdf.exe")
-        html = self.html.format(text)
+        html = self.html.format(texts)
         pdfkit.from_string(html, save_path, options={'encoding': 'utf-8'}, configuration=config)
 
     @classmethod
@@ -109,7 +109,6 @@ if __name__ == '__main__':
     to_obj = MarkdownPdf()
     with open('markdown笔记.md', 'r', encoding='utf-8') as fp:
         text = fp.read()
-    print(text)
     md_content = to_obj.md_to_html(text)
     path_ = os.path.abspath('./') + '/test.pdf'
     to_obj.html_to_pdf(md_content, path_)
