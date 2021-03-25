@@ -16,7 +16,7 @@ def callback(ch, method, properties, body):
 
 # 确定监听队列：hello，一旦有值出现，则触发回调函数：callback
 channel.basic_consume(
-                queue='work_queue',
+                queue='vm_score_2',
                 on_message_callback=callback,
                 auto_ack=True,
 )
