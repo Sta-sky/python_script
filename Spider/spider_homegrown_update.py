@@ -6,7 +6,7 @@ import urllib3
 import random
 import requests
 from lxml import etree
-from log_util import Log
+from tool.log_util import Log
 from Crypto.Cipher import AES
 from threading import Thread, Lock
 

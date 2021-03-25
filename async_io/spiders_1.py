@@ -6,7 +6,7 @@ import queue
 import random
 import urllib3
 import requests
-from log_util import Log
+from tool.log_util import Log
 from threading import Lock
 from threading import Thread
 from Crypto.Cipher import AES

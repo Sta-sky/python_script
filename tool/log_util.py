@@ -5,7 +5,7 @@ import logging
 import os
 
 LOG_NAME = ['eBackup', 'CSBS', 'Openstack', 'SDK', 'ODK', 'ssh']
-BASE_PATH = os.path.realpath('./log/')
+BASE_PATH = os.path.realpath('../log/')
 Formante = ("%(asctime)s - %(filename)s - line:%(lineno)d - %(funcName)s - %("
             "levelname)s - %(message)s")
 

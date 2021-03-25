@@ -110,5 +110,5 @@ if __name__ == '__main__':
     with open('markdown笔记.md', 'r', encoding='utf-8') as fp:
         text = fp.read()
     md_content = to_obj.md_to_html(text)
-    path_ = os.path.abspath('./') + '/test.pdf'
+    path_ = os.path.abspath('../') + '/test.pdf'
     to_obj.html_to_pdf(md_content, path_)
