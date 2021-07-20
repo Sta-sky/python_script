@@ -75,7 +75,7 @@ class spider_tmall():
 		profile.set_preference('network.proxy.http', proxy_dict['host'])
 		profile.set_preference('network.proxy.http_port', proxy_dict['port'])
 		# 为https设置的
-		# profile.set_preference('network.proxy.ssl', proxy['host'])
+		# profile.set_preference('network.proxy.ssl_transfer', proxy['host'])
 		# profile.set_preference('network.proxy.ssl_port', proxy['port'])
 		profile.update_preferences()
 		return profile
