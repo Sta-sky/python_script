@@ -17,8 +17,8 @@ class WriteXlwtFile(object):
     """
 
     def __init__(self):
-        base_file = "C:\\Users\\Administrator\\Desktop\\Python\\xml_download\\{" \
-                    "}\\"
+        base_file = "C:/Users/Administrator/Desktop/python_exc/xml_download/{" \
+                    "}/"
         retry_times = 0
         while retry_times < 5:
             retry_times += 1
@@ -30,10 +30,9 @@ class WriteXlwtFile(object):
                                                    port=3306,
                                                    database=database)
                 if os.path.exists(base_file.format(database)):
-                    self.file_path = base_file.format(database) + '{}.xml'
+                    self.file_path = base_file.format(database) + '{}.xlsx'
                 else:
-                    self.file_path = os.mkdir(base_file.format(database)) + \
-                                     '{}.xml'
+                    self.file_path = os.mkdir(base_file.format(database))
                 break
             except Exception as e:
                 print('数据库名称输入有误,请重新输入!', e)
@@ -73,6 +72,7 @@ class WriteXlwtFile(object):
         # 获取数据表中字段
         print(file_name)
         fields = self.cousor.description
+        print(fields)
         # 初始化xlwt对象
         workbook = xlwt.Workbook(encoding='utf8', style_compression=2)
         # 添加sheet页                   cell_overwrite_ok 参数用于确认同一个cell单元是否可以重设值。
