@@ -76,13 +76,13 @@ class WriteXlwtFile(object):
         # 初始化xlwt对象
         workbook = xlwt.Workbook(encoding='utf8', style_compression=2)
         # 添加sheet页                   cell_overwrite_ok 参数用于确认同一个cell单元是否可以重设值。
-        sheet1 = workbook.add_sheet('sheet1', cell_overwrite_ok=True)
+        self.sheet1 = workbook.add_sheet('sheet1', cell_overwrite_ok=True)
 
         # 循环读取字段，写入sheet页中
         for i in range(len(fields)):
             color = random.randint(0, 10)
             print(color)
-            sheet1.write(0, i, fields[i][0], self.set_style(u'微软雅黑', 300,
+            self.sheet1.write(0, i, fields[i][0], self.set_style(u'微软雅黑', 300,
                                                             color=self.color))
 
         print('开始写入%s文件中' % file_name)
@@ -99,21 +99,54 @@ class WriteXlwtFile(object):
                     styles = self.set_style('Times New Roman', self.weight,
                                             self.color)
                     styles.num_format_str = 'yyyy-mm-DD hh:mm:ss'
-                    sheet1.write(row, col, data, styles)
+                    self.sheet1.write(row, col, data, styles)
                 else:
                     # color = random.randint(0, 200)
-                    sheet1.write(row, col, data, self.set_style(u'微软雅黑', self.weight,
+                    self.sheet1.write(row, col, data, self.set_style(u'微软雅黑', self.weight,
                                                                 self.color))
         workbook.save(file_name)
 
-    def set_style(self, font_name, height, color):
+    def set_style(self, font_name, height, color, bg_color=0):
+        """
+            bg_color : 0 - 10 颜色变化
+        """
         style = xlwt.XFStyle()
         font = xlwt.Font()
         font.name = font_name
         font.height = height
         font.colour_index = color
+    
+        # 设置对其方式
+        """
+			VERT_TOP = 0x00 上端对齐
+			VERT_CENTER = 0x01 居中对齐(垂直方向上)
+			VERT_BOTTOM = 0x02 低端对齐
+			HORZ_LEFT = 0x01 左端对齐
+			HORZ_CENTER = 0x02 居中对齐(水平方向上)
+			HORZ_RIGHT = 0x03 右端对齐
+		"""
+        al = xlwt.Alignment()
+        al.HORZ_CENTER = 0x02
+        al.VERT_CENTER = 0x01
+    
+        # 设置背景色
+        pattern_top = xlwt.Pattern()
+        pattern_top.pattern = xlwt.Pattern.SOLID_PATTERN
+        pattern_top.pattern_fore_colour = bg_color
+    
+        style.alignment = al
+        style.pattern = pattern_top
         style.font = font
         return style
+
+    def set_cell_width(self, col):
+        """ 设置表格宽
+            width : 256 * 20    256为衡量单位，20表示20个字符宽度
+            col: 列索引 int
+        """
+        """   """
+        item_col = self.sheet1.col(col)
+        item_col.width = 256 * 20
 
     def run(self):
         result, file_name = self.connect_database()
