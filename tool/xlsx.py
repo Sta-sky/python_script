@@ -49,6 +49,7 @@ class WriteXlwtFile(object):
     def connect_database(self):
         # 执行语句
         retry_times = 0
+        name = None
         while retry_times < 5:
             retry_times += 1
             try:
@@ -66,25 +67,23 @@ class WriteXlwtFile(object):
 
         # 获取所有数据
         result = self.cousor.fetchall()
-        return result, self.file_path
+        return result, self.file_path, name
 
-    def write_xwlt(self, data_result, file_name):
+    def write_xwlt(self, data_result, file_name, name):
         # 获取数据表中字段
-        print(file_name)
         fields = self.cousor.description
-        print(fields)
         # 初始化xlwt对象
         workbook = xlwt.Workbook(encoding='utf8', style_compression=2)
         # 添加sheet页                   cell_overwrite_ok 参数用于确认同一个cell单元是否可以重设值。
-        self.sheet1 = workbook.add_sheet('sheet1', cell_overwrite_ok=True)
-
+        self.sheet = workbook.add_sheet('sheet', cell_overwrite_ok=True)
+        
+        # 合并第0行 第1行两行
+        self.sheet.write_merge(0, 1, 0, len(fields) - 1, name, self.set_style(font_name='楷体', height=600))
         # 循环读取字段，写入sheet页中
         for i in range(len(fields)):
-            color = random.randint(0, 10)
-            print(color)
-            self.sheet1.write(0, i, fields[i][0], self.set_style(u'微软雅黑', 300,
-                                                            color=self.color))
-
+            color = random.randint(0, 100)
+            self.sheet.write(1, i, fields[i][0], self.set_style(u'微软雅黑', 300,
+                                                            color=color))
         print('开始写入%s文件中' % file_name)
         num = len(data_result)
         count = 0
@@ -99,23 +98,24 @@ class WriteXlwtFile(object):
                     styles = self.set_style('Times New Roman', self.weight,
                                             self.color)
                     styles.num_format_str = 'yyyy-mm-DD hh:mm:ss'
-                    self.sheet1.write(row, col, data, styles)
+                    self.sheet.write(row, col, data, styles)
                 else:
-                    # color = random.randint(0, 200)
-                    self.sheet1.write(row, col, data, self.set_style(u'微软雅黑', self.weight,
-                                                                self.color))
+                    color = random.randint(0, 200)
+                    self.sheet.write(row, col, data, self.set_style(u'微软雅黑', self.weight,
+                                                                color=color))
+        for i in range(len(fields)):
+            self.set_cell_width(i, 256 * 20)
+        for i in range(len(data_result) + 1):
+            self.set_cele_height(i, 20*30)
         workbook.save(file_name)
 
-    def set_style(self, font_name, height, color, bg_color=0):
-        """
-            bg_color : 0 - 10 颜色变化
-        """
+    def set_style(self, font_name='楷体', height=200, color=0x7FFF, bg_color=None, blod=False):
         style = xlwt.XFStyle()
         font = xlwt.Font()
-        font.name = font_name
-        font.height = height
-        font.colour_index = color
-    
+        font.bold = blod # 设置加粗
+        font.name = font_name # 设置字体
+        font.height = height # 设置字体大小
+        font.colour_index = color # 设置字体颜色
         # 设置对其方式
         """
 			VERT_TOP = 0x00 上端对齐
@@ -125,32 +125,33 @@ class WriteXlwtFile(object):
 			HORZ_CENTER = 0x02 居中对齐(水平方向上)
 			HORZ_RIGHT = 0x03 右端对齐
 		"""
-        al = xlwt.Alignment()
-        al.HORZ_CENTER = 0x02
-        al.VERT_CENTER = 0x01
-    
+        # 设置居中
+        alignment = xlwt.Alignment()
+        alignment.horz = xlwt.Alignment.HORZ_CENTER  # 水平方向
+        alignment.vert = xlwt.Alignment.VERT_TOP  # 垂直方向
         # 设置背景色
-        pattern_top = xlwt.Pattern()
-        pattern_top.pattern = xlwt.Pattern.SOLID_PATTERN
-        pattern_top.pattern_fore_colour = bg_color
+        if bg_color:
+            pattern_top = xlwt.Pattern()
+            pattern_top.pattern = xlwt.Pattern.SOLID_PATTERN
+            pattern_top.pattern_fore_colour = bg_color
+            style.pattern = pattern_top
     
-        style.alignment = al
-        style.pattern = pattern_top
         style.font = font
+        style.alignment = alignment
         return style
 
-    def set_cell_width(self, col):
-        """ 设置表格宽
-            width : 256 * 20    256为衡量单位，20表示20个字符宽度
-            col: 列索引 int
-        """
-        """   """
-        item_col = self.sheet1.col(col)
-        item_col.width = 256 * 20
+    def set_cell_width(self, col, width):
+        """ 设置表格宽  width = 256 * 20    256为衡量单位，20表示20个字符宽度 """
+        item_col = self.sheet.col(col)
+        item_col.width = width
+
+    def set_cele_height(self, row, height):
+        self.sheet.row(row).height_mismatch = True
+        self.sheet.row(row).height = height  # 20 * 40   20为基准数，40意为40磅
 
     def run(self):
-        result, file_name = self.connect_database()
-        self.write_xwlt(result, file_name)
+        result, file_name, name = self.connect_database()
+        self.write_xwlt(result, file_name, name)
 
 
 if __name__ == '__main__':
