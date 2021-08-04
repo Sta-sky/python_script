@@ -4,7 +4,8 @@ import time
 import jwt
 import requests
 import xlwt
-from log_util import Log
+
+from tool.log_util import Log
 
 CODING_LIST = ['UTF-8', 'GBK', 'ISO-8859-1']
 logger = Log('tool_fun').print_info()

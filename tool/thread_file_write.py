@@ -3,7 +3,6 @@ import os
 import queue
 import time
 from threading import Thread, Lock
-from tool_script.util import time_wappre
 
 
 def time_wappre(func):

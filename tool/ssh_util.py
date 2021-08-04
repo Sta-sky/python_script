@@ -9,6 +9,8 @@ SFTP：
         是否可以使用下载文件中的sftp对象上传文件，相反，是否也成立
     验证结果 成立都可以使用
 """
+from tool.log_util import Log
+from tool.util import is_ipv4_address
 
 detaile = \
     """此程序可以执行一下操作\n
@@ -27,8 +29,6 @@ ssh_detaile = \
     ---------------------   SSH    --------------------------------"""
 
 import paramiko
-from util import is_ipv4_address
-from log_util import Log
 
 log_sing = 'ssh'
 logger = Log(log_sing).print_info()

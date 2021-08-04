@@ -8,7 +8,8 @@ from Crypto.Cipher import AES
 from Crypto.PublicKey import RSA
 from Crypto import Random
 from Crypto.Cipher import PKCS1_v1_5
-from log_util import Log
+from tool.log_util import Log
+
 
 logger = Log('secrete').print_info()
 
