@@ -8,7 +8,7 @@ import requests
 from lxml import etree
 from tool.log_util import Log
 from Crypto.Cipher import AES
-from threading import Thread, Lock
+from threading import    Thread, Lock
 
 logger = Log('lao_liu_1').print_info()
 
@@ -193,8 +193,7 @@ class SpiderVideo(object):
 		for ts_url in ts_urls:
 			down_num += 1
 			progrees = float('%.2f' % (down_num / total_size)) * 100
-			logger.info('ts数量{}，当前下载第{}个，已经下载{}%,'.format(total_size, down_num,
-			                                              progrees))
+			logger.info('ts数量{}，当前下载第{}个，已经下载{}%,'.format(total_size, down_num, progrees))
 			ts_name = ts_url.split("/")[-1]  # ts文件名
 			# 解密，new有三个参数，
 			# 第一个是秘钥（key）的二进制数据，

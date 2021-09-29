@@ -63,7 +63,6 @@ class Daneispider(object):
         parse_html = etree.HTML(tow_html)
         # print(parse_html)
         link_lists = parse_html.xpath('//li[@class="sp"]/a/@href')
-        print(link_lists)
 
         # 匹配出 视频名称列表
         word_list = parse_html.xpath('//li[@class="opened"]/p')
@@ -113,7 +112,6 @@ class Daneispider(object):
             tow_html = requests.get(url=link_lists[count+1], headers=headers).content
             # print(tow_html)
             r = re.findall('.*\'(.*)\'', tow_html.decode())
-            print(r)
             if r[1] == '':
                 continue
             links = []

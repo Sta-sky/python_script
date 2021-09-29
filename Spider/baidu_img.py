@@ -1,6 +1,7 @@
 """
 百度图片的抓取
 """
+import time
 from time import sleep
 from urllib import parse
 import os
@@ -60,6 +61,7 @@ class BaiduImgSpider(object):
         word = self.word
         parmse = parse.quote(word)
         one_url = self.url.format(parmse)
+        time.sleep(5)
         self.get_html(one_url)
 
 

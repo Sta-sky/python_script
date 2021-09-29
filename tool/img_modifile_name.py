@@ -17,7 +17,6 @@ for i in file:
     print(filenamess)
     with open(filenamess,'rb') as f1:
         with open(filenames, 'wb') as f2:
-
             while True:
                 s_bate = f1.read(1024)
                 if s_bate == b'':

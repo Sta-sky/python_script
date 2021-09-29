@@ -10,7 +10,6 @@ from threading import Lock
 from threading import Thread
 from Crypto.Cipher import AES
 from selenium import webdriver
-from fake_useragent import UserAgent
 from selenium.webdriver.firefox.options import Options
 
 logger = Log('kele_3').print_info()
@@ -18,8 +17,8 @@ logger = Log('kele_3').print_info()
 
 class Spider_Video():
 	def __init__(self):
-		self.url = "https://www.kele61.com/video/video_list.html?video_type={}&page_index={}"
-		self.tow_url = 'https://www.kele15.com/video/video_play.html?video_id={}'
+		self.url = "https://www.kele68.com/video/video_list.html?video_type={}&page_index={}"
+		self.tow_url = 'https://www.kele68.com/video/video_play.html?video_id={}'
 		self.file_path = 'C:\\Users\\Administrator\\Desktop\\Python\\opencv\\scripy\\available_ip.txt'
 		
 		# 控制下载页数
@@ -40,9 +39,9 @@ class Spider_Video():
 		
 		self.host = None
 		self.referer = 'https://www.kele15.com/video/video_play.html?video_id={}'
-		self.agent = UserAgent(verify_ssl=False).random
+		# self.agent = UserAgent(verify_ssl=False).random
 		self.headers = {
-			'User-Agent': self.agent,
+			# 'User-Agent': self.agent,
 			'Origin': 'https://www.kele15.com',
 			'Referer': self.referer,
 			'Connection': 'close'
@@ -281,7 +280,7 @@ class Spider_Video():
 		return True
 	
 	def return_requests_data(self, param_url):
-		self.headers['User-Agent'] = self.agent
+		# self.headers['User-Agent'] = self.agent
 		retry_times = 20
 		retry_count = 0
 		for i in range(retry_times):

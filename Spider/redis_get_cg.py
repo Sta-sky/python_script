@@ -1,6 +1,8 @@
+# -*- coding: utf8 -*-
 """
-redis中获取储存的成果信息
+redis涓幏鍙栧偍瀛樼殑鎴愭灉淇℃伅
 """
+
 import redis
 r = redis.Redis(host='localhost',db=3,port='6379')
 
