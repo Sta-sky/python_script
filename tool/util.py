@@ -61,8 +61,6 @@ def time_tool(times=0):
         print('已等待：%s 秒,还剩：%s' % (count, times - count))
         time.sleep(1)
 
-s = generate_token('cd')
-print(s)
 
 
 def save_xml(data, fields):
