@@ -25,12 +25,14 @@ class CaesarCrypt:
 		return inputItem
 	
 	def inputParam(self):
+		""" 获取输入信息 """
 		paramStr = '1.M 请输入字符串 Enter here: '
 		paramNum = '2.R 请输入字符串 Enter here: '
 		self.strInfo = self.getParam(paramStr)
 		self.numInfo = int(self.getParam(paramNum, True))
 	
 	def getParam(self, paramTip, isNum=False):
+		""" 循环获取正确输入信息 """
 		input_info = input(paramTip)
 		if isNum:
 			while not input_info.strip() or not self.judgeIsNum(input_info):
@@ -43,6 +45,7 @@ class CaesarCrypt:
 		return input_info
 	
 	def judgeIsNum(self, param):
+		""" 判断是否为数字类型 """
 		try:
 			int(param)
 			return True
@@ -50,6 +53,7 @@ class CaesarCrypt:
 			return False
 	
 	def deOrEnCrypt(self):
+		""" 加密解密 """
 		str_list = list(self.strInfo)
 		item = 0
 		while item <len(self.strInfo):
@@ -67,6 +71,7 @@ class CaesarCrypt:
 	
 	
 	def fileWrite(self):
+		""" 文件写入 """
 		totalWordNum = len(self.content_list)
 		withoutRepetWord = len(set(self.content_list))
 		length_list = list(map(lambda item: len(item), self.content_list))
@@ -98,6 +103,7 @@ f"""
 				fp.write(itemStr)
 			
 	def handleFileTxt(self):
+		""" 处理文件标点 可在下列 clear_list 添加任意标点 """
 		clear_list = "[,.?]"
 		if self.inputItem == 'd' or self.inputItem == 'D':
 			content = re.sub(clear_list, '', self.handleCryptedTxt)
@@ -106,6 +112,7 @@ f"""
 		self.content_list = [item for item in content.split(' ') if item]
 	
 	def sumFrequency(self):
+		""" 计算单词出现次数 """
 		dic = {}
 		set_content = list(set(self.content_list))
 		for item in set_content:
@@ -134,6 +141,7 @@ f"""
 		return new_list
 		
 	def run(self):
+		""" 入口 """
 		self.inputItem = self.selectItem()
 		self.inputParam()
 		self.deOrEnCrypt()
