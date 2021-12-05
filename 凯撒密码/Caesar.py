@@ -1,35 +1,81 @@
 import os
+import random
 import re
+
+firstParamStr = \
+"""\033[1;34m
+请选择要解密还是加密\n
+	1.M) 输入 M 为 手动加密、解密 \n
+	2.R) 输入 R 为 自动加密、解密 \n
+请输入:
+
+\033[m"""
+
+secondParamStr = \
+"""\033[1;34m
+请选择要解密还是加密\n
+	1.D) 输入 D 为解密 \n
+	2.E) 输入 E 为加密 \n
+请输入:
+\033[m"""
+
+
 
 class CaesarCrypt:
 	def __init__(self):
-		self.inputItem = None
+		self.inputFirstItem = None
+		self.inputSecondItem = None
 		self.numInfo = None
 		self.strInfo = None
 		self.handleCryptedTxt = None
+		self.autoTextFile = None
+		self.insertFilePath = None
 		self.content_list = []
+		self.firstSelectList = ['m', 'M', 'r', 'R']
+		self.secondSelect_list = ['e', 'E', 'd', 'D']
 	
 	def selectItem(self):
-		paramStr = \
-"""
-请选择要解密还是加密\n
-	1) 输入 E 为加密 \n
-	2) 输入 D 为解密 \n
-请输入:
-"""
-		inputItem = input(paramStr).strip()
-		select_list = ['e', 'E', 'd', 'D']
-		while not inputItem or inputItem not in select_list:
-			print('请输入正确的选项')
-			inputItem = input(paramStr)
-		return inputItem
+		inputItem = input(firstParamStr).strip()
+		while not inputItem or inputItem not in self.firstSelectList:
+			print('\033[31m 请输入正确的选项\033[m')
+			inputItem = input(firstParamStr)
+		self.inputFirstItem = inputItem
+		inputItem = input(secondParamStr).strip()
+		if inputItem == 'm' or inputItem == 'M':
+			while not inputItem or inputItem not in self.secondSelect_list:
+				print('请输入正确的选项')
+				inputItem = input(secondParamStr)
+			self.inputSecondItem = inputItem
+		else:
+			self.inputSecondItem = inputItem
+			if self.inputSecondItem == 'd' or self.inputSecondItem == 'd':
+				with open('./info.txt', 'r') as fp:
+					textList = fp.readlines()
+				self.autoTextFile = [item.strip().replace('\n', '') for item in textList]
 	
-	def inputParam(self):
+	def firstinputParam(self):
 		""" 获取输入信息 """
-		paramStr = '1.M 请输入字符串 Enter here: '
-		paramNum = '2.R 请输入字符串 Enter here: '
+		paramStr = '1.M 请输入字符串，或.txt后缀文本路径\n 请输入： '
+		paramNum = '2.R 请输入位移量 : '
 		self.strInfo = self.getParam(paramStr)
+		self.parseFilePath()
 		self.numInfo = int(self.getParam(paramNum, True))
+		
+	def secondinputParam(self):
+		paramStr = '1.请输入字符串，或.txt后缀文本路径\n 请输入 ：'
+		self.strInfo = self.getParam(paramStr)
+		self.parseFilePath()
+	
+	def parseFilePath(self):
+		if self.strInfo.split('.')[-1] == 'txt':
+			while not os.path.exists(self.strInfo):
+				print('\033[31m 文件路径不正确 请重新输入\033[m')
+				self.insertFilePath = self.getParam('请输入文件路径:')
+			else:
+				self.insertFilePath = self.strInfo
+			with open(self.strInfo, 'r') as fp:
+				dataList = fp.readlines()
+			self.strInfo = ''.join(dataList).strip().replace('\n', ' ')
 	
 	def getParam(self, paramTip, isNum=False):
 		""" 循环获取正确输入信息 """
@@ -42,7 +88,7 @@ class CaesarCrypt:
 			while not input_info.strip():
 				print('\nThe request not found')
 				input_info = input(paramTip)
-		return input_info
+		return input_info.strip().replace('\n', ' ')
 	
 	def judgeIsNum(self, param):
 		""" 判断是否为数字类型 """
@@ -52,8 +98,49 @@ class CaesarCrypt:
 		except Exception as e:
 			return False
 	
-	def deOrEnCrypt(self):
-		""" 加密解密 """
+	def autoDeCrypt(self):
+		""" 自动解密 """
+		for num in range(26):
+			str_list = list(self.strInfo)
+			item = 0
+			while item <len(self.strInfo):
+				if not str_list[item].isalpha():
+					str_list[item] = str_list[item]
+				else:
+					a = "A" if str_list[item].isupper() else "a"
+					str_list[item] = chr((ord(str_list[item]) - ord(a) - num) % 26 + ord(a))
+				item = item + 1
+			result = ''.join(str_list)
+			beforeTen = result.split(' ')[:10]
+			flag = False
+			for item in beforeTen:
+				if item in self.autoTextFile or item.lower() in self.autoTextFile:
+					flag = True
+			if flag:
+				print(f'解密结果为：{result}')
+				userConfirm = input('请确认解密是否正确')
+				if userConfirm == 'yes' or userConfirm == 'YES' or userConfirm == 'Y':
+					self.handleCryptedTxt = result
+					return True
+		self.handleCryptedTxt = ''
+		return False
+	
+	def autoEncrypt(self):
+		str_list = list(self.strInfo)
+		item = 0
+		genrateNum = random.randint(1, 26)
+		while item <len(self.strInfo):
+			if not str_list[item].isalpha():
+				str_list[item] = str_list[item]
+			else:
+				a = "A" if str_list[item].isupper() else "a"
+				str_list[item] = chr((ord(str_list[item]) - ord(a) + genrateNum) % 26 + ord(a))
+			item = item + 1
+		result = ''.join(str_list)
+		self.handleCryptedTxt = result.upper()
+	
+	def decrypt(self):
+		""" 解密 """
 		str_list = list(self.strInfo)
 		item = 0
 		while item <len(self.strInfo):
@@ -61,14 +148,24 @@ class CaesarCrypt:
 				str_list[item] = str_list[item]
 			else:
 				a = "A" if str_list[item].isupper() else "a"
-				if self.inputItem == 'e' or self.inputItem == 'E':
-					str_list[item] = chr((ord(str_list[item]) - ord(a) + self.numInfo) % 26 + ord(a))
-				else:
-					str_list[item] = chr((ord(str_list[item]) - ord(a) - self.numInfo) % 26 + ord(a))
+				str_list[item] = chr((ord(str_list[item]) - ord(a) - self.numInfo) % 26 + ord(a))
 			item = item + 1
 		result = ''.join(str_list)
 		self.handleCryptedTxt = result.upper()
 	
+	def encrypt(self):
+		""" 加密 """
+		str_list = list(self.strInfo)
+		item = 0
+		while item <len(self.strInfo):
+			if not str_list[item].isalpha():
+				str_list[item] = str_list[item]
+			else:
+				a = "A" if str_list[item].isupper() else "a"
+				str_list[item] = chr((ord(str_list[item]) - ord(a) + self.numInfo) % 26 + ord(a))
+			item = item + 1
+		result = ''.join(str_list)
+		self.handleCryptedTxt = result.upper()
 	
 	def fileWrite(self):
 		""" 文件写入 """
@@ -78,34 +175,29 @@ class CaesarCrypt:
 		length_list.sort()
 		max_word = length_list[-1]
 		mix_word = length_list[0]
-		write_info = \
-f"""
-{'*' * 100}
-总字数         ：{totalWordNum},
-不重复单词字数  ：{withoutRepetWord}
-最大词长       ：{max_word}
-最小词长       ：{mix_word}
-"""
-		map(lambda item: len(item), self.content_list)
-		if self.inputItem == 'd' or self.inputItem == 'D':
-			fileName = 'decryptInfo.txt'
+		R_dir = os.path.realpath('R')
+		M_dir = os.path.realpath('M')
+		if not os.path.exists(R_dir) :
+			os.mkdir(R_dir)
+		if not os.path.exists(M_dir):
+			os.mkdir(M_dir)
+		fileDict = {
+			'TOTAL_NUMBER.txt': f'Total number of the words: {totalWordNum}',
+			'UNIQUE_WORDS.txt': f'Number of unique words: {withoutRepetWord}' ,
+			'MINIMUM.txt': f'Minimum word length: {max_word}',
+			'MAXIMUM.txt': f'Maximum word length: {mix_word}',
+			'MOST_COMMON_LETTER.txt': self.sumFrequency()
+		}
+		if self.inputFirstItem == 'm' or self.inputFirstItem == 'M':
+			filePath = os.path.realpath('M')
 		else:
-			fileName = 'encryptInfo.txt'
-		file_path = os.path.realpath(fileName)
-		if not os.path.exists(os.path.realpath(fileName)):
-			with open(file_path, 'w', encoding='utf-8'):
-				pass
-		with open(fileName , 'a', encoding='utf-8') as fp:
-			fp.write(write_info)
-			result_list = self.sumFrequency()
-			for item in result_list:
-				itemStr = f'{item[0]}: {item[1]}\n'
-				fp.write(itemStr)
-			
+			filePath = os.path.realpath('R')
+		createFile(fileDict, filePath)
+	
 	def handleFileTxt(self):
 		""" 处理文件标点 可在下列 clear_list 添加任意标点 """
 		clear_list = "[,.?]"
-		if self.inputItem == 'd' or self.inputItem == 'D':
+		if self.inputSecondItem == 'd' or self.inputSecondItem == 'D':
 			content = re.sub(clear_list, '', self.handleCryptedTxt)
 		else:
 			content = re.sub(clear_list, '', self.strInfo)
@@ -114,11 +206,12 @@ f"""
 	def sumFrequency(self):
 		""" 计算单词出现次数 """
 		dic = {}
+		self.content_list = [item.upper() for item in self.content_list ]
 		set_content = list(set(self.content_list))
 		for item in set_content:
 			count = 0
 			for j in self.content_list:
-				if item == j:
+				if item == j or item.lower() == j :
 					count += 1
 			dic[item] = count
 		result = sorted(dic.items(), key=lambda item: item[1], reverse=True)
@@ -138,17 +231,44 @@ f"""
 					new_list.append(item)
 		else:
 			new_list = result
-		return new_list
-		
+		mostWord = ''
+		print("\033[6;31m 频率统计结果如下：\033[m")
+		for item in new_list:
+			itemStr = f'{item[0]}: {item[1]}\n'
+			print(f"\033[6;36m {itemStr} \033[m")
+			mostWord += itemStr
+		return mostWord
+			
 	def run(self):
 		""" 入口 """
-		self.inputItem = self.selectItem()
-		self.inputParam()
-		self.deOrEnCrypt()
+		self.selectItem()
+		if self.inputFirstItem == 'm' or self.inputFirstItem == 'M':
+			self.firstinputParam()
+			if self.inputSecondItem == 'd' or self.inputSecondItem == 'E':
+				self.decrypt()
+			else:
+				self.encrypt()
+		else:
+			self.secondinputParam()
+			if self.inputSecondItem == 'd' or self.inputSecondItem == 'E':
+				self.autoDeCrypt()
+			else:
+				self.autoEncrypt()
+		if not self.handleCryptedTxt:
+			return '输出失败'
 		self.handleFileTxt()
 		self.fileWrite()
 		return self.handleCryptedTxt
 
+
+def createFile(fileDict, filePath):
+	for key, val in fileDict.items():
+		path = f'{filePath}/{key}'
+		with open(path, 'a+', encoding='utf-8') as fp:
+			fp.write('*' * 200 + '\n')
+			fp.write(str(val) + '\n')
+
 if __name__ == '__main__':
 	result = CaesarCrypt().run()
-	print(f"输入信息为：\n {result}")
+	print(f"\033[32m 输入信息为：\n {result} \033[m")
+
