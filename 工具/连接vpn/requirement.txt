@@ -1,0 +1,5 @@
+pyautogui
+pyperclip
+pyautogui==0.9.50
+opencv-python
+pillow
