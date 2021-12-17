@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 from selenium import webdriver
@@ -47,22 +49,25 @@ class Questions():
 		self.brower.find_element(By.CLASS_NAME, "startExam").click()
 		WebDriverWait(self.brower, 10).until(ec.presence_of_element_located((By.CLASS_NAME, "box-list")))
 		self.href_list = self.brower.find_elements(By.CLASS_NAME, "iconBox")
-		
 
 
 	def get_and_write(self):
 		count = 0
 		total = len(self.href_list)
 		print(f"总共 {total}道题")
-		for item in self.href_list[:80]:
+		c = 81
+		for item in self.href_list[c:]:
 			count += 1
+			c += 10
 			time.sleep(1)
 			item.click()
-			time.sleep(1.5)
+			time.sleep(3)
 			value = self.brower.execute_script('return localStorage.getItem("questionNumber");')
-			print(value)
-			time.sleep(1000)
-		
+			res = json.loads(value)
+			print(len(res))
+			for j in res:
+				print(j)
+
 
 
 			# WebDriverWait(self.brower, 5).until(ec.presence_of_element_located((By.CLASS_NAME, "exam-question")))
