@@ -54,24 +54,30 @@ class Questions():
 		count = 0
 		total = len(self.href_list)
 		print(f"总共 {total}道题")
-		for item in self.href_list:
+		for item in self.href_list[:80]:
 			count += 1
 			time.sleep(1)
 			item.click()
 			time.sleep(1.5)
-			WebDriverWait(self.brower, 5).until(ec.presence_of_element_located((By.CLASS_NAME, "exam-question")))
-			text_info = self.brower.find_element(By.CLASS_NAME, 'exam-question').text
-			WebDriverWait(self.brower, 5).until(ec.presence_of_element_located((By.CLASS_NAME, "words")))
-			item_list = self.brower.find_elements(By.CLASS_NAME, 'words')
-			with open('questions.txt', "a+", encoding="utf-8") as fp:
-				fp.write(f"{count}: {text_info}\n")
-				print(f"\033[1;31m 题目：{text_info}写入完成\033[m")
-				for index, item in enumerate(item_list):
-					item_info = item.text.replace("\n", '')
-					fp.write(f"    {item_info}\n")
-					print(f"\033[2;32m    问题: {item_info} 写入\033[m")
-			time.sleep(3)
-			print(f"\033[4;34m 总共{total}个题， 第 {count} 道题写入完成，还剩{total - count}道题\n \033[m")
+			value = self.brower.execute_script('return localStorage.getItem("questionNumber");')
+			print(value)
+			time.sleep(1000)
+		
+
+
+			# WebDriverWait(self.brower, 5).until(ec.presence_of_element_located((By.CLASS_NAME, "exam-question")))
+			# text_info = self.brower.find_element(By.CLASS_NAME, 'exam-question').text
+			# WebDriverWait(self.brower, 5).until(ec.presence_of_element_located((By.CLASS_NAME, "words")))
+			# item_list = self.brower.find_elements(By.CLASS_NAME, 'words')
+			# with open('questions.txt', "a+", encoding="utf-8") as fp:
+			# 	fp.write(f"{count}: {text_info}\n")
+			# 	print(f"\033[1;31m 题目：{text_info}写入完成\033[m")
+			# 	for index, item in enumerate(item_list):
+			# 		item_info = item.text.replace("\n", '')
+			# 		fp.write(f"    {item_info}\n")
+			# 		print(f"\033[2;32m    问题: {item_info} 写入\033[m")
+			# time.sleep(3)
+			# print(f"\033[4;34m 总共{total}个题， 第 {count} 道题写入完成，还剩{total - count}道题\n \033[m")
 
 	def run(self):
 		try:
