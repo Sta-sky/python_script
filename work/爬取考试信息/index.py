@@ -1,6 +1,5 @@
 import json
 
-import requests
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -54,36 +53,25 @@ class Questions():
 	def get_and_write(self):
 		count = 0
 		total = len(self.href_list)
-		print(f"总共 {total}道题")
-		c = 81
-		for item in self.href_list[c:]:
+		point = 71
+		for item in self.href_list[point:]:
 			count += 1
-			c += 10
-			time.sleep(1)
+			point += 1
 			item.click()
-			time.sleep(3)
+			time.sleep(2)
 			value = self.brower.execute_script('return localStorage.getItem("questionNumber");')
-			res = json.loads(value)
-			print(len(res))
-			for j in res:
-				print(j)
+			info_dic = json.loads(value)
+			with open('info_dic.json', 'r', encoding='utf-8') as fp:
+				json_dic = fp.readlines()
+			with open('info_dic.json', 'a+', encoding='utf-8') as fp:
+				for value in info_dic.values():
+					mid_data = str(value) + '\n'
+					if mid_data not in json_dic:
+						fp.write(mid_data)
+						print("\033[2;031m 文件写入完成 \033[m")
 
-
-
-			# WebDriverWait(self.brower, 5).until(ec.presence_of_element_located((By.CLASS_NAME, "exam-question")))
-			# text_info = self.brower.find_element(By.CLASS_NAME, 'exam-question').text
-			# WebDriverWait(self.brower, 5).until(ec.presence_of_element_located((By.CLASS_NAME, "words")))
-			# item_list = self.brower.find_elements(By.CLASS_NAME, 'words')
-			# with open('questions.txt', "a+", encoding="utf-8") as fp:
-			# 	fp.write(f"{count}: {text_info}\n")
-			# 	print(f"\033[1;31m 题目：{text_info}写入完成\033[m")
-			# 	for index, item in enumerate(item_list):
-			# 		item_info = item.text.replace("\n", '')
-			# 		fp.write(f"    {item_info}\n")
-			# 		print(f"\033[2;32m    问题: {item_info} 写入\033[m")
-			# time.sleep(3)
-			# print(f"\033[4;34m 总共{total}个题， 第 {count} 道题写入完成，还剩{total - count}道题\n \033[m")
-
+			print(f"\033[4;034m总共 {total}道题 当前第 {count} 个 本地存储长度{len(info_dic)} \033[m")
+			
 	def run(self):
 		try:
 			self.login()
@@ -94,9 +82,10 @@ class Questions():
 			self.brower.close()
 		except Exception as e:
 			print(e)
-			self.brower.close()
 if __name__ == '__main__':
 	question = Questions()
 	question.run()
 
+
+		
 
