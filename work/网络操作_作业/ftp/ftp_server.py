@@ -5,6 +5,10 @@ from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
 import socket                        # 主要用于获取当前主机IP地址
 
+"""
+	环境安装：
+		pip install pyftpdlib==1.5.6
+"""
 
 def ftp_server():
 	

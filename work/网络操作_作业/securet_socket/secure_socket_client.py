@@ -7,6 +7,7 @@ import hashlib
 
 """
     环境：
+        pip install rsa==4.8
     
     思路：
         客户端和服务器端建立连接
