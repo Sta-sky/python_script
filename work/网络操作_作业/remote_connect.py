@@ -15,8 +15,8 @@
                         正确：E:/test.zip
                         错误：E:\test.zip
             2、指定远程文件路径
-        
 """
+
 import time
 
 detail = \
