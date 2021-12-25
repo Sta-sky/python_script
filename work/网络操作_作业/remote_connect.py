@@ -14,9 +14,11 @@
                         正确：E:/test.zip
                         错误：E:\test.zip
             2、指定远程文件路径
+    服务器ip: 150.158.137.86
 """
 
 import time
+import paramiko
 
 detail = \
     """             此程序可以执行以下操作：\n
@@ -35,8 +37,6 @@ ssh_detail = \
     ---------------------   SSH    --------------------------------"""
 
 
-
-import paramiko
 
 
 class Ssh(object):
@@ -72,7 +72,7 @@ class Ssh(object):
             print(f'创建客户端出现异常，异常为：{e}')
             return False
         finally:
-            print(self.cmd_ssh.recv(1024))
+            print(self.cmd_ssh.recv(99999))
 
     def exec_cmd(self, cmd):
         """
@@ -84,7 +84,7 @@ class Ssh(object):
                 cmds = cmd + '\n'
                 self.cmd_ssh.send(cmds)
                 time.sleep(1)
-                print(f"\033[1;32m {self.cmd_ssh.recv(9999).decode('utf-8')}\033[m")
+                print(f"\033[1;32m {self.cmd_ssh.recv(99999).decode('utf-8')}\033[m")
             except Exception as e:
                 print(f'终断命令执行失败，失败原因为{e}')
         else:

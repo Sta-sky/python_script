@@ -64,19 +64,20 @@ class Server():
 		while True:
 			time.sleep(0.3)
 			# 阻塞等待接收消息
-			en_recvData = ServerSocket.recv(1024)
-			recvData = fernet_obj.decrypt(en_recvData).decode()
-			print(f"\033[4;34m接受到客户端{now_number}传来的消息: {recvData}\033[m")
-			if recvData == 'stop':
-				print('===')
-				print(f"\033[1;31m=============和客户端{now_number}退出=============\033[m")
-				continue
-			# 调用图灵机器人
-			sendData = '服务端的消息' + recvData
-			# 对消息进行加密
-			en_sendData = fernet_obj.encrypt(sendData.encode())
-			ServerSocket.send(en_sendData)
-
+			try:
+				en_recvData = ServerSocket.recv(1024)
+				recvData = fernet_obj.decrypt(en_recvData).decode()
+				print(f"\033[4;34m接受到客户端{now_number}传来的消息: {recvData}\033[m")
+				if recvData == 'stop':
+					print('===')
+					print(f"\033[1;31m=======   ======和客户端{now_number}退出=============\033[m")
+					continue
+				sendData = '服务端的消息' + recvData
+				# 对消息进行加密
+				en_sendData = fernet_obj.encrypt(sendData.encode())
+				ServerSocket.send(en_sendData)
+			except Exception as e:
+				pass
 if __name__ == '__main__':
 	print("\033[6;35m欢迎使用服务端程序！\033[m")
 	print("\033[6;35m等待客户端连接......\033[m")
@@ -85,4 +86,6 @@ if __name__ == '__main__':
 		# 这里使用多线程可以避免服务器阻塞在一个客户端上
 		t = threading.Thread(target=server.link_one_client)
 		t.start()
+		time.sleep(5)
+
 

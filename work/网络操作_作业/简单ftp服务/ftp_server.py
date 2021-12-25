@@ -3,7 +3,6 @@
 from pyftpdlib.authorizers import DummyAuthorizer
 from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
-import socket                        # 主要用于获取当前主机IP地址
 
 """
 	环境安装：

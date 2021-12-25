@@ -42,7 +42,7 @@ class FtpClient():
 	
 	def connect_ftp(self):
 		# 实例化FTP对象, 并连接
-		self.ftp.connect("192.168.1.37", 9999)
+		self.ftp.connect("192.168.1.22", 9999)
 		# username = input('请输入用户名： ')
 		# username = input('请输入密码： ')
 		self.ftp.login("Administrator", "123456")
