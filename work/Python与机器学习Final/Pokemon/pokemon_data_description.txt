@@ -1,0 +1,47 @@
+Data description
+
+name: Pokemon 的英文名字
+ 
+japanese_name: 精灵宝可梦的日本名字
+
+pokedex_number: 精灵宝可梦在国家精灵宝可梦dex的条目号
+
+percentage_male: 雄性物种所占的百分比。如果精灵宝可梦是无性别的，那就是空白。
+
+type1: Pokemon的主要类型
+
+type2: Pokemon的次要类型
+
+classification: 根据太阳和月亮Pokedex所描述的Pokemon的分类
+
+height_m: Pokemon的高度以米为单位
+
+weight_kg: Pokemon的重量(公斤
+
+capture_rate: Pokemon 的捕获率
+
+base_egg_steps: 孵化一个Pokemon蛋所需的步骤数
+
+abilities: 一个字符串化的能力列表，Pokemon能够拥有
+
+experience_growth:  Pokemon的体验增长
+
+base_happiness: Pokemon 的基础幸福感
+
+against_?:18个特征表示针对特定类型的攻击所造成的伤害
+
+hp: Pokemon的基础HP
+
+attack: Pokemon 的基础攻击
+
+defense:  Pokemon 基地防御
+
+sp_attack:  Pokemon 的基础特殊攻击
+
+sp_defense:  Pokemon 基础特殊防御
+
+speed: Pokemon 的基础速度
+
+generation:  Pokemon 最初引入的数字世代
+
+is_legendary: 表示Pokemon是否具有传奇色彩。(1代表传奇Pokemon。)
