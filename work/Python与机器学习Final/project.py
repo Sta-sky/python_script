@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plot
 
 '==================================== 读取数据 ================================================================================='
-csv_path  = 'F:\work_projects\python_script\work\Python与机器学习Final\Pokemon\pokemon.csv'
+csv_path  = 'D:\MyProject\python_script\work\Python与机器学习Final\Pokemon\pokemon.csv'
 pokemon_data = pd.read_csv(csv_path)
 total_size = pokemon_data.size
 
@@ -72,7 +72,7 @@ print(f"从途中不难看出，第五代的宝可梦数据是最多的为: {gen
 
 #建立数据透视表
 
-def draw_excel(action, color="#66CCCC", description=None):
+def draw_excel(pokemon_data, action, color="#66CCCC", description=None):
     try:
         # values='attack' 需要计算的值
         # index='generation' 分组的依据
@@ -106,7 +106,7 @@ info_dic = {
     "sp_defense": "所有世代宝可梦的特殊防御对比",
     "speed": "所有世代宝可梦的攻击速度对比"}
 for key, value in info_dic.items():
-    draw_excel(key, description=value)
+    draw_excel(pokemon_data, key, description=value)
 
 
 
