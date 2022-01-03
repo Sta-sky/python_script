@@ -4,8 +4,8 @@
 """
 
 import os
-base_path = "G:\\img\image\\{}"
-filename = "G:\\img\\"
+base_path = "G:\\FaceImg\image\\{}"
+filename = "G:\\FaceImg\\"
 
 file = os.listdir(filename)
 count = 0
@@ -13,7 +13,7 @@ for i in file:
     count +=1
     names = str(count) + '.jpg'
     filenames = base_path.format(names)
-    filenamess = "G:\\img\\{}".format(i)
+    filenamess = "G:\\FaceImg\\{}".format(i)
     print(filenamess)
     with open(filenamess,'rb') as f1:
         with open(filenames, 'wb') as f2:

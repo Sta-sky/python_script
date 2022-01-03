@@ -43,7 +43,7 @@ class BaiduImgSpider(object):
         try:
             for link in img_link:
                 # xpath  获取自定义属性  需要先获取到属性节点 根据姐点的get_attribute()方法才能获取。
-                links = link.find_element_by_xpath('.//div[@class="imgbox"]//img').get_attribute('data-imgurl')
+                links = link.find_element_by_xpath('.//div[@class="imgbox"]//FaceImg').get_attribute('data-imgurl')
                 print(links)
                 print(links[-4:])
                 z_img = requests.get(url=links, headers=self.headers).content
