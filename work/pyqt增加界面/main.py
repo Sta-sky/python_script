@@ -7,15 +7,19 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
-from PyQt5.QtWidgets import QWidget, QLabel, QApplication, QDesktopWidget, QLineEdit, QPushButton, QMessageBox
+
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QWidget, QApplication, QDesktopWidget, QMessageBox
 import shutil
 
 import serial
-import serial.tools.list_ports
+# import serial.tools.list_ports
 import _thread
 import xlwt
 import xlrd
+import matplotlib
 
+matplotlib.use('Agg')
 
 
 if not Path("./data").exists():
@@ -32,10 +36,10 @@ SerialCom3 = "COM6"
 SerialCom4 = "COM7"
 SerialBand = 9600
 Com_Open_Flag = 0
-custom_serial1 = serial.Serial
-custom_serial2 = serial.Serial
-custom_serial3 = serial.Serial
-custom_serial4 = serial.Serial
+# custom_serial1 = serial.Serial
+# custom_serial2 = serial.Serial
+# custom_serial3 = serial.Serial
+# custom_serial4 = serial.Serial
 Serial1Data = []
 Serial2Data = []
 Serial3Data = []
@@ -166,75 +170,15 @@ def Com_Data_Check(threadName):
             Serial4Data = []
             Cnt4 = 0
 
-
-class AngleUi(QWidget):
+from main_ui import Ui_Form
+class AngleUi(Ui_Form, QWidget):
     def __init__(self):
-        super(AngleUi, self).__init__()
-        self.resize(600, 600)
-        self.center()
-        self.setWindowTitle('角度计算器')
-        first_row = 150
-        first_col = 50
-        self.lblxh = QLabel('型号：', self)
-        self.lblxh.move(first_row, first_col)
-        self.lblxh.setStyleSheet("color:rgb(10,10,10,255);font-size:15px;font-weight:bold;font-family:Roman times;")
-        self.inputxh = QLineEdit(self)
-        self.inputxh.move(first_row + 50, first_col - 2)
-        self.inputxh.resize(50, 20)
-        self.lblxm = QLabel('鞋码：', self)
-        self.lblxm.move(first_row + 200, first_col)
-        self.lblxm.setStyleSheet("color:rgb(10,10,10,255);font-size:15px;font-weight:bold;font-family:Roman times;")
-
-        self.inputxm = QLineEdit(self)
-        self.inputxm.move(first_row + 250, first_col - 2)
-        self.inputxm.resize(50, 20)
-        second_row = 150
-        second_col = 90
-        self.lbyl = QLabel('拉力:', self)
-        self.lbyl.move(second_row, second_col)
-        self.lbyl.setStyleSheet("color:rgb(10,10,10,255);font-size:15px;font-weight:bold;font-family:Roman times;")
-
-        self.inputyl = QLineEdit(self)
-        self.inputyl.move(second_row + 50, second_col - 2)
-        self.inputyl.resize(50, 20)
-        third_row = 150
-        third_col = 130
-        self.lblcssj = QLabel('测试数据：', self)
-        self.lblcssj.move(third_row, third_col)
-        self.lblcssj.setStyleSheet("color:rgb(10,10,10,255);font-size:15px;font-weight:bold;font-family:Roman times;")
-        self.input1cssj = QLineEdit(self)
-        self.input1cssj.move(third_row + 80, third_col - 2)
-        self.input1cssj.resize(100, 20)
-        self.input1cssj.setText('0.05,')
-        self.input2cssj = QLineEdit(self)
-        self.input2cssj.move(third_row + 200, third_col - 2)
-        self.input2cssj.resize(100, 20)
-        self.input2cssj.setText('0.1,')
-        self.input3cssj = QLineEdit(self)
-        self.input3cssj.move(third_row + 80, third_col + 25)
-        self.input3cssj.resize(100, 20)
-        self.input3cssj.setText('0.15,')
-        self.input4cssj = QLineEdit(self)
-        self.input4cssj.move(third_row + 200, third_col + 25)
-        self.input4cssj.resize(100, 20)
-        self.input4cssj.setText('0.2,')
-        fourth_row = 150
-        fourth_col = 200
-        self.lblpzjd = QLabel('偏折角度', self)
-        self.lblpzjd.move(fourth_row, fourth_col)
-        self.lblpzjd.setStyleSheet("color:rgb(10,10,10,255);font-size:15px;font-weight:bold;font-family:Roman times;")
-        self.inputpzjd = QLineEdit(self)
-        self.inputpzjd.move(fourth_row + 80, fourth_col - 2)
-        self.inputpzjd.resize(235, 20)
-        self.buttoncalculation = QPushButton('计算', self)
-        self.buttoncalculation.move(275, 300)
+        super(Ui_Form, self).__init__()
+        self.setupUi(self)
+        self.resize(1200, 700)
         self.buttoncalculation.clicked.connect(self.calculation)
-        self.buttonOpenCom = QPushButton('打开设备', self)
-        self.buttonOpenCom.move(275, 250)
         self.buttonOpenCom.clicked.connect(self.OpenCom)
-        # self.buttonSendData = QPushButton('测量', self)
-        # self.buttonSendData.move(275, 265)
-        # self.buttonSendData.clicked.connect(self.SendData)
+
 
     def center(self):
         # 获取屏幕坐标系
@@ -285,7 +229,10 @@ class AngleUi(QWidget):
             pred_y = w * x + b
             plt.scatter(x, y)
             plt.plot(x, pred_y, c='r', label='line')
-            plt.show()
+            plt.savefig("./test.jpg")
+            pix = QPixmap('test.jpg')
+            self.label_img_show.setGeometry(0, 0, 500, 210)
+            self.label_img_show.setPixmap(pix)
             self.inputpzjd.setText(str(math.atan(w) * (180 / math.pi)))
             with open("./data1/data.txt", "a") as f:
                 f.write("型号为%s，鞋码为%s，拉力为%s，偏向角度结果为%s\n" % (
@@ -326,10 +273,10 @@ class AngleUi(QWidget):
         global Com_Open_Flag
         if self.buttonOpenCom.text() == "打开设备":
             print("Click")
-            custom_serial1 = serial.Serial(SerialCom1, SerialBand, timeout=0.5)
-            custom_serial2 = serial.Serial(SerialCom2, SerialBand, timeout=0.5)
-            custom_serial3 = serial.Serial(SerialCom3, SerialBand, timeout=0.5)
-            custom_serial4 = serial.Serial(SerialCom4, SerialBand, timeout=0.5)
+            # custom_serial1 = serial.Serial(SerialCom1, SerialBand, timeout=0.5)
+            # custom_serial2 = serial.Serial(SerialCom2, SerialBand, timeout=0.5)
+            # custom_serial3 = serial.Serial(SerialCom3, SerialBand, timeout=0.5)
+            # custom_serial4 = serial.Serial(SerialCom4, SerialBand, timeout=0.5)
             print("Test Status 1")
             custom_serial1.isOpen()
             custom_serial2.isOpen()
