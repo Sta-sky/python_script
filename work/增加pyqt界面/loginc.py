@@ -20,7 +20,7 @@ class MainLogin(Ui_Form, QWidget):
         self.img_label.setMinimumSize(100, 400)
 
         self.btn_fly_1.clicked.connect(self.software_1)
-        self.btn_fly_2.clicked.connect(self.software_2())
+        self.btn_fly_2.clicked.connect(self.software_2)
         self.btn_fly_3.clicked.connect(self.software_3)
         self.btn_fy.clicked.connect(lambda: self.show_img("俯仰_度.jpg"))
         self.btn_gd.clicked.connect(lambda: self.show_img("滚转_度.jpg"))
@@ -42,6 +42,7 @@ class MainLogin(Ui_Form, QWidget):
         
         
     def software_1(self):
+        print('开始运行')
         self.status_lin_1.setText("开始运行，请等待...")
         # 1.创建tcp客户端套接字对象
         tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -77,40 +78,25 @@ class MainLogin(Ui_Form, QWidget):
         self.status_lin_1.setText('运行完成！')
         
     def software_2(self):
-        print('进来了')
-        try:
-            self.status_lin_2.setText('开始运行，请等待！')
-            data = pd.read_csv('convert.csv', encoding='utf-8')
-            cols = ['俯仰/度', '滚转/度', '航向/度', ['无线电高度高位/FT', '无线电高度低位/FT'], '计算空速/KT', '垂直速度/KT',
-                    '马赫数', '推力扭矩']
-            plot_col(data, cols)
-            self.status_lin_2.setText('运行完成！')
-        except Exception as e:
-            print('========')
-            self.status_lin_2.setText(f'error： {e}')
-            print(e)
-
-
-    def software_3(self):
-        print('======第三个开始了---')
-        self.status_lin_3.setText('开始运行，请等待！')
-
+        print('开始运行')
+        self.status_lin_2.setText('开始运行，请等待！')
+    
         dic1 = {}
         dic2 = {}
         with open("QAR数据（飞行航班1） - 副本.txt", "r", encoding="utf-8")as f2:
             li2 = f2.readlines()
-
+    
         with open("查找.txt", "r", encoding="utf-8")as f:
             li = f.readlines()
         for i in li[0].strip().split("/"):
             dic1[i] = []
-
+    
         for i2 in li[1].strip().split("/"):
             dic2[i2] = []
-
+    
         print(dic1)
         print(dic2)
-
+    
         for x in li[0].strip().split("/"):
             if len(x) == 2:
                 for n in li2:
@@ -122,30 +108,30 @@ class MainLogin(Ui_Form, QWidget):
                     if n.startswith(f"#1{x}") or n.startswith(f"#2{x}") or n.startswith(f"#3{x}") or n.startswith(
                             f"#4{x}"):
                         dic1[x].append("\t" + n[5:9])
-
+    
         print("=====")
-
+    
         for y in li[1].strip().split("/"):
             if len(y) == 3:
                 for m in li2:
                     if m.startswith(f"#1{y}"):
                         dic2[y].append("\t" + m[5:9])
-
+    
         print(dic1)
         print(dic2)
-
+    
         dic1.update(dic2)
-
+    
         num = 0
         for k, v in dic1.items():
             if len(v) > num:
                 num = len(v)
-
+    
         for k, v in dic1.items():
             if len(v) != num:
                 for i in range(num - len(v)):
                     v.append("")
-
+    
         # 字典中的key值即为csv中列名
         dataframe = DataFrame(dic1)
         dataframe.to_csv('result.csv', index=False, sep=',')
@@ -154,7 +140,7 @@ class MainLogin(Ui_Form, QWidget):
         import re
         df = pd.DataFrame(pd.read_excel("译码对应数据.xls"))
         data = pd.read_csv('result.csv')
-
+    
         # 这个是转化数据的函数
         def convert(x, idxs, coef):
             if type(x) == str:
@@ -172,7 +158,7 @@ class MainLogin(Ui_Form, QWidget):
             # 如果16进制是0，则被pandas读取成0，也就是float数据，直接返回0即可
             else:
                 return 0
-
+    
         convert_df = pd.DataFrame()
         for column in df.columns:
             # 获取特定位数
@@ -205,12 +191,26 @@ class MainLogin(Ui_Form, QWidget):
             new_data = np.reshape(new_data.values, [-1])
             convert_df[column] = pd.Series(new_data)
             convert_df[column] = convert_df[column].apply(convert, args=[idxs, coef])
-
+    
         convert_df.to_csv('convert.csv', encoding='utf_8_sig', index=False)
+    
+        self.status_lin_2.setText('运行结束')
 
-        self.status_lin_3.setText('运行结束')
+    def software_3(self):
+        print('开始运行')
+        try:
+            self.status_lin_3.setText('开始运行，请等待！')
+            data = pd.read_csv('convert.csv', encoding='utf-8')
+            cols = ['俯仰/度', '滚转/度', '航向/度', ['无线电高度高位/FT', '无线电高度低位/FT'], '计算空速/KT', '垂直速度/KT',
+                    '马赫数', '推力扭矩']
+            plot_col(data, cols)
+            self.status_lin_3.setText('运行完成！')
+        except Exception as e:
+            print('========')
+            self.status_lin_3.setText(f'error： {e}')
+            print(e)
 
-
+ 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     agu = MainLogin()
