@@ -16,7 +16,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(940, 631)
+        Form.resize(922, 631)
         self.horizontalLayout_7 = QHBoxLayout(Form)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.groupBox = QGroupBox(Form)
@@ -105,6 +105,10 @@ class Ui_Form(object):
 
         self.verticalLayout_6.addWidget(self.groupBox_2)
 
+        self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_6.addItem(self.verticalSpacer_2)
+
         self.groupBox_3 = QGroupBox(Form)
         self.groupBox_3.setObjectName(u"groupBox_3")
         self.verticalLayout_5 = QVBoxLayout(self.groupBox_3)
@@ -118,9 +122,10 @@ class Ui_Form(object):
 
         self.verticalLayout_4.addWidget(self.btn_fly_3)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.img_label = QLabel(self.groupBox_3)
+        self.img_label.setObjectName(u"img_label")
 
-        self.verticalLayout_4.addItem(self.verticalSpacer_2)
+        self.verticalLayout_4.addWidget(self.img_label)
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -139,10 +144,6 @@ class Ui_Form(object):
 
 
         self.horizontalLayout_4.addLayout(self.verticalLayout_4)
-
-        self.horizontalSpacer = QSpacerItem(100, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_4.addItem(self.horizontalSpacer)
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
@@ -215,6 +216,7 @@ class Ui_Form(object):
         self.label_3.setText(QCoreApplication.translate("Form", u"\u8fd0\u884c\u72b6\u6001:", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("Form", u"\u7a0b\u5e8f\u4e09", None))
         self.btn_fly_3.setText(QCoreApplication.translate("Form", u"\u98de\u884c\u6570\u636e\u7b5b\u9009\u4e0e\u5206\u6790\u7cfb\u7edf", None))
+        self.img_label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"\u8fd0\u884c\u72b6\u6001:", None))
         self.btn_gd.setText(QCoreApplication.translate("Form", u"\u6eda\u52a8", None))
         self.btn_wsdgd.setText(QCoreApplication.translate("Form", u"\u65e0\u7ebf\u7535\u9ad8\u5ea6", None))
@@ -225,4 +227,5 @@ class Ui_Form(object):
         self.btn_fly_hx.setText(QCoreApplication.translate("Form", u"\u822a\u5411", None))
         self.btn_mhs.setText(QCoreApplication.translate("Form", u"\u9a6c\u8d6b\u6570", None))
     # retranslateUi
+
 
