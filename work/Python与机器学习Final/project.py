@@ -1,10 +1,16 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plot
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
+from sklearn.svm import SVC
+import matplotlib as mpl
+mpl.use('TkAgg')
 
 '==================================== 读取数据 ================================================================================='
 csv_path  = 'D:\MyProject\python_script\work\Python与机器学习Final\Pokemon\pokemon.csv'
-pokemon_data = pd.read_csv(csv_path)
+pokemon_data = pd.read_csv(csv_path, encoding='utf-8')
 total_size = pokemon_data.size
 
 percent_missing = pokemon_data.isnull().sum() * 100 / len(pokemon_data)
@@ -12,7 +18,8 @@ missing_value_df = pd.DataFrame({
     'column_name': pokemon_data.columns,
     'percent_missing': percent_missing
 })
-
+pd.set_option('display.width', 1000)							# 设置显示宽度
+pd.set_option('display.max_columns', 100)
 print('数据缺失前10排名：')
 miss_10 = missing_value_df.sort_values(by='percent_missing', ascending=False).head(10)
 print(miss_10)
@@ -129,5 +136,64 @@ plot.show()
 print(f'type2的宝可梦中water宝可梦是最多为：{type_2_max}只，flying宝可梦数量是最少的为：{type_2_min}只')
 
 '======================================= 传奇宝可梦的数量是多少？ =============================================================================='
-legend_pokemon_count = pokemon_data['is_legendary'].value_counts()
-print(f'传奇宝可梦的数量为：{legend_pokemon_count[1]}')
+legend_pokemon_count = pokemon_data.groupby(['is_legendary']).size()[1]
+print(f'传奇宝可梦的数量为：{legend_pokemon_count}')
+
+print('======================================= 传奇宝可梦预测 ==============================================================================')
+
+
+pokemon_data['type1'].replace(['bug', 'dark', 'dragon', 'electric', 'fairy', 'fighting',
+                     'fire', 'flying', 'ghost', 'grass', 'ground', 'ice', 'normal',
+                     'poison', 'psychic', 'rock', 'steel', 'water'],
+                    list(range(1, 19)), inplace=True)
+for item in  pokemon_data.columns:
+    pokemon_data[item] = pokemon_data[item].apply(pd.to_numeric, errors='coerce').fillna(0.0)
+    
+target = 'is_legendary'										# 预测的目标列
+pokemon_data.drop(columns='name', axis=1, inplace=True)
+pokemon_data.drop(columns='classfication', axis=1, inplace=True)
+pokemon_data.drop(columns='percentage_male', axis=1, inplace=True)
+pokemon_data.drop(columns='experience_growth', axis=1, inplace=True)
+pokemon_data.drop(columns='base_egg_steps', axis=1, inplace=True)
+pokemon_data.drop(columns='japanese_name', axis=1, inplace=True)
+X = pokemon_data.iloc[:, 5:].drop(columns=[target, 'type2'])			# 用于学习的列（删除预测列）
+Y = pokemon_data[target]												# 用于预测的列
+X_train, X_test, y_train, y_test = train_test_split(		# 划分训练集和预测集
+    X, Y, test_size=0.5, random_state=18)
+
+
+machine_name = np.array(['rbf_svm', 'linear_svm', 'KNN'])	# x轴刻度
+machine_x = np.array([1, 2, 3])								# 使用数字方便绘制图片
+machine_score = np.array([])								# 存储各算法正确率
+
+
+# 1. rbf svm
+model = SVC(kernel='rbf', C=1, gamma=0.1)
+model.fit(X_train, y_train)
+y_svmpred = model.predict(X_test)
+machine_score = np.append(machine_score, metrics.accuracy_score(y_svmpred,y_test))
+
+# 2. linear svm
+model = SVC(kernel='linear', C=1, gamma=0.1)
+model.fit(X_train, y_train)
+y_lsvmpred = model.predict(X_test)
+machine_score = np.append(machine_score, metrics.accuracy_score(y_lsvmpred, y_test))
+
+# 3. KNeighborsClassifier
+model = KNeighborsClassifier()
+model.fit(X_train, y_train)
+y_KNCpred = model.predict(X_test)
+machine_score = np.append(machine_score, metrics.accuracy_score(y_KNCpred, y_test))
+
+
+
+plot.plot(machine_x, machine_score*100)
+plot.scatter(machine_x, machine_score*100, marker='*', color='red', s=80)
+for x, y in zip(machine_x, machine_score*100):
+    plot.text(x-0.07, y+0.3, '%.2f' % y, ha='left')
+plot.title('三种算法预测 ' + target + ' 的正确率')
+plot.xlabel('算法 / 模型')
+plot.xticks(machine_x, machine_name)
+plot.ylabel('Accuracy（ % ）')
+plot.ylim(90, 100)
+plot.show()
