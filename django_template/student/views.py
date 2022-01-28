@@ -22,10 +22,7 @@ def test(request, number):
 	
 	print(type(number))
 	print('=======')
-	return HttpResponse(
-		f'number: {number}\n'
-	
-	)
+	return HttpResponse(f'<h1> 逆子！逆子！ 不孝子！！！ </h1>')
 
 
 def bad_request(request, exception, template_name='400.html'):
