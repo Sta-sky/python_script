@@ -1,0 +1,35 @@
+#foot{
+    margin-top: 20px;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    bottom: 0;
+    background-color: #2e3144;
+}
+#footer{
+    /* position: relative; */
+    bottom: 0;
+    z-index: 5;
+    margin: 0 auto;
+    /* height: 80px; */
+    bottom: 0;
+    /* line-height: 120px; */
+    color: whitesmoke;
+    opacity: 0.8;
+
+}
+#footer .footer{
+margin: 0 auto;
+padding-top: 20px;
+}
+#footer .p1{
+    /* padding-top: 24px ; */
+    text-align: center;
+    /* width: 100%; */
+    font-size: 18px;
+    /* border: solid 1px red; */
+}
+#footer .p2{
+    text-align: center;
+    font-size: 12px;
+} 

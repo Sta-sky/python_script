@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ICClub regist</title>
+    <link rel="stylesheet" href="/index/static/css/regist.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=GK8muKdwK0w3So6HW89F8KlHc5BKzdbL"></script>
+
+</head>
+<body>
+<div id="nav">
+
+    <img id="bg" src="/index/static/images/background_img/timg01.jpeg " alt="">
+
+    <div class="top">
+        <img class="topimg" src="/index/static/images/background_img/timg01.jpeg" alt="">
+    </div>
+
+    <div class="box">
+        <div class="pack2">
+            <h1 style="color: #e0492c"><i>ICClub &nbsp;&nbsp;&nbsp; 在路上</i></h1>
+            <p class="p2">
+                <i>如果不出去走走</i>
+            </p>
+            <p class="p2">
+                <i>你就会以为这就是世界</i>
+            </p>
+            <p class="p2">
+                <i>我们正在路上!</i>
+            </p>
+
+        </div>
+        <div class="pack1">
+            <div class="head">
+                <div class="login"><a id="regist1" href="#">ICClub &nbsp; 注册</a></div>
+                <div class="ver_bar"></div>
+                <div ><a class="regist" id="login2" href="#" >已有帐号</a></div>
+            </div>
+            <div class="line" id="line"></div>
+            <div class="put">
+                <p>用户名 : </p>
+                <input type="text" id="username"
+                       name=username placeholder="请输入用户名"
+                       maxlength="16" minlength="1" pattern="\w{1,16}" required>
+                <img class="img1" src="/index/static/images/icon/right.jpg" alt="">
+                <span>请输入正确的用户名</span>
+            </div>
+
+            <div class="put">
+                <p>密码 : </p>
+                <input type="password"
+                       id="passwd"
+                       name="passwd"
+                       placeholder="请输入密码" maxlength="16" minlength="6"
+                       pattern="\w{6,16}" required>
+                <img class="img1" src="/index/static/images/icon/right.jpg" alt="">
+                <span>请输入符合规则的密码</span>
+            </div>
+
+            <div class="put">
+                <p>验证密码 : </p>
+                <input type="password" id="passwds" name="passwds" placeholder="请再次输入密码"
+                       maxlength="16" minlength="6" pattern="\w{6,16}" required>
+                <img class="img1" src="/index/static/images/icon/right.jpg" alt="">
+                <span>请再次输入密码</span>
+            </div>
+
+            <div class="put">
+                <p>邮箱 : </p>
+                <input type="text" name="email" id="email" placeholder="请输入您的电子邮箱"
+                       pattern="\w+@\w+.\w{2,3}" required>
+                <img class="img1" src="/index/static/images/icon/right.jpg" alt="">
+                <span>请输入新浪邮箱</span>
+            </div>
+
+            <div class="put">
+                <p>手机号码 : </p>
+                <input type="text" name="phone" id="phone" placeholder="请输入手机号码"
+                       maxlength="11" minlength="11" pattern="\d{11}" required>
+                <img class="img1" src="/index/static/images/icon/right.jpg" alt="">
+                <span>请输入手机号吗</span>
+            </div>
+
+            <div class="put">
+                <p class="auth">输入验证码 : </p>
+                <input class="code" type="text" name="" id="code" placeholder="请输入验证码"
+                       maxlength="6" minlength="6" pattern="\d{6}" required>
+                <button id="but_code">点击获取验证码</button>
+                <img class="img1" src="/index/static/images/icon/right.jpg" alt="">
+                <span>请输入验证码</span>
+            </div>
+
+            <div class="line"></div>
+            <div class="login1">
+                <a id="weibo" href=""><img id="icon" src="/index/static/images/icon/weibo.jpg" alt=""></a>
+
+            </div>
+            <div id="put">
+                <div class="chekbox">
+                    <p>记住密码</p>
+                    <input id="select1" type="checkbox" style="width:10px;height:10px" checked>
+                </div>
+                <div class="chekbox1">
+                    <p><a href="{% url 'regist' %}">用户协议</a></p>
+                    <input id="select2" class="chekbox1" type="checkbox" style="width:10px;height:10px">
+                </div>
+            </div>
+            <input id="subs" type="submit" value="注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册">
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+    </script>
+    <script src="/index/static/js/tool_kit.js"></script>
+    <script src="/index/static/js/jquery.min.js"></script>
+    <script src="/index/static/js/base_con.js"></script>
+    <script src="/index/static/js/regist.js"></script>
+</body>
+</html>

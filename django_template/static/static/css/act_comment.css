@@ -1,0 +1,174 @@
+/* 评论盒子样式开始 */
+#comment-box{
+    width: 100%;
+    overflow: hidden;
+}
+
+/*留言样式开始*/
+#leave {
+    width: 100%;
+    height: 160px;
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* border: solid 1px rgb(255, 230, 0); */
+
+}
+
+#leave > #ly {
+    padding-top: 5px;
+    margin-top: 5px;
+    width: 100%;
+    font-size: 18px;
+    background-color: rgb(195, 195, 195)
+}
+
+#leave > #send {
+    width: 68px;
+    height: 35px;
+    float: right;
+    margin-right: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+/*留言样式结束*/
+
+/* 评论样式开始 */
+#comment-all{
+    width: 100%;
+    float: left;
+}
+
+#comment-all .cmt-list{
+    width: 100%;
+    /* position: relative; */
+    overflow: hidden;
+}
+#comment-all .cmt-list>li{
+
+    width: 650px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: solid 3px rgb(112, 128, 144);
+}
+
+#comment-all .cmt-list .cmt .cmt-nickname{
+    left: 20px; 
+    color: black;
+    width: 740px;
+    overflow: hidden;
+}
+
+#comment-all .cmt-list .cmt .nickname{
+    margin-left: 5px;
+    float: left;
+    font-size: 18px;
+    font-weight: 900;
+    color: rgb(10, 25, 155)
+}
+
+#comment-all .cmt-list .cmt .cmt-time{
+    float: right;
+    font-size: 14px;
+    color: rgb(0 ,0, 0);
+    margin: 0;
+    margin-right: 105px;
+
+}
+#comment-all .cmt-list .cmt .cmt-text{
+    width: 650px;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    padding: 15px 0px;
+    overflow: hidden;
+}
+}
+
+/* 评论样式结束 */
+/* 回复样式开始 */
+#comment-all .review-all{
+    width: 710px;
+    margin: 5px 30px;
+    /* border: solid 2px rgb(160, 0, 160); */
+}
+#comment-all .review-all .review{
+    width: 690px;
+    margin-right: 10px;
+    overflow: hidden;
+    border-top:solid 1px rgb(252, 245, 152);
+    opacity: 0.9;
+}
+#comment-all .review-all .review .nickname {
+    font-size: 16px;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+#comment-all .review-all .review .nickname p {
+    float: left;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(0, 139, 139);
+    padding: 5px 5px;
+}
+
+#comment-all .review-all .review .nickname span{
+    display: inline-block;
+}
+
+#comment-all .review-all .review .review-time{
+    float: right;
+    font-size: 14px;
+    padding: 8px 10px;
+    color: rgb(0 ,0, 0);
+    margin: 0;
+    margin-right: 45px;
+    margin-bottom: 0;
+}
+
+#comment-all .review-all .review .review-text{
+
+    width: 650px;
+    color: black;
+    font-size: 15px;
+    padding: 15px 0px;
+    overflow: hidden;
+}
+
+/* 回复样式结束 */
+/* 回复下拉窗样式开始 */
+#comment-all .review-btn{
+    font-size: 12px;
+    float: right;
+    color: rgb(161, 23, 21);
+}
+
+#comment-all .re-text{
+    padding-top: 5px;
+    margin-top: 5px;
+    width: 100%;
+    font-size: 18px;
+}
+#comment-all .re-submit-btn{
+    padding: 3px 15px;
+    margin: 5px 20px;
+    float: right;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+#send:hover,#comment-all .re-submit-btn:hover{
+    background-color: khaki;
+    color: orangered;
+    font-weight: 800;
+}
+/* 回复下拉窗样式结束 */
+/* 评论盒子样式结束 */

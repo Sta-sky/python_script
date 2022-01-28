@@ -1,0 +1,254 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a{
+
+    text-decoration: none;
+    color: #000000;
+}
+
+
+span {
+    display: inline-block;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    /*background-image: url("../images/bg1.jpg");*/
+    /*background-size:100% 100%;background-attachment: fixed;*/
+    color: white;
+}
+
+#box1_user {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+/**/
+
+
+#user {
+    width: 1200px;
+    height: 224px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    /*border: solid 2px red;*/
+    padding: 20px 0 20px 0;
+    /*background-color: whitesmoke;*/
+    border-bottom: solid 2px rosybrown;
+}
+
+/* 头像 */
+#user #img {
+    float: left;
+    padding: 3px;
+    border: solid 1px #d5d5d5;
+    width: 216px;
+    height: 216px;
+    border-radius: 15px;
+}
+
+#user .user {
+    float: right;
+    width: 900px;
+    height: 220px;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+#user .user .user_1 {
+    width: 900px;
+    height: 27px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px grey;
+}
+
+#user .user .user_1 .nick {
+    font-size: 25px;
+    width: 200px;
+    height: 27px;
+    line-height: 27px;
+}
+
+#user .user .user_1 .credit_ {
+    width: 140px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    /*text-align: center;*/
+}
+
+#user .user .user_1 .level_ {
+    width: 30px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 80px;
+    color: red;
+}
+
+#user .user .user_1 a {
+    text-decoration: none;
+    color: white;
+    float: right;
+    padding: 5px 25px;
+    height: 15px;
+    line-height: 15px;
+    border: solid 1px darkgray;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+#user .user .user_2 {
+    width: 900px;
+    height: 45px;
+}
+
+#user .user .user_2 ul li {
+    float: left;
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+    margin: 10px 10px 10px 0;
+    font-size: 22px;
+    border-right: solid 2px lightslategray;
+    /*text-align: center;*/
+}
+
+#user .user .user_3 {
+    width: 900px;
+    height: 142px;
+}
+
+#user .user .user_3 span {
+    width: 451px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 18px;
+    font-weight: 600px;
+    margin-top: 3px;
+}
+
+/* 发起的活动 */
+#user_active {
+    width: 1200px;
+    height: 700px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px 0 20px 0;
+    /*background: whitesmoke;*/
+}
+
+#tz_l .no_active, #tz_r .no_active {
+    width: 300px;
+    height: 60px;
+    line-height: 30px;
+    text-align: center;
+    margin-left: 145px;
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+
+#tz_l, #tz_r {
+    width: 590px;
+    overflow: hidden;
+    float: left;
+    /*background: floralwhite;*/
+}
+
+#tz_tz {
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+#tz_l h2, #tz_r h2 {
+    text-align: center;
+    width: 590px;
+    height: 30px;
+    line-height: 30px;
+    background-color: grey;
+    border-radius: 7px;
+}
+
+#tz_l .tz_l, #tz_r .tz_r {
+    background-color: rgba(130,120, 169, 0.7);
+    width: 590px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+#tz_l .tz_l ul .l1, #tz_r .tz_r ul .l1 {
+    float: left;
+    height: 30px;
+    width: 330px;
+    overflow: hidden;
+    line-height: 30px;
+    font-size: 15px;
+    margin: 10px 5px 0 5px;
+}
+
+#tz_l .tz_l ul .l1 .label,#tz_r .tz_r ul .l1 .label{
+    color: rgba(200, 255, 110, 1);
+    font-weight: 600px;
+    
+}
+
+
+#tz_l .tz_l ul .l1 .label:hover, #tz_r .tz_r ul .l1 .label:hover{
+    color: orangered;
+    transform: scale(1.2);
+
+}
+
+#tz_l .tz_l ul .l1 .title, #tz_r .tz_r ul .l1 .title {
+    color: rgba(100, 255, 110, 1);
+    transition: all 0.7s;
+
+}
+
+#tz_r .tz_r ul .l1 .title {
+    color: turquoise;
+}
+
+#tz_l .tz_l ul .l1 .title:hover, #tz_r .tz_r ul .l1 .title:hover {
+    color: orangered;
+    transform: scale(1.3);
+
+}
+
+
+#tz_l .tz_l > ul > div, #tz_r .tz_r > ul > div {
+    float: right;
+    width: 235px;
+    height: 50px;
+    overflow: hidden;
+}
+
+#tz_l .tz_l ul div span, #tz_r .tz_r ul div span {
+    float: right;
+    width: 220px;
+    text-align: left;
+    height: 22px;
+    line-height: 25px;
+    font-size: 10px;
+    color: rgba(254, 254, 50, 1);
+}
+
+/* 参与的活动 */
+
+
+

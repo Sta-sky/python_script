@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9h_w^b$6at5-vgce(vfjuu4js3-c3s!lpud0l8-og@u$)mchp#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -55,8 +55,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'collect_static/templates'),
-            os.path.join(BASE_DIR, 'collect_static')
+            os.path.join(BASE_DIR, 'static/templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -118,13 +117,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'collect_static')
+# 在部署的时候 执行collectstatic 命令后，
+# 会将项目中各个APP目录下的static文件夹以及STATICFILES_DIRS文件夹内的静态文件全部复制到
+# STATIC_ROOT 所指向的文件夹。
+
+
+# 项目根目录下的static目录（因为有些静态文件不是某个app独有的）
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'student\\self_static'),
+    os.path.join(BASE_DIR, 'teacher\\self_static')
+]
+
+print(STATICFILES_DIRS)
+# 生产模式中用到  python manage.py collectstatic 收集 各app下的 static 以及STATICFILES_DIRS 中定义的静态我呢见
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

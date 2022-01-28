@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>无标题文档</title>
+</head>
+<body>
+<div id="wrap">
+    asd
+</div>
+asda
+</body>
+<script type="text/javascript">
+    function rgb() {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        var rgb = 'rgb(' + r + ',' + g + ',' + b + ')';
+        return rgb;
+    }
+
+    document.body.style.backgroundColor = rgb();
+</script>
+
+
+<script>
+    var colors = ['red', 'blue', 'green', 'orange', 'yellow'];
+
+    function bcolor() {
+        var c = Math.floor(Math.random() * 5);
+        document.bgColor = colors[c];
+    }
+
+    bcolor();
+</script>
+</html>
+
+

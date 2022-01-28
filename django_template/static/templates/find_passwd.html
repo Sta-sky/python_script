@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICClub 找回密码</title>
+    <link rel="stylesheet" href="/index/static/css/header.css">
+    <link rel="stylesheet" href="/index/static/css/icclub.css">
+
+
+</head>
+<body>
+    <div id="head"></div>
+    <div>
+        <div id="find_pass">
+            <p>用户名</p>
+            <input id="username" type="text">
+            <p >邮箱</p>
+            <input id="email" type="text">
+            <p class="infos">请输入密码</p>
+            <input id="passwd" type="password">
+            <p class="infos">请再次输入密码</p>
+            <input id="passwds" type="password">
+            <p>手机号码</p>
+            <input id="phone" type="text">
+            <input id="buts" type="submit">
+        </div>
+
+
+    </div>
+
+    <div id="foot"></div>
+    <script>
+    var domain = window.location.host;
+    var footer_url = 'http://' + domain + '/index/templates/footer.html'
+    var header_url = 'http://' + domain + '/index/templates/header.html'
+    $("#foot").load(footer_url);
+    $("#head").load(header_url);
+    </script>
+    <script src="/index/static/js/jquery.min.js"></script>
+    <script src="/index/static/js/header.js"></script>
+    <script src="/index/static/js/index.js"></script>
+    <script src="/index/static/js/tool_kit.js"></script>
+    <script>
+        $('#buts').click(function () {
+            code = GetUrlString('code');
+            alert(code)
+
+        })
+    </script>
+</body>
+
+</html>

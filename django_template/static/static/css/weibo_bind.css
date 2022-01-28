@@ -1,0 +1,340 @@
+body,p{
+    margin: 0;
+    padding: 0;
+    /*background-color: #b6f1ff;*/
+    background: url("../images/background_img/timg08.jpeg");
+    background-size: 100%;
+}
+
+
+#nav{
+    width: 100%;
+    height: auto;
+    position:relative;
+
+
+
+}
+
+/*顶部样式  尾部样式 开始*/
+#nav .top{
+    width: 100%;
+    background-color: #15223b;
+    position: absolute;
+    text-align: left;
+    height: 100px;
+    overflow: hidden;
+}
+#nav .top .topimg{
+    float: right;
+}
+
+#nav .top .topimg .topbg2{
+    margin-left: -10px;
+}
+
+
+#nav .top .topimg .topbg1,
+#nav .top .topimg .topbg2{
+    width: 200px;
+    margin-top: 40px;
+}
+
+
+#nav .top .h1{
+    margin-left: 50px;
+    margin-top: 50px;
+    color: #21eeb3;
+    cursor:pointer ;
+    transition: all 1.5s;
+    float: left;
+}
+
+#nav .top .h1:hover{
+    color: #c05cee;
+    transform: scale(1.5);
+}
+
+#nav .end{
+
+    width: 100%;
+    height: 60px;
+    background-color: #1fbcc1;
+    position: absolute;
+    margin-top:59%;
+    text-align: center;
+}
+
+
+
+                    /*顶部样式  尾部样式结束*/
+
+                    /*    内容样   式开始  */
+#nav .box{
+    background: url("../images/bind004.jpg");
+    background-size:100% 100%;
+    width: 1519px;
+    height: 800px;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 100px;
+}
+
+#nav .box .box1 {
+    float: left;
+    height: 696px;
+    width: 400px;
+    margin-left: 329px;
+    background-color: rgba(0,0,0,0.3);
+
+}
+
+
+
+
+
+#nav .box .box1 .rtop .h2{
+    margin-top: 50px;
+    margin-left: 50px;
+    float: left;
+}
+
+#nav .box .box1 .rtop{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+#nav .box .box1 .rtop img{
+    width: 100%;
+    height: auto;
+
+}
+
+#nav .box .box1 .rimg{
+    overflow: hidden;
+    width: 100%;
+    height: 215px;
+    margin-top: 281px;
+
+}
+
+
+#nav .box .box1 .rimg img{
+    width: 100%;
+    height: auto;
+
+}
+
+
+
+
+#nav .box .box1 .judge .email{
+    padding-top:40px;
+    padding-left: 45px;
+    letter-spacing: 30px;
+
+}
+
+#nav .box .box1 .choice{
+    float: right;
+}
+
+
+#nav .box .box1 .choice #butt2,
+#nav .box .box1 .choice #butt1{
+    letter-spacing: 15px;
+    background-color: #002741 ;
+    border-style: none;
+    font-size: 22px;
+    color: #ffefff;
+    width: 399px;
+    height: 141px;
+    position:absolute;
+    left: 329px;
+
+
+}
+
+#nav .box .box1 .choice #butt1{
+
+    top: 200px;
+}
+
+#nav .box .box1 .choice #butt2{
+    top: 340px;
+}
+
+#nav .box .box1 .choice #butt1:hover{
+    background-color:  #f6f0f9;
+    transition: all 1s;
+    color: black;
+
+}
+
+#nav .box .box1 .choice #butt2:hover{
+    background-color: #f6f0f9;
+    color: black;
+    transition: all 1s;
+}
+
+
+/*左边内容样式开始*/
+
+
+        /*右上内容 样式   开始*/
+
+
+#nav .box .middle .wite{
+    letter-spacing: 10px;
+    color: #00f5f9;
+}
+
+
+
+#nav .box . middle{
+    float: left;
+    height: 103px;
+    width: 500px;
+    overflow: hidden;
+    background-color: rgba(100,20,20,0.3);
+}
+
+#nav .box  .middle .judge{
+    text-align: center;
+    width: 100%;
+    letter-spacing: 10px;
+    margin-top: 30px;
+    font-size: 26px;
+    transition :all 1s;
+    color: whitesmoke;
+}
+
+#nav .box  .middle .judge:hover{
+    transform: scale(1.4);
+}
+
+
+
+        /*右上内容 样式   结束*/
+
+
+
+/*   输入框 内容开始  */
+
+#nav .box .box2{
+
+    float: right;
+    width: 500px;
+    height: 593px;
+    margin-right: 290px;
+    background-color:rgba(0,0,0,0.3);
+    overflow: hidden;
+    box-shadow: black ;
+}
+
+#nav .box .box2 .limg{
+    width: 100%;
+    height: auto;
+
+}
+
+
+#nav .box .box2 .put{
+    padding-top: 10px;
+    overflow: hidden;
+    padding-left: 15px;
+
+}
+
+#nav .box .put .info{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    color: white;
+
+}
+
+#nav .box .put .sput{
+    background:none;
+    width: 260px;
+    height: 30px;
+    border-width: 0 0 1px 0 ;
+    border-bottom:1px solid black;
+    margin-top: 20px;
+    margin-left: 15px;
+    color: #ffefff;
+}
+
+#nav .box .put .clic{
+    height: 35px;
+    width: 120px;
+    background-color: #445678;
+    color: #bfbfbf;
+
+}
+
+
+#nav .box .put #code{
+    width: 135px;
+}
+
+
+
+#nav .box #bput{
+    margin-top: 20px;
+    height: 40px;
+    text-align: center;
+}
+
+
+#nav .box #bput .but{
+    height: 50px;
+    /*letter-spacing: 50px;*/
+    width: 150px;
+    margin-left:133px;
+    text-align:center;
+    background-color: #3082f9;
+    font-size: 20px;
+    transition: all 1s;
+}
+
+#nav .box #bput .but:hover{
+    transform: scale(1.4);
+}
+
+
+
+/*   输入框 内容结束 */
+
+
+/*隐藏显示样式开始 */
+
+
+#nav .box .put .imgtip{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    visibility: hidden;
+
+}
+
+#nav .box .put .tip{
+    margin-right: 105px;
+    text-align: right;
+    color: red;
+    font-size: 12px;
+    visibility: hidden;
+}
+
+
+
+#nav .box .put input[required]:invalid + .imgtip +p{
+    visibility: visible;
+    color: red;
+
+}
+
+#nav .box .put input[required]:valid + .imgtip{
+    visibility: visible;
+}

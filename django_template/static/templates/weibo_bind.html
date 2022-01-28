@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICClub 微博绑定</title>
+
+    <link rel="stylesheet" href="/index/static/css/weibo_bind.css">
+
+
+</head>
+<body>
+    <div id="nav">
+        <div class="top">
+            <h1 class="h1">ICClub</h1>
+            <div class="topimg" >
+                <a id="top_index" href="#"><img class="topbg1" src="/index/static/images/index1.jpg" alt=""></a>
+                <a id="top_login" href="#"><img class="topbg2"  src="/index/static/images/login.jpg" alt=""></a>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box1">
+                <div class="rtop">
+                    <img src="/index/static/images/timg0013.jpg" alt="">
+
+                </div>
+
+                <div class="choice">
+                    <button id="butt1"><i>邮箱绑定</i></button>
+                    <button id="butt2"><i>返回首页</i></button>
+                </div>
+                <div class="rimg">
+                    <img  style="width: 100% ;height: 240px"  src="/index/static/images/tip.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="middle">
+                <div class="judge">
+                    <p class="email">请选择 是否绑定新浪邮箱</p>
+                </div>
+                <p class="wite" id="wait1" style="display: none"><i>请稍等 ..... </i></p>
+                <p class="wite" id="wait2" style="display: none"><i>请稍等,正在跳转 ... </i></p>
+                <p class="wite" id="success" style="display: none"><i>登录成功 !正在为您跳转至首页...</i></p>
+            </div>
+            <div class="box2" style="" >
+                <img class="limg" id="limg" style="" src="/index/static/images/004.jpeg.gif" alt="">
+                <div class="put">
+                    <span class="info">用户名 : </span>
+                    <input class="sput" type="text" id="username" placeholder="输入用户名" autofocus
+                            autocomplete="" pattern="\w{1,16}" required maxlength="16" minlength="1">
+                    <img class="imgtip" src="/index/static/images/icon/right.jpg" alt="">
+                    <p class="tip">请输入用户名需符合规则</p>
+                </div>
+                <div class="put">
+                    <span class="info">密码 : </span>
+                    <input class="sput" type="password" id="passwd" placeholder="输入密码"
+                           pattern="\w{6,16}" required maxlength="16" minlength="6">
+                    <img class="imgtip" src="/index/static/images/icon/right.jpg" alt="">
+                    <p class="tip">密码需符合规则</p>
+                </div>
+                <div class="put">
+                    <span class="info">确认密码 : </span>
+                    <input class="sput"  type="password" id="passwds" placeholder="确认密码"
+                        pattern="\w{6,16}" required maxlength="11" minlength="6">
+                    <img class="imgtip" src="/index/static/images/icon/right.jpg" alt="">
+                    <p class="tip">请再次确认</p>
+                </div >
+                <div class="put">
+                    <span class="info">手机号码 : </span>
+                    <input class="sput" type="text" id="phone" placeholder="手机号码"
+                    pattern="\d{11}" required maxlength="11" minlength="11">
+                    <img class="imgtip" src="/index/static/images/icon/right.jpg" alt="">
+                    <p class="tip">十一位手机号码</p>
+                </div>
+                <div class="put">
+                    <span class="info">邮箱 : </span>
+                    <input class="sput" type="text" id="email" placeholder="手机邮箱"
+                            pattern="\w{2,9}@\w+.\w{2,3}" required maxlength="16">
+                    <img class="imgtip"  src="/index/static/images/icon/right.jpg" alt="">
+                    <p class="tip">需符合邮箱规则</p>
+                </div>
+                <div class="put">
+                    <span class="info">验证码 : </span>
+                    <input  class="sput" type="text" id="code" placeholder="验证码"
+                        pattern = '\d{6}' required maxlength="6" minlength="6">
+                    <button class="clic">点击获取验证码</button>
+                    <img class="imgtip" src="/index/static/images/icon/right.jpg" alt="">
+                    <p class="tip">输入验证码</p>
+                </div>
+
+                <div class="put" id="bput">
+                    <button class='but' id="but" style="display: block">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="end">我是尾部</div>
+
+    </div>
+    <script src="/index/static/js/base_con.js"></script>
+    <script src="/index/static/js/jquery.min.js"></script>
+    <script src = '/index/static/js/weibo_bind.js'></script>
+    <script>
+
+    </script>
+
+
+</body>
+</html>

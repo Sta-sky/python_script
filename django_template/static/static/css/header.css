@@ -1,0 +1,137 @@
+/*导航栏样式*/
+#header {
+    position: fixed;
+}
+
+#nav {
+    background: whitesmoke;
+    /*background-image: url("../images/bg00.jpg");*/
+    /*opacity: 0.8;*/
+
+    width: 100%;
+    margin: 0 auto;
+    letter-spacing: 1px;
+    /*z-index: 9;*/
+    /*background-image: url('../images/obj.jpg');*/
+    background-image: url('../images/background_img/timg06.jpg');
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    opacity: 0.8;
+}
+
+#nav .con {
+    margin: 0 auto;
+    overflow: hidden;
+    height: 110px;
+    line-height: 50px;
+    color: white;
+}
+
+#nav .con .log {
+    float: left;
+    font-size: 55px;
+    font-weight: 700;
+    width: 240px;
+}
+
+
+#nav .con .log .icon {
+
+    transition: all 1.5s;
+    display: inline;
+    float: right;
+    font-size: 58px;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+#nav .con .log .icon:hover {
+    color: #26ff80;
+    transform: scale(1.2);
+}
+
+
+#nav .con .nav_r {
+    height: 70px;
+    float: right;
+}
+
+#nav .con .nav_r .top_l {
+    overflow: hidden;
+}
+
+#nav .con .nav_r .top_l .top_act {
+    float: right;
+    text-align: right;
+    width: 100%;
+    padding-top: 2px;
+    margin-right: 40px;
+}
+
+/*#nav .con .nav_r.top_l .top_act #reg{*/
+/*    margin-right: 12px;*/
+/*}*/
+
+#nav .con .nav_r .top_l .top_act span:hover {
+    color: #c2ddff;
+    transform: scale(1.3);
+}
+
+
+#nav .con .nav_r .top_l .top_act span {
+    transition: all 1.5s;
+    display: inline-block;
+    color: grey;
+    margin: 0 6px;
+}
+
+#nav .con .nav_r .top_l .top_act a {
+    transition: all 1.5s;
+    font-size: 18px;
+    color: white;
+}
+
+
+#nav .con .nav_r .top_l .top_act a:hover {
+    transform: scale(1.3);
+    color: #17ff3e;
+}
+
+
+#nav .con .nav_r ul {
+    font-size: 18px;
+    font-weight: 700;
+    float: right;
+    overflow: hidden;
+}
+
+#nav .con .nav_r ul li a {
+    color: white;
+    font-size: 22px;
+}
+
+
+#nav .con .nav_r ul li, #nav .con .nav_r ul li a {
+    float: left;
+    width: 100px;
+    transition: all 1.5s;
+    text-align: center;
+    margin-right: 15px;
+}
+
+/*#nav .con ul li:hover,*/
+#nav .con ul li a:hover {
+
+    color: #8dff55;
+    transform: scale(1.2);
+}
+
+
+
+.focus {
+    color: #8dff55;
+}
+
+
+
+

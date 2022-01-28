@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        #allmap {
+            height: 200px;
+            width: 810px;
+            margin:0 auto;
+        }
+
+    </style>
+    
+    <title>ICClub map</title>
+</head>
+<body>
+
+
+<div id="allmap"></div>
+
+
+
+</body>
+<script type="text/javascript"
+        src="http://api.map.baidu.com/api?v=2.0&ak=6OR11GLHjlg5M2R8GnnvjeMaRPYtOGC8">
+</script>
+        
+        
+<script type="text/javascript">
+
+      var map = new BMap.Map("allmap");
+      var point=new BMap.Point(104.06, 30.67);
+      map.centerAndZoom(point, 15);
+      map.enableScrollWheelZoom(true);
+      var navigationControl = new BMap.NavigationControl({
+          // 靠左上角位置
+          anchor: BMAP_ANCHOR_TOP_LEFT,
+          // LARGE类型
+          type: BMAP_NAVIGATION_CONTROL_LARGE,
+          // 启用显示定位
+          enableGeolocation: true
+      });
+      map.addControl(navigationControl);
+
+      map.addEventListener('dragend',function () {
+          var center=map.getCenter();
+          alert('point as '+ center.lng +','+center.lat)
+      });
+
+      function get_location() {
+  
+          var address_latitude ={{ address_latitude |safe}};
+          var address_longitude ={{ address_longitude|safe }};
+          var address_data ={{ address_data |safe}};
+  
+  
+          var point = []; //存放标注点经纬信息的数组
+          var marker = []; //存放标注点对象的数组
+          for (var i = 0; i < address_longitude.length; i++) {
+              point[i] = new BMap.Point(address_longitude[i], address_latitude[i]); //循环生成新的地图点
+              marker[i] = new BMap.Marker(point[i]); //按照地图点坐标生成标记
+              map.addOverlay(marker[i]);
+          }
+  
+          for (i = 0; i < marker.length; i++) {
+              (function () {
+                  var index = i;
+                  marker[index].addEventListener('click', function () {
+                      this.openInfoWindow(new BMap.InfoWindow(address_data[index]));
+                  });
+              })();
+          }
+  
+      }
+      get_location()
+  </script>
+</html>

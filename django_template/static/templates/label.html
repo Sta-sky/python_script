@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ICClub 活动列表页</title>
+</head>
+    <link rel="shortcut icon " type="images/x-icon" href="/index/static/images/favicon1.png">
+    <link rel="stylesheet" href="/index/static/css/general.css">
+    <link rel="stylesheet" href="/index/static/css/header.css">
+    <link rel="stylesheet" href="/index/static/css/icclub.css">
+    <link rel="stylesheet" href="/index/static/css/search.css">
+    <link rel="stylesheet" href="/index/static/css/active_user.css">
+    <script src="/index/static/js/jquery.min.js"></script>
+    <script src="/index/static/js/base_con.js"></script>
+
+    <style>
+        strong {
+            color:red;
+            background-color: white;
+            font-weight: 900;
+            font-size: 20px;
+        }
+    </style>
+<body>
+<!-- 嵌入导航栏模板 -->
+<div id="head"></div>
+
+<!-- 活动列表窗口 -->
+<!--  box2开始-->
+<div id="box2">
+
+    <div id="box2_left">
+
+        <div id="box2_left_up">
+
+            <div class="b2_left1">
+                <span>最热活动</span>
+            </div>
+
+
+            <div id="b2_l1">
+                <div class="b2_left2">
+                    <div>
+                        <img class='b2_left2_img' src="/index/static/images/bg2.jpg" alt="">
+                    </div>
+                    <p class="b2_left2_text  act_id">青春不散场</p>
+                </div>
+                <div class="b2_left2">
+                    <div>
+                        <img class='b2_left2_img' src="/index/static/images/bg2.jpg" alt="">
+                    </div>
+                    <p class="b2_left2_text">青春不散场</p>
+                </div>
+                <div class="b2_left2">
+                    <div>
+                        <img class='b2_left2_img' src="/index/static/images/bg2.jpg" alt="">
+                    </div>
+                    <p class="b2_left2_text">青春不散场</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="box2_left_down">
+
+
+            <div class="b2_left1">
+                <span id="z_new_act">最新活动</span>
+                <span id="z_his_act">历史活动</span>
+                <div class="search">
+                    <img src="/index/static/images/search_ico.png" alt="">
+                    <input id="keyword" name="keyword" placeholder="请输入搜索条件" type="text" maxlength="60">
+                    <button type="submit" class="btn-submit">搜索</button>
+                </div>
+            </div>
+
+
+            <div id="b2_l2">
+
+
+                <div id="new_act_">
+                    <img src="/index/static/images/bg2.jpg" alt="">
+                    <div id="new_content">
+                        <div id="n_tit">活动标题</div>
+                        <div id="n_cont">内容内容内容内容内容
+                        </div>
+                        <div id="n_lt">
+                            <div id="n_lab">运动</div>
+                            <div id="n_time">2019/12/25</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="l_num">
+            <ul id="ul">
+
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- box2右窗口 -->
+    <div id="box2_right">
+        <!-- box2右窗口上 -->
+        <div id="box2_right_up">
+            <!-- 右上标题 -->
+            <div class="b2_right1">
+                <p id="ac_c">活动推荐</p>
+                <div id="btn_l">
+                    <span id="lab_btn">换一换</span>
+                </div>
+                <div id="c_label">
+                    <ul id="lab">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- box2右窗口下 -->
+        <div id="box2_right_down">
+            <!-- 右下标题 -->
+            <div class="b2_right1">
+                <span>活跃达人</span>
+                <!-- 调试 显示8个 -->
+                <!-- <span id="_btn">测试添加8个</span> -->
+            </div>
+            <!-- 活跃达人列表 -->
+            <div id="b2_actv_user">
+                <!-- 用ajax请求渲染 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="foot"></div>
+<script src="/index/static/js/tips.js"></script>
+<script src="/index/static/js/tool_kit.js"></script>
+<script src="/index/static/js/header.js"></script>
+<script src="/index/static/js/index.js"></script>
+<script src="/index/static/js/label.js"></script>
+<script src="/index/static/js/active_user.js"></script>
+
+<script>
+    var domain = window.location.host;
+    var footer_url = 'http://' + domain + '/index/templates/footer.html'
+    $("#foot").load(footer_url);
+</script>
+<!--<script>-->
+
+<!--    removeFocus();-->
+<!--</script>-->
+</body>
+</html>

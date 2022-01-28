@@ -1,0 +1,319 @@
+
+#box2_left {
+    background-color: lightslategray;
+}
+
+#box2_right {
+    height: auto;
+}
+
+#top, #cont, #func, #leave {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+#top {
+    height: 100px;
+}
+
+#top > #title {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 700;
+}
+
+
+/*!*投票栏样式*!*/
+/*#vote {*/
+/*    float: right;*/
+/*    margin-right: 10px;*/
+/*    border: solid 1px #a4a4a4;*/
+/*    background-color: #c9c9c9;*/
+/*    display: inline-block;*/
+/*}*/
+
+/*#hid {*/
+/*    width: 100px;*/
+/*    height: 40px;*/
+/*    font-weight: 800;*/
+/*    margin: 20px 30px 0 180px;*/
+
+/*}*/
+
+/*#tdone {*/
+/*    margin: 0 40px -30px 0;*/
+/*    display: inline-block;*/
+/*    float: right;*/
+/*    color: red;*/
+/*}*/
+
+/*#main {*/
+/*    margin: 10px 0;*/
+/*}*/
+
+
+/*tr {*/
+
+/*    padding: 10px;*/
+/*}*/
+
+/*td {*/
+/*    margin: 20px;*/
+/*    padding: 10px;*/
+/*}*/
+
+/*input {*/
+/*    margin: 10px;*/
+/*}*/
+
+/*主题样式*/
+#top .title_txt {
+    font-size: 25px;
+
+}
+
+#top #title {
+    height: 100%;
+    font-size: 30px;
+    line-height: 100px;
+    text-align: center;
+
+}
+
+
+/* 内容样式*/
+#cont {
+
+}
+
+#cont > #nr {
+    margin: 0 30px 0 30px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: powderblue;
+}
+
+#brx {
+    margin-top: 60px;
+}
+
+/* 功能样式*/
+#func {
+    overflow: hidden;
+    position: relative;
+    height: 100px;
+}
+
+#func > #sc {
+    width: 80px;
+    margin-left: 70px;
+    font-size: 22px;
+    color: pink;
+}
+
+#func > .fleft {
+    font-size: 22px;
+    width: 200px;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 150px;
+}
+
+/*=======================================*/
+/*#myheart {*/
+/*    position: relative;*/
+/*    width: 38px;*/
+/*    height: 55px;*/
+/*}*/
+#clicklike{
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.myheart {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    animation: heart 1.5s linear infinite;
+}
+
+#myheart:before, #myheart:after {
+    position: absolute;
+    left: 25px;
+    background: red;
+    height: 40px;
+    width: 25px;
+    content: "";
+    border-radius: 12px 12px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+#myheart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+@keyframes heart {
+    0% {
+        -webkit-transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(0.8);
+    }
+    100% {
+        -webkit-transform: scale(1);
+    }
+}
+
+/*==============================================*/
+
+#func > .fleft #like {
+    margin-left: 100px;
+}
+
+#func > #fbtn {
+    position: absolute;
+    top: 0;
+    right: 300px;
+    padding: 0;
+    width: 80px;
+    height: 40px;
+    background-color: darkcyan;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 700;
+    color: #F1F3F6;
+}
+
+#func > #fbtn:hover {
+    background-color: green;
+}
+
+
+/*留言样式*/
+#leave {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#leave > #ly {
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+#leave > #send {
+    width: 60px;
+    height: 30px;
+    float: right;
+    margin-right: 30px;
+}
+
+#tuo {
+    width: 700px;
+    height: 300px;
+    /*display: none;*/
+    z-index: 3;
+    position: fixed;
+    left: 40%;
+    margin-left: -380px;
+    top: 50%;
+    margin-top: -150px;
+    background-color: #66CC99;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#tuo > #jr {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#tuo > h3 {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#tuo > #opt {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 600px;
+    height: 30px;
+    font-size: 18px;
+    list-style: none;
+    overflow: hidden;
+}
+
+#opt > li {
+    width: 100px;
+    height: 100%;
+    padding: 0;
+    text-align: center;
+    background-color: lightblue;
+    border-radius: 10px;
+    line-height: 30px;
+    float: left;
+    margin-left: 20px;
+}
+
+#tuo > #opt > li:hover {
+    background-color: pink;
+}
+
+#tuo > #opt > .hover {
+    background-color: pink;
+}
+
+#tuo > #boxb {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    background-color: forestgreen;
+}
+
+#tuo > #boxb button {
+    width: 100px;
+    height: 40px;
+    float: left;
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 166px;
+    border-radius: 20px;
+    background-color: #66CC99;
+}
+
+#tuo > #boxb button:hover {
+    background-color: green;
+}
+
+#tuo > #mz {
+    z-index: 5;
+    width: 700px;
+    height: 400px;
+    position: fixed;
+    left: 50%;
+    margin-left: -350px;
+    top: 50%;
+    margin-top: -200px;
+    background-color: snow;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 10px;
+}
+
+#tuo > #mz > h3 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+}

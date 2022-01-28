@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>ICClub 用户信息编辑</title>
+    <link rel="stylesheet" href="/index/static/css/general.css">
+    <link rel="stylesheet" href="/index/static/css/header.css">
+    <link rel="stylesheet" href="/index/static/css/b_update.css">
+    <link rel="stylesheet" href="/index/static/css/footer.css">
+
+
+    <script src="/index/static/js/tool_kit.js"></script>
+    <script src="/index/static/js/jquery.min.js"></script>
+    <script src="/index/static/js/base_con.js"></script>
+</head>
+<body id="body">
+<div id="wrapperimg">
+    <div class="top"><a href="javascript:" id="user_ps">个人设置</a>>更换头像</div>
+
+    <input id="imgfile" type="file" onchange="uploadfile()">
+    <div class="imgshow">
+        <img src="" alt="" id="imgshow" width="350px" height="350px">
+    </div>
+    <a href="javascript:" type="submit" class="bt" id="go">保存</a>
+    <a href="javascript:" type="submit" class="bt" id="che">取消</a>
+
+</div>
+
+<div id="head"></div>
+
+<div id="u_update">
+    <h2>个人设置</h2>
+    <div class="line_1">
+        <div class="l1">
+            <label class="lab">昵称:</label>
+            <input type="text" class="nickname" id="nickname" name="nickname" maxlength="30">
+        </div>
+        <div class="l2">
+            <label class="lab">介绍:</label>
+            <textarea name="signature" id="signature" cols="30" rows="10"
+            ></textarea>
+        </div>
+        <div class="l3">
+            <label class="lab">性别:</label>
+            <input type="radio" name="sex" id="nan" value="男">男
+            <input type="radio" name="sex" id="nv" value="女">女
+            <input type="radio" name="sex" id="mimi" value="你猜">嘘
+        </div>
+        <div class="l4">
+            <label class="lab">生日:</label>
+            <input type="date" id="birth" required='required'>
+        </div>
+        <div class="l5">
+            <label class="lab">地区:</label>
+            <select name="place_1" id="pro">
+                <option value="四川" selected>四川</option>
+                <option value="1">等等</option>
+            </select>
+            <select name="place_2" id="city">
+                <option value="成都" selected>成都</option>
+                <option value="1">等等</option>
+            </select>
+        </div>
+        <div class="l6">
+            <input type="submit" value="保存" id="sub">
+        </div>
+    </div>
+
+    <div class="photo">
+        <img id="img1" src="" alt="0" width="150px" height="150px">
+        <label class="tu">更改头像</label>
+    </div>
+
+    <div id="hobby">
+
+    </div>
+
+</div>
+<div id="foot" style="position: fixed; bottom: 0;"></div>
+
+<script>
+    var domain = window.location.host;
+    var footer_url = 'http://' + domain + '/index/templates/footer.html'
+    $("#foot").load(footer_url);
+    token = window.localStorage.getItem('user_token');
+
+    // $("#bkground").load("background.html");
+    function uploadfile() {
+        let reads = new FileReader();
+        file = document.getElementById('imgfile').files[0];
+        reads.readAsDataURL(file);
+        reads.onload = function (e) {
+            document.getElementById('imgshow').src = this.result;
+        };
+    }
+
+    $('#go').click(function () {
+        var reads = new FileReader();
+        file = document.getElementById('imgfile').files[0];
+        reads.readAsDataURL(file);
+        reads.onload = function (a) {
+            var imginfo = {
+                'data': this.result
+            };
+            $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    headers: {'Authorization': token},
+                    url: SER_URL + 'users/upload',
+                    contentType: 'application/json;charset=UTF-8',
+                    data: JSON.stringify(imginfo),
+                    success: function (result) {
+                        if (result.code == 200) {
+                            alert('图片上传成功');
+                            document.getElementById('wrapperimg').style.display = 'none';
+                            window.location.reload()
+                        } else {
+                            alert(result.message)
+                        }
+
+                    }
+                }
+            )
+        }
+    });
+
+    $('#user_ps').click(function () {
+        document.getElementById('wrapperimg').style.display = 'none';
+    });
+    $('.tu').click(function () {
+        document.getElementById('wrapperimg').style.display = 'block';
+    });
+    // 暂时先这样
+    $('#che').click(function () {
+        document.getElementById('wrapperimg').style.display = 'none';
+    });
+
+
+</script>
+<script src="/index/static/js/header.js"></script>
+<script src="/index/static/js/user_info_update.js"></script>
+</body>
+</html>

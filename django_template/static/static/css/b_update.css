@@ -1,0 +1,208 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+label, span {
+    display: inline-block;
+}
+
+body {
+    /*background-color: #d5d5d5;*/
+    background-image: url("../images/background_img/timg04.jpeg");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+
+#u_update {
+    width: 1200px;
+    height: 530px;
+    /*border: solid 1px red;*/
+    padding: 40px;
+    margin: 30px auto;
+    color: whitesmoke;
+    background: url("../images/background_img/timg04.jpeg");
+    background-size: 100%;
+    /*background-color: black;*/
+    opacity: 0.9;
+}
+
+#u_update h2 {
+    border-bottom: solid 1px gray;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+#u_update > div {
+    float: left;
+}
+
+#u_update .line_1 {
+    width: 350px;
+    height: 450px;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+#u_update .line_1 div {
+    margin-top: 10px;
+}
+
+#u_update .line_1 .l1 input {
+    width: 255px;
+    height: 25px;
+}
+
+#u_update .line_1 .l6 {
+    text-align: center;
+}
+
+#u_update .line_1 .l6 #sub {
+    padding: 2px 25px;
+    border-radius: 2px;
+    background-color: lightskyblue;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+#u_update .photo {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin-top: 13px;
+    /*overflow: hidden;*/
+}
+
+#u_update .photo label {
+    width: 150px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 18px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*margin-left: -150px;*/
+    color: white;
+    background-color: gray;
+    opacity: 0.5;
+    text-align: center;
+}
+
+#u_update .photo label:hover {
+    opacity: 0.8;
+}
+
+#u_update #hobby {
+    margin-top: 50px;
+    width: 820px;
+    height: 300px;
+}
+
+#u_update #hobby span {
+    width: 120px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 20px;
+    margin-right: 10px;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+#u_update #hobby .not_sel {
+    background-color: gray;
+}
+
+#u_update #hobby .be_sel {
+    background-color: skyblue;
+}
+
+.l2 #signature {
+    width: 263px;
+    border-radius: 3px;
+    margin-left: 1px;
+    margin-top: 4px;
+}
+
+.l3 .lab {
+    margin-top: 8px;
+}
+
+.l4 #birth {
+    margin-top: 4px;
+    width: 255px;
+    height: 25px;
+}
+
+.l5 select {
+    width: 131px;
+    margin-top: 6px;
+    height: 37px;
+}
+
+
+#wrapperimg {
+    position: fixed;
+    width: 1280px;
+    height: 580px;
+    padding: 40px;
+    top: 50%;
+    left: 50%;
+    margin-left: -640px;
+    margin-top: -330px;
+    /*background-color: white;*/
+    z-index: 3;
+    background: url("../images/background_img/b7.jpg");
+    background-size: 100%;
+    display: none;
+    box-sizing: border-box;
+}
+
+#wrapperimg > #imgfile {
+    width: 100px;
+}
+
+#wrapperimg .imgshow {
+    width: 350px;
+    height: 350px;
+    padding: 5px;
+    border: solid 1px #d1d1d1;
+    margin: 10px 20px 10px 20px;
+    background-image:url("../images/background_img/hd_bkgrongd.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#wrapperimg .top {
+    margin: 10px 20px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px black;
+    font-size: 15px;
+
+}
+
+#wrapperimg #imgfile {
+    /*cursor: pointer;*/
+    border-radius: 2px;
+    margin: 10px 20px;
+    font-size: 15px;
+}
+
+#wrapperimg .bt {
+    padding: 5px 20px;
+    border-radius: 2px;
+    margin-left: 76px;
+    text-decoration: none;
+    border: solid 0.5px black;
+}
+
+#wrapperimg #go {
+    color: white;
+    background-color: #7fa0ff;
+}
+
+#wrapperimg #che{
+    color: black;
+    background-color: white;
+}

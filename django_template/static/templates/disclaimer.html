@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICClub 免责声明</title>
+
+    <link rel="stylesheet" href="/index/static/css/general.css">
+    <link rel="stylesheet" href="/index/static/css/header.css">
+    <link rel="stylesheet" href="/index/static/css/icclub.css">
+    <link rel="stylesheet" href="/index/static/css/footer.css">
+    <link rel="stylesheet" href="/index/static/css/active_user.css">
+    <link rel="stylesheet" href="/index/static/css/activity.css">
+    <script src="/index/static/js/base_con.js"></script>
+    <script src="/index/static/js/jquery.min.js"></script>
+    <style>
+        #box2_act_left{
+            width: 100%;
+        }
+        #box2_act_left>.boxd{
+            margin: 0 auto 300px auto;
+        }
+        #box2_act_left>.boxd>#p1{
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+        }
+        #box2_act_left>.boxd>#p2>p{
+            {#color: #000231;#}
+            color: red;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 15px;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+<!-- 嵌入导航栏模板 -->
+<div id="head"></div>
+
+
+<!--  box1开始-->
+<div id="box1">
+
+    <!-- ================================= -->
+    <div id="kj">
+        <!--  推荐  -->
+        <div id="tj">
+            <span id="il">&lsaquo;</span>
+            <img src="/index/static/images/bg2.jpg" alt="" id="img" width="600px" height="320px">
+            <span id="ir">&rsaquo;</span>
+            <div class="tj">
+                <p class="p1">热点</p>
+                <h3>yiqibaqianli</h3>
+                <p class="p2">
+                    无匣也无鞘，暗室夜常明。三尺木马牛，可折天下兵。欲知天将雨，铮铮发龙鸣。提剑走人间，百鬼夜遁行。飞过广陵江，八百蛟龙惊。世人不知何所求，那袭青衫放声笑：天不生我李淳罡，剑道万古长如夜。</p>
+                <span>2019-12-5</span>
+                <div>点赞:100</div>
+
+            </div>
+
+        </div>
+
+        <!--  今日最热  -->
+        <div id="jrzr">
+            <div class="jrzr">
+
+            </div>
+        </div>
+    </div>
+    <!-- ================================= -->
+    <div></div>
+    <div></div>
+</div>
+<!--  box1结束-->
+<!--  box2开始-->
+<div id="box2">
+    <div id="box2_act_left">
+
+    <div class="boxd">
+        <p id="p1">免责声明：</p>
+        <div id="p2">
+            <p>中国法律规定的免责条件主要有：</p>
+            <p>1.不可抗力：《合同法》第117条规定，因不可抗力不能履行合同的，根据不可抗力的影响，部分或者全部免除责任，但法律另有规定的除外。当事人延迟履行后发生不可抗力的，不能免除责任。本法所称不可抗力，是指不能预见、不能避免并不能克服的客观情况。</p>
+            <p>2.货物本身的自然性质、货物的合理损耗：《合同法》第311条规定：承运人对运输过程中货物的毁损、灭失承担损害赔偿责任，但承运人证明货物的毁损、灭失是因不可抗力、货物本身的自然性质或者合理损耗以及托运人、收货人的过错造成的，不承担损害赔偿责任。</p>
+            <p>3.债权人的过错：《合同法》第311条规定、第370条规定：寄存人交付的保管物有瑕疵或者按照保管物的性质需要采取特殊保管措施的，寄存人应当将有关情况告知保管人。寄存人未告知，致使保管物受损失的，保管人不承担损害赔偿责任；保管人因此受损失的，除保管人知道或者应当知道并且未采取补救措施的以外，寄存人应当承担损害赔偿责任。</p>
+        </div>
+    </div>
+
+
+            </div>
+    <!-- box2右窗口 -->
+
+</div>
+
+
+<div id="foot"></div>
+
+<script>
+
+    var domain = window.location.host;
+    var footer_url = 'http://' + domain + '/index/templates/footer.html'
+    $("#foot").load(footer_url);
+
+</script>
+    <script src="/index/static/js/header.js"></script>
+<!--<script src="/index/static/js/index.js"></script>-->
+<script src="/index/static/js/active_user.js"></script>
+
+<script>
+    removeFocus();
+</script>
+</body>
+</html>

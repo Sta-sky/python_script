@@ -1,0 +1,178 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+span {
+    display: inline-block;
+}
+
+#kj {
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+#kj > #comu {
+    float: left;
+    width: 1198px;
+    height: 315px;
+    /* border: solid 1px black; */
+    /* background-color: coral; */
+}
+
+
+/* 左列样式 */
+/* 导航栏 */
+
+#comu_l {
+    float: left;
+    position: relative;
+    width: 840px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+#dh {
+    float: left;
+    width: 840px;
+    height: 60px;
+    /*border: solid 1px red;*/
+    background-color: darkgray;
+    overflow: hidden;
+
+}
+
+#dh ul li {
+    float: left;
+    margin: 15px 20px;
+    padding: 5px 4px;
+    text-align: center;
+    width: 50px;
+    font-size: 22px;
+    height: 20px;
+    line-height: 20px;
+    background-color: rosybrown;
+}
+
+#dh ul #l1 {
+    margin-left: 40px;
+}
+
+#dh div {
+    float: right;
+    font-size: 22px;
+    line-height: 60px;
+    text-align: center;
+    height: 60px;
+    width: 300px;
+}
+
+#dh div input {
+    width: 199px;
+    height: 25px;
+    margin: 15px 5px;
+    float: left;
+}
+
+/* 帖子内容 */
+#tz {
+    width: 840px;
+    overflow: hidden;
+    float: left;
+    background: gray;
+    margin-top: 5px;
+}
+
+#tz .tz {
+    background: bisque;
+    width: 840px;
+    height: 50px;
+    margin-top: 5px;
+}
+
+#tz .tz ul .l1 {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 24px;
+    margin: 10px 5px 0 5px;
+}
+
+#tz .tz > ul > div {
+    float: right;
+    width: 200px;
+    height: 50px;
+    overflow: hidden;
+}
+
+#tz .tz ul div span {
+    float: right;
+    width: 200px;
+    text-align: left;
+    height: 25px;
+    line-height: 25px;
+    font-size: 15px;
+}
+
+/* 左列样式结束 */
+
+
+/* 右列样式 */
+#comu_r {
+    margin-top: 20px;
+    float: right;
+    width: 340px;
+    /* height: 2000px; */
+    /* background-color: bisque; */
+    position: relative;
+    overflow: hidden;
+}
+
+#comu_r #aa {
+    margin: 0 auto;
+    width: 300px;
+    height: 280px;
+    /* border: solid 1px red; */
+}
+
+#comu_r .hd {
+    margin: 0 auto;
+    margin-top: 20px;
+    /*border: solid 1px red;*/
+    width: 300px;
+    height: 270px;
+    overflow: hidden;
+}
+
+#comu_r > .hd h4 {
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+}
+
+
+/*  右列样式结束 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

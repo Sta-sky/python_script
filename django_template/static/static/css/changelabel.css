@@ -1,0 +1,58 @@
+/* box2右上活动标签样式开始 */
+#box2_right_up > .b2_right1 > #ac_c {
+    color: white;
+    height: 34px;
+    width: 100%;
+    float: left;
+    /*text-align: center;*/
+    font-size: 30px;
+}
+
+#box2_right_up > .b2_right1 > #btn_l {
+    float: left;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+
+
+#c_label {
+    position: relative;
+    overflow: hidden;
+    width: 280px;
+    height: 275px;
+}
+
+#c_label > #lab {
+    position: relative;
+}
+
+#c_label > #lab > li:hover {
+    transform: scale(1.1);
+}
+
+#c_label > #lab > li {
+    float: left;
+    list-style-type: none;
+    width: 80px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: #7fa0ff;
+    margin: 15px 30px;
+    text-align: center;
+    line-height: 40px;
+    color: #191f2c;
+}
+
+#c_label > #lab > li > a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #191a29;
+}
+
+#c_label > #lab > li > a:hover {
+    color: deepskyblue;
+}
+
+
+/* box2右上窗口样式结束*/

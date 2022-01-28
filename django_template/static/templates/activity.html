@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ICClub 活动</title>
+    <script src="/index/static/js/tool_kit.js"></script>
+    <link rel="stylesheet" href="/index/static/css/general.css">
+    <link rel="stylesheet" href="/index/static/css/header.css">
+    <link rel="stylesheet" href="/index/static/css/icclub.css">
+    <link rel="stylesheet" href="/index/static/css/changelabel.css">
+    <link rel="stylesheet" href="/index/static/css/footer.css">
+    <link rel="stylesheet" href="/index/static/css/active_user.css">
+    <link rel="stylesheet" href="/index/static/css/admin_article.css">
+    <link rel="stylesheet" href="/index/static/css/activity.css">
+    <link rel="stylesheet" href="/index/static/css/act_comment.css">
+    <script src="/index/static/js/jquery.min.js"></script>
+    <script src="/index/static/js/base_con.js"></script>
+
+</head>
+<body>
+<!-- 嵌入导航栏模板 -->
+<div id="head"></div>
+
+
+<!--  box1开始-->
+<div id="box1">
+
+    <!-- ================================= -->
+    <div id="adminArticle">
+        <span id="il">&lsaquo;</span>
+        <div id="article"></div>
+        <span id="ir">&rsaquo;</span>
+        <!-- <div class="slider-nav" id="btn">
+            <li class="selected"></li>
+            <li class="selected"></li>
+            <li class="selected"></li>
+            <li class="selected"></li>
+        </div> -->
+    </div>
+    <!-- ================================= -->
+</div>
+<!--  box1结束-->
+
+<!--  box2开始-->
+<div id="box2">
+    <div id="box2_left">
+
+        <div id="top">
+            <p id="title"> 内容详情 </p>
+        </div>
+        <hr>
+        <div id="cont">
+            <p id="nr">
+
+            </p>
+            <hr id="brx">
+        </div>
+        <div id="func">
+            <span id="sc">收藏</span>
+            <div class="fleft">
+                <div class="myheart" id="clicklike">
+                    <div id="myheart"></div>
+                </div>
+                <!--<span id="clicklike">点赞</span>-->
+                <span id="like"></span>
+            </div>
+            <button id="fbtn">活动投票</button>
+        </div>
+
+        <div id="comment-box">
+            <div id="leave">
+                <textarea autofocus name="intro" id="ly" cols="45" rows="5"></textarea>
+                <button id="send">留言</button>
+            </div>
+            <!-- 评论内容显示开始 -->
+            <div id="comment-all">
+
+            </div>
+            <!-- 评论内容显示结束 -->
+        </div>
+
+
+        <div id="tuo" style="display: none">
+            <div id="jr">
+                《免责申明》
+            </div>
+            <h3>请选择一个您满意的日期,活动达成系统会邮件通知您</h3>
+            <br>
+            <hr>
+            <ul id="opt">
+                <li>2019-12-21</li>
+            </ul>
+            <div id="boxb">
+                <button id="btn_qx">返回</button>
+                <button id="btn_qd">确定</button>
+            </div>
+            <div id="mz" style="display: none">
+                <h3>免责申明</h3>
+                <hr>
+                <br>
+                本网站所提供的信息，只供参考之用。<br>
+                <br>
+                本网站及其雇员一概毋须以任何方式就任何信息传递或传送的失误、不准确或错误对用户或任何其他人士负任何直接或间接的责任。<br>
+                <br>
+                在法律允许的范围内，本网站在此声明,不承担用户或任何人士就使用或未能使用本网站所提供的信息或任何链接或项目所引致的任何直接、间接、附带、从属、特殊、惩罚性或惩戒性的损害赔偿（包括但不限于收益、预期利润的损失或失去的业务、未实现预期的节省）。<br>
+                <br>
+                本网站所提供的信息，若在任何司法管辖地区供任何人士使用或分发给任何人士时会违反该司法管辖地区的法律或条例的规定或会导致本网站或其第三方代理人受限于该司法管辖地区内的任何监管规定时，则该等信息不宜在该司法管辖地区供该等任何人士使用或分发给该等任何人士。<br>
+                <br>
+                用户须自行保证不会受限于任何限制或禁止用户使用或分发本网站所提供信息的当地的规定。<br>
+                <br>
+                本网站图片，文字之类版权申明，因为网站可以由注册用户自行上传图片或文字，本网站无法鉴别所上传图片或文字的知识版权，如果侵犯，请及时通知我们，本网站将在第一时间及时删除。<br>
+                <br>
+                凡以任何方式登陆本网站或直接、间接使用本网站资料者，视为自愿接受本网站声明的约束。
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- box2右窗口 -->
+    <div id="box2_right">
+        <!-- box2右窗口上 -->
+        <div id="box2_right_up">
+            <!-- 右上标题 -->
+            <div class="b2_right1">
+                <p id="ac_c">活动推荐</p>
+                <div id="btn_l">
+                    <span id="lab_btn">换一换</span>
+                </div>
+                <div id="c_label">
+                    <ul id="lab">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- box2右窗口下 -->
+        <div id="box2_right_down">
+            <!-- 右下标题 -->
+            <div class="b2_right1">
+                <p>活跃达人</p>
+                <!-- 调试 显示8个 -->
+                <!-- <span id="_btn">测试添加8个</span> -->
+            </div>
+            <!-- 活跃达人列表 -->
+            <div id="b2_actv_user">
+                <!-- 用ajax请求渲染 -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="foot"></div>
+
+<script>
+
+    var domain = window.location.host;
+    var footer_url = 'http://' + domain + '/index/templates/footer.html'
+    var header_url = 'http://' + domain + '/index/templates/header.html'
+    $("#foot").load(footer_url);
+    $("#head").load(header_url);
+
+
+</script>
+<script src="/index/static/js/tool_kit.js"></script>
+<script src="/index/static/js/tips.js"></script>
+<script src="/index/static/js/act_comment.js"></script>
+<script src="/index/static/js/header.js"></script>
+<script src="/index/static/js/admin_article.js"></script>
+<script src="/index/static/js/active_user.js"></script>
+<script src="/index/static/js/activity.js"></script>
+</body>
+</html>

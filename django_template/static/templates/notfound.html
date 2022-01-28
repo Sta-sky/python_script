@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICClub Not Found</title>
+    <link rel="stylesheet" href="/index/static/css/icclub.css">
+    <link rel="stylesheet" href="/index/static/css/notfound.css">
+    <script src="/index/static/js/jquery.min.js"></script>
+    <script src="/index/static/js/base_con.js"></script>
+    <script src="/index/static/js/jquery.page.js"></script>
+    <script src="/index/static/js/jquery-3.1.1.min.js"></script>
+
+
+</head>
+
+<body>
+<!-----{#<img id="bg" src="images/contentbg.jpg" alt="">#}--------->
+
+<div class="nav_404page">
+    <div class="logo_404page">
+        <span class="icon">ICClub</span>
+        <!--<img src="/index/static/images/logo404.png" alt=" ">-->
+    </div>
+    <div class="nav_404page_r">
+        <ul>
+            <li><a href="index.html">主页</a></li>
+            <li><a href="Community.html">论坛</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="notfound_box">
+
+    <div class="logo">
+        <div class="notfound_text">
+            <!--<img src="/index/static/images/signal.png">-->
+            <span>矮油,页面跑到火星去了</span>
+        </div>
+
+        <div class="seach_bar">
+            <p id="jumpTo">5秒后跳转到主页</p>
+        </div>
+
+    </div>
+
+    <div class="buttom">
+        <div class="notfound_img">
+            <img src="/index/static/images/notfound.gif">
+        </div>
+    </div>
+</div>
+
+<p class="copy_right">Design BY <b>
+    <a href="index.html" target="">&nbsp;ICClub&nbsp;</a>
+</b> 备20191205号 </p>
+
+
+<script src="/index/static/js/Base_url.js"></script>
+<script>
+    var indexPage = STAC_URL + 'index.html';
+
+    function autoChangePage(secs) {
+        var jumpTo = document.getElementById('jumpTo');
+        var timer = setInterval(function () {
+            if (secs == 0) {
+                window.location.href = indexPage;
+            } else {
+                jumpTo.innerHTML ='<span>'+secs+' </span>秒后跳转到主页';
+                secs--;
+            }
+        }, 1000);
+    }
+</script>
+<script>autoChangePage(12)</script>
+
+</body>
+</html>

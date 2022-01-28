@@ -1,0 +1,42 @@
+#bkcenter{
+    position: fixed;
+    width: 1200px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    /* border: solid 1px red; */
+    background-image: url('../images/background_img/a1.png');
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    margin-left: -600px;
+    z-index:0;
+}
+#bkleft{
+    width: 340px;
+    position: fixed;
+    right:50%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin-right: 600px;
+    /* border: solid 1px blue; */
+    background-image: url('../images/background_img/a11.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 0;
+}
+#bkright{
+    width:420px;
+    position: fixed;
+    left:50%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-left: 600px;
+    /* border: solid 1px blueviolet; */
+    background-image: url('../images/background_img/a9.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 0;
+}

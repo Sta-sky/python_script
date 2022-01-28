@@ -1,0 +1,82 @@
+        #left>#act_title,#left>#act_message,#left>#act_content{
+            float: left;
+        }
+        #left>#act_title{
+            width: 100%;
+            height: 100px;
+            text-align: center;
+        }
+        #left>#act_message{
+            /* position: absolute;
+            left: 50%;
+            top: 100px; */
+            width: 400px;
+            margin-left: 400px;
+            /* border: 1px solid green; */
+        }
+        #left>#act_content{
+            /* position: absolute;
+            top:  */
+            /* border: solid 1px goldenrod9; */
+
+        }
+
+
+        #select{
+            height: 20px;
+        }
+        #title{
+            display: inline-block;
+            line-height: 1;
+            text-align: right;
+            margin-right: 20px;
+            margin-top: 9px;
+        }
+        label{
+            display: inline-block;
+            margin-right: 20px;
+            width: 70px;
+            height: 3px;
+            /* line-height: 1; */
+            text-align: right;
+            margin-top: 9px;
+            padding: 9px;
+            /* vertical-align: top; */
+        }
+        #btn>button{
+            position: relative;
+            margin-left: 30px;
+            margin-bottom: 9px;
+        }
+        #local ul li{
+            list-style: none;
+            position: relative;
+            left: -40px;
+            top: -9px;
+        }
+        #active{
+            width: 350px;
+        }
+        #active_lable>label{
+            margin-top: -5px;
+            position: relative;
+            top: -5px;
+        }
+        .active{
+            margin-left: 12px;
+            margin-top: -5px;
+        }
+        #act_content>label{
+            margin-top: -10px;
+        }
+        #uploadimg{
+            margin-top: 5px;
+            padding: 12px;
+        }
+        #uploadimg>#editor{
+            width: 350px;
+        }
+        #btm{
+            /* padding: 9px; */
+            margin-left: 12px;
+        }

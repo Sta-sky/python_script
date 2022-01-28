@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICClub email_activ</title>
+     <link rel="shortcut icon " type="images/x-icon" href="/index/static/images/favicon1.png">
+    <!-- <link rel="stylesheet" href="/index/static/css/bkground.css"> -->
+    <link rel="stylesheet" href="/index/static/css/general.css">
+    <link rel="stylesheet" href="/index/static/css/header.css">
+    <link rel="stylesheet" href="/index/static/css/icclub.css">
+    <link rel="stylesheet" href="/index/static/css/admin_article.css">
+    <link rel="stylesheet" href="/index/static/css/search.css">
+    <link rel="stylesheet" href="/index/static/css/footer.css">
+    <link rel="stylesheet" href="/index/static/css/active_user.css">
+    <script src="/index/static/js/base_con.js"></script>
+    <script src="/index/static/js/jquery.min.js"></script>
+    <script src = '/index/static/js/tool_kit.js'></script>
+</head>
+<style>
+    #bo{
+        height: 1000px;
+        width:800px;
+    }
+    #b{
+        width: 600px;
+        height: 300px;
+        margin-left: 580px;
+        background-color: rgba(243,21,43,0.3);
+    }
+    #b  h2{
+        color: #bdbe22;
+        font-size: 30px;
+        margin-top: 45px;
+        margin-left: 140px;
+    }
+
+    #b button{
+        margin-top: 180px;
+        margin-left: 100px;
+        color: #181f28;
+        width: 150px;
+        height: 50px;
+        font-size: 30px;
+
+    }
+</style>
+<body>
+    <!-- 嵌入导航栏-->
+    <div id="head"></div>
+    <div id="bo">
+        <div id="b">
+            <i><h2>是否激活账号 &nbsp; &nbsp;请选择</h2></i>
+            <button id="email_yes">是</button>
+            <button id="email_no">否</button>
+        </div>
+    </div>
+
+
+    <!-- 嵌入页脚-->
+    <div id="foot"></div>
+</body>
+<script>
+    var domain = window.location.host;
+    var footer_url = 'http://' + domain + '/index/templates/footer.html'
+    $("#foot").load(footer_url);
+
+</script>
+
+    <script src="/index/static/js/header.js"></script>
+    <!--<script src="/index/static/js/index.js"></script>-->
+    <script src="/index/static/js/active_user.js"></script>
+    <script src="/index/static/js/admin_article.js"></script>
+
+
+<script>
+
+    $('#email_yes').click(function () {
+        var code =  GetUrlString('code');
+        $.ajax({
+            type:'GET',
+            url:SER_URL+'user/email_activ?code='+code,
+            success:function (result) {
+                if (result === 200){
+                    //alert(result.message);
+                    window.location.href = STAC_URL+'index.html'
+                }else {
+                    alert(result.message)
+                }
+            }
+
+        })
+    });
+    $('#email_no').click(function () {
+        window.location.href = STAC_URL+'index.html'
+    })
+
+</script>
+</html>
