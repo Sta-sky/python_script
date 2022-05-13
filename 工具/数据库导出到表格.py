@@ -9,7 +9,6 @@ import pymysql, xlwt
 功能  mysql数据表导出；
 """
 
-
 class WriteXlwtFile(object):
     """
     输入数据库，输入数据表，
