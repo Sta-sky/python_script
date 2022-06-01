@@ -24,7 +24,7 @@ wordcloud = WordCloud(
         #background_color=None, mode="RGBA",
         mask = background_Image, #笼罩图
         #colormap=color_map,
-        font_path = 'C:\Windows\Fonts\SIMLI.TTF',#若有中文需要设置才会显示中文
+        # font_path = 'C:\Windows\Fonts\SIMLI.TTF',#若有中文需要设置才会显示中文
         stopwords=stopwords,
         max_font_size=300,
         max_words=2000,
