@@ -40,6 +40,7 @@
     2、创建uwsgi.log uwsgi.pid 
 
 ### 三、创建配置nginx，让nginx接收的请求，通过socket发送到uwsgi
+
     server {
         listen 70; # nginx监听端口
         server_name docker_django; 
