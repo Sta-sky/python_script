@@ -1,0 +1,12 @@
+FROM python:3.10
+WORKDIR /service
+COPY . .
+RUN pip3 install --no-cache-dir -r /service/requirements.txt
+RUN pip3 install uwsgi --no-cache-dir
+
+CMD uwsgi --ini /service/uwsgi/uwsgi.ini && tail -f /dev/null
+
+
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>提交用户信息</title>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#submitBtn').click(function(e) {
+        e.preventDefault(); // 阻止表单默认提交行为
+
+        // 获取输入字段的值
+        var username = $('#username').val();
+        var age = $('#age').val();
+
+        // 创建要提交的数据对象
+        var data = {
+          name: username,
+          age: age
+        };
+
+        // 发送POST请求
+        $.ajax({
+          url: 'http://127.0.0.1:70/api/create_user',
+          type: 'POST',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          success: function(response) {
+            // 处理成功响应
+            console.log(response);
+            // 这里可以添加其他处理逻辑
+          },
+          error: function(xhr, status, error) {
+            // 处理错误响应
+            console.log(error);
+            // 这里可以添加其他错误处理逻辑
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>提交用户信息 1</h1>
+  <form>
+    <label for="username">用户名儿:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    <label for="age">年龄:</label>
+    <input type="number" id="age" name="age" required><br><br>
+    <input type="submit" value="提交" id="submitBtn">
+  </form>
+</body>
+</html>

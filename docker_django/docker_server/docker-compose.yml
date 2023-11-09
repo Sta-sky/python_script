@@ -1,0 +1,29 @@
+version: "3"
+services:
+  django_test:
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: always
+    container_name: django_uwsgi
+    ports:
+      - "101:101"
+    volumes:
+      - ./:/service
+    privileged: true
+
+  nginx:
+    container_name: django_nginx
+    working_dir: /service
+    build:
+      context: ./conf
+      dockerfile: dockerfile
+    ports:
+      - "70:70"
+    volumes:
+      - ./log/nginx:/var/log/nginx
+      - ./static:/service/static
+    restart: always
+
+
+
