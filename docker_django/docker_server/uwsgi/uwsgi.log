@@ -478,3 +478,4 @@ Not Found: /index.html
 [pid: 11|app: 0|req: 1/2] 192.168.65.1 () {58 vars in 1177 bytes} [Thu Nov  9 07:10:47 2023] GET /index.html => generated 2216 bytes in 36 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
 [pid: 19|app: 0|req: 2/3] 192.168.65.1 () {62 vars in 1171 bytes} [Thu Nov  9 07:10:59 2023] POST /api/create_user => generated 58 bytes in 41 msecs (HTTP/1.1 200) 9 headers in 302 bytes (1 switches on core 1)
 [pid: 19|app: 0|req: 3/4] 192.168.65.1 () {66 vars in 1224 bytes} [Thu Nov  9 07:11:07 2023] POST /api/create_user => generated 58 bytes in 9 msecs (HTTP/1.1 200) 9 headers in 302 bytes (1 switches on core 3)
+[pid: 19|app: 0|req: 4/5] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 07:59:07 2023] POST /api/create_user => generated 58 bytes in 24 msecs (HTTP/1.1 200) 7 headers in 212 bytes (1 switches on core 0)
