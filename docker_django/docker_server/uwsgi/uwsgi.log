@@ -479,3 +479,1523 @@ Not Found: /index.html
 [pid: 19|app: 0|req: 2/3] 192.168.65.1 () {62 vars in 1171 bytes} [Thu Nov  9 07:10:59 2023] POST /api/create_user => generated 58 bytes in 41 msecs (HTTP/1.1 200) 9 headers in 302 bytes (1 switches on core 1)
 [pid: 19|app: 0|req: 3/4] 192.168.65.1 () {66 vars in 1224 bytes} [Thu Nov  9 07:11:07 2023] POST /api/create_user => generated 58 bytes in 9 msecs (HTTP/1.1 200) 9 headers in 302 bytes (1 switches on core 3)
 [pid: 19|app: 0|req: 4/5] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 07:59:07 2023] POST /api/create_user => generated 58 bytes in 24 msecs (HTTP/1.1 200) 7 headers in 212 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 09:06:24 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 09:06:04
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: 007dbe8ce319
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaaccb7d870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaaccb7d870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 15, cores: 4)
+spawned uWSGI worker 3 (pid: 19, cores: 4)
+spawned uWSGI worker 4 (pid: 20, cores: 4)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 09:09:06 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 09:08:50
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: 0d0f367cd9dc
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaab81a1870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaab81a1870 pid: 10 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 10)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 15, cores: 4)
+spawned uWSGI worker 3 (pid: 16, cores: 4)
+spawned uWSGI worker 4 (pid: 23, cores: 4)
+[pid: 11|app: 0|req: 1/1] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 09:10:59 2023] POST /api/create_user => generated 58 bytes in 45 msecs (HTTP/1.1 200) 7 headers in 212 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 09:26:35 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 09:26:18
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: c307dda794c2
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaad4a3b870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaad4a3b870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 12, cores: 4)
+spawned uWSGI worker 3 (pid: 16, cores: 4)
+spawned uWSGI worker 4 (pid: 20, cores: 4)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 12|app: 0|req: 1/1] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 09:27:48 2023] POST /api/create_user => generated 197150 bytes in 127 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 11|app: 0|req: 1/2] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 09:28:26 2023] POST /api/create_user => generated 197150 bytes in 97 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 09:31:11 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 09:30:17
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: b6550178e6eb
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaae973a870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaae973a870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 12, cores: 4)
+spawned uWSGI worker 3 (pid: 19, cores: 4)
+spawned uWSGI worker 4 (pid: 21, cores: 4)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 09:47:52 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 09:47:36
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: 20b9724e1121
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaaeed81870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaaeed81870 pid: 10 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 10)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 12, cores: 4)
+spawned uWSGI worker 3 (pid: 19, cores: 4)
+spawned uWSGI worker 4 (pid: 20, cores: 4)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 09:50:37 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 09:50:20
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: 39f4ed9896cf
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaac343f870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaac343f870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 10, cores: 4)
+spawned uWSGI worker 2 (pid: 14, cores: 4)
+spawned uWSGI worker 3 (pid: 15, cores: 4)
+spawned uWSGI worker 4 (pid: 22, cores: 4)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 10:01:40 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 10:01:23
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: 29e25b511eba
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaac8e18870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaac8e18870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 12, cores: 4)
+spawned uWSGI worker 3 (pid: 19, cores: 4)
+spawned uWSGI worker 4 (pid: 20, cores: 4)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 10:09:05 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 10:08:48
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: e07d94b23500
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaae8b16870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaae8b16870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 12, cores: 4)
+spawned uWSGI worker 3 (pid: 13, cores: 4)
+spawned uWSGI worker 4 (pid: 17, cores: 4)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 10:10:48 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 10:10:31
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: 7f5de7cc4480
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaae6e59870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaae6e59870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 12, cores: 4)
+spawned uWSGI worker 3 (pid: 16, cores: 4)
+spawned uWSGI worker 4 (pid: 21, cores: 4)
+*** Starting uWSGI 2.0.23 (64bit) on [Thu Nov  9 10:13:33 2023] ***
+compiled with version: 10.2.1 20210110 on 09 November 2023 10:13:16
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: 8c0f4d0ba03b
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaaae0a2f870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaaae0a2f870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 15, cores: 4)
+spawned uWSGI worker 3 (pid: 17, cores: 4)
+spawned uWSGI worker 4 (pid: 20, cores: 4)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 20|app: 0|req: 1/1] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:13:34 2023] POST /api/create_user => generated 197150 bytes in 60 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 20|app: 0|req: 2/2] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:13:41 2023] POST /api/create_user => generated 197150 bytes in 42 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 1)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 20|app: 0|req: 3/3] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:13:50 2023] POST /api/create_user => generated 197150 bytes in 31 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 3)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 17|app: 0|req: 1/4] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:13:53 2023] POST /api/create_user => generated 197150 bytes in 134 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 17|app: 0|req: 2/5] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:13:54 2023] POST /api/create_user => generated 197150 bytes in 23 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 2)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 11|app: 0|req: 1/6] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:13:55 2023] POST /api/create_user => generated 197150 bytes in 80 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 17|app: 0|req: 3/7] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:13:55 2023] POST /api/create_user => generated 197150 bytes in 46 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 1)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 17|app: 0|req: 4/8] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:13:56 2023] POST /api/create_user => generated 197150 bytes in 23 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 15|app: 0|req: 1/9] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:14:20 2023] POST /api/create_user => generated 197150 bytes in 127 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 17|app: 0|req: 5/10] 192.168.65.1 () {44 vars in 683 bytes} [Thu Nov  9 10:14:39 2023] POST /api/create_user => generated 197150 bytes in 80 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 2)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 20|app: 0|req: 4/11] 192.168.65.1 () {44 vars in 683 bytes} [Fri Nov 10 02:14:29 2023] POST /api/create_user => generated 197150 bytes in 78 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 2)
+*** Starting uWSGI 2.0.23 (64bit) on [Fri Nov 10 02:32:13 2023] ***
+compiled with version: 10.2.1 20210110 on 10 November 2023 02:31:57
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: 5f7550524dd4
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaab005d8870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xaaab005d8870 pid: 9 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9)
+spawned uWSGI worker 1 (pid: 11, cores: 4)
+spawned uWSGI worker 2 (pid: 12, cores: 4)
+spawned uWSGI worker 3 (pid: 14, cores: 4)
+spawned uWSGI worker 4 (pid: 23, cores: 4)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 11|app: 0|req: 1/1] 192.168.65.1 () {44 vars in 683 bytes} [Fri Nov 10 02:32:35 2023] POST /api/create_user => generated 197150 bytes in 156 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+Internal Server Error: /api/create_user
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 644, in connect
+    sock = socket.create_connection(
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/service/./user/views.py", line 42, in create_user
+    user_obj, created = UserInfo.objects.update_or_create(defaults=body_data, **lookup_condition)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 946, in update_or_create
+    with transaction.atomic(using=self.db):
+  File "/usr/local/lib/python3.10/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 288, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 289, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 270, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 247, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 358, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/pymysql/connections.py", line 711, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' ([Errno 111] Connection refused)")
+[pid: 12|app: 0|req: 1/2] 192.168.65.1 () {44 vars in 683 bytes} [Fri Nov 10 02:47:33 2023] POST /api/create_user => generated 197150 bytes in 90 msecs (HTTP/1.1 500) 7 headers in 251 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.23 (64bit) on [Fri Nov 10 02:48:47 2023] ***
+compiled with version: 10.2.1 20210110 on 10 November 2023 02:48:30
+os: Linux-6.3.13-linuxkit #1 SMP PREEMPT Thu Sep  7 07:48:47 UTC 2023
+nodename: d4604bf515d6
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /service
+writing pidfile to /service/uwsgi/uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /service
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :101 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.10.1 (main, Dec 21 2021, 06:15:32) [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0xaaab020f0870
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 128 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 521440 bytes (509 KB) for 16 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xaaab020f0870 pid: 10 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 10)
+spawned uWSGI worker 1 (pid: 12, cores: 4)
+spawned uWSGI worker 2 (pid: 16, cores: 4)
+spawned uWSGI worker 3 (pid: 20, cores: 4)
+spawned uWSGI worker 4 (pid: 21, cores: 4)
+[pid: 12|app: 0|req: 1/1] 192.168.65.1 () {44 vars in 683 bytes} [Fri Nov 10 02:48:54 2023] POST /api/create_user => generated 58 bytes in 68 msecs (HTTP/1.1 200) 7 headers in 212 bytes (1 switches on core 0)

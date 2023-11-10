@@ -78,8 +78,13 @@ WSGI_APPLICATION = 'docker_server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'docker_test',
+        # mysql 的docker 容器的ip（docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' django_mysql）
+        'HOST': '172.18.0.3',
+        'USER': 'root',
+        'PORT': '3306',
+        'PASSWORD': '123456',
     }
 }
 

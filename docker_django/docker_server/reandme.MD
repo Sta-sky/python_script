@@ -1,4 +1,4 @@
-# django + uwsgi + nginx 使用docker部署
+# django + mysql8 + uwsgi + nginx 使用docker部署
 
 ### 一、创建django项目，创建一个简单app用于测试，
 
@@ -57,7 +57,21 @@
         }
     }
 
-### 四、创建dockerfile、docker-compose.yml 
+### 四、创建mysql的数据映射目录以及配置文件
+    
+    1、data存储持久化到主机：
+        创建 db/data 目录，并在docker中将 /var/lib/mysql映射到此目录
+
+    2、mysql的配置文件，my.cnf
+        创建/db/conf.d/my.cnf文件  并在docker中将 /etc/mysql/conf.d映射到此目录
+
+    3、创建log文件夹，并在docker中将 /var/log/mysql映射到此目录
+
+    4、创建虚拟环境文件，添加mysql的密码以及时区
+        .env
+    
+
+### 五、创建dockerfile、docker-compose.yml 
     注：
         参见本项目dockerfile，docker-compose
 
@@ -65,6 +79,8 @@
         所以在CMD后面加 tail /dev/null  保证dockr不一直处于starting状态中
             
             CMD uwsgi --ini /service/uwsgi/uwsgi.ini && tail -f /dev/null 
+
+
 
 
 

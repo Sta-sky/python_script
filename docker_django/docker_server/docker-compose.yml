@@ -1,5 +1,21 @@
 version: "3"
 services:
+
+  mysql_db:
+    image: mysql:8
+    container_name: django_mysql
+    env_file:
+      - .env
+    volumes:
+      - ./log/db:/var/log/mysql
+      - ./db/data:/var/lib/mysql
+      - ./db/conf.d:/etc/mysql/conf.d
+    ports:
+      - 3306:3306
+    restart: always
+    privileged: true
+
+
   django_test:
     build:
       context: .
@@ -11,6 +27,8 @@ services:
     volumes:
       - ./:/service
     privileged: true
+    depends_on:
+      - mysql_db
 
   nginx:
     container_name: django_nginx
@@ -24,6 +42,12 @@ services:
       - ./log/nginx:/var/log/nginx
       - ./static:/service/static
     restart: always
+    privileged: true
+
+
+
+
+
 
 
 
